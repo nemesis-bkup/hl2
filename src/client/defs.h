@@ -1,0 +1,2 @@
+
+font_s FONT_HUD_CROSS;
