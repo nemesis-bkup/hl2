@@ -5,6 +5,7 @@
 #define CSQC
 #define CLIENT
 #define HL2
+#define SOUNDSHADER_MAX 9000
 
 #includelist
 ../../../src/shared/fteextensions.qc
