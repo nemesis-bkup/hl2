@@ -17,8 +17,6 @@
 void
 Game_InitRules(void)
 {	
-	forceinfokey(world, "ctf", "0");
-
 	if (cvar("sv_playerslots") == 1 || cvar("coop") == 1) {
 		g_grMode = spawn(HLSingleplayerRules);
 	} else {

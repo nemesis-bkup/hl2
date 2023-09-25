@@ -340,7 +340,7 @@ w_pistol_type(player pl)
 weapon_t w_pistol =
 {
 	.name		= "9mmhandgun",
-	.id			= ITEM_GLOCK,
+	.id			= ITEM_PISTOL,
 	.slot		= 1,
 	.slot_pos	= 0,
 	.weight		= 10,

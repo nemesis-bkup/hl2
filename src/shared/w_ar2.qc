@@ -260,7 +260,7 @@ w_ar2_type(player pl)
 weapon_t w_ar2 =
 {
 	.name		= "hornet",
-	.id			= ITEM_HORNETGUN,
+	.id			= ITEM_AR2,
 	.slot		= 2,
 	.slot_pos	= 1,
 	.weight		= 10,

@@ -259,7 +259,7 @@ w_bugbait_type(player pl)
 weapon_t w_bugbait =
 {
 	.name		= "grenade",
-	.id			= ITEM_HANDGRENADE,
+	.id			= ITEM_BUGBAIT,
 	.slot		= 5,
 	.slot_pos	= 0,
 	.weight		= 5,

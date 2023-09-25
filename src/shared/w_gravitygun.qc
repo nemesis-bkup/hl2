@@ -258,7 +258,7 @@ w_gravitygun_type(player pl)
 weapon_t w_gravitygun =
 {
 	.name		= "egon",
-	.id			= ITEM_EGON,
+	.id			= ITEM_GRAVITYGUN,
 	.slot		= 0,
 	.slot_pos	= 1,
 	.weight		= 15,

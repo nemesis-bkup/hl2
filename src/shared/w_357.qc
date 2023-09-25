@@ -297,7 +297,7 @@ w_357_type(player pl)
 weapon_t w_357 =
 {
 	.name		= "357",
-	.id			= ITEM_PYTHON,
+	.id			= ITEM_357,
 	.slot		= 1,
 	.slot_pos	= 1,
 	.weight		= 15,

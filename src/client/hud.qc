@@ -355,12 +355,12 @@ HUD_DrawArmor(void)
 		HUD_DrawNums(pl.armor, pos + [40, 0], pSeatLocal->m_flArmorAlpha, g_hud_color);
 	} else {
 		drawsubpic(
-			pos + [-72,-14],
+			pos + [0,-14],
 			[32,16],
 			g_hud7_spr,
 			[spr_armor[0], spr_armor[1]],
 			[spr_armor[2], spr_armor[3]],
-			[1,0,0],
+			g_hud_color,
 			pSeatLocal->m_flArmorAlpha,
 			DRAWFLAG_ADDITIVE
 		);

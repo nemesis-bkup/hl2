@@ -240,7 +240,7 @@ w_frag_type(player pl)
 weapon_t w_frag =
 {
 	.name		= "grenade",
-	.id			= ITEM_HANDGRENADE,
+	.id			= ITEM_FRAG,
 	.slot		= 4,
 	.slot_pos	= 0,
 	.weight		= 5,

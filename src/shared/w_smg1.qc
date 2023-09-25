@@ -364,7 +364,7 @@ w_smg1_type(player pl)
 weapon_t w_smg1 =
 {
 	.name		= "9mmAR",
-	.id			= ITEM_MP5,
+	.id			= ITEM_SMG1,
 	.slot		= 2,
 	.slot_pos	= 0,
 	.weight		= 15,
