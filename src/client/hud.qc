@@ -177,7 +177,7 @@ HUD_DrawNums(float fNumber, vector vecPos, float fAlpha, vector vColor)
 
 		/* if we're a zero, but a leading one... */
 		if (b == 0)
-			if ((fNumber < 100 && x == 2) || (fNumber < 10 && x == 1) || (fNumber == 0))
+			if ((fNumber < 100 && x == 2) || (fNumber < 10 && x == 1))
 				fAlpha = 0.25f;
 
 		if (x == 1) {
@@ -234,7 +234,7 @@ HUD_DrawNumsS(float fNumber, vector vecPos, float fAlpha, vector vColor)
 
 		/* if we're a zero, but a leading one... */
 		if (b == 0)
-			if ((fNumber < 100 && x == 2) || (fNumber < 10 && x == 1) || (fNumber == 0))
+			if ((fNumber < 100 && x == 2) || (fNumber < 10 && x == 1))
 				fAlpha = 0.25f;
 
 		if (x == 1) {
@@ -360,7 +360,7 @@ HUD_DrawArmor(void)
 			g_hud7_spr,
 			[spr_armor[0], spr_armor[1]],
 			[spr_armor[2], spr_armor[3]],
-			g_hud_color,
+			[1,0,0],
 			pSeatLocal->m_flArmorAlpha,
 			DRAWFLAG_ADDITIVE
 		);

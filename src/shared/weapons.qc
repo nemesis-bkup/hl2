@@ -18,6 +18,7 @@ weapon_t w_null = {};
 weapon_t g_weapons[] = {
 	w_null,
 	w_crowbar,
+	w_stunstick,
 	w_gravitygun,
 	w_pistol,
 	w_357,
@@ -27,5 +28,6 @@ weapon_t g_weapons[] = {
 	w_crossbow,
 	w_frag,
 	w_rpg,
+	w_slam,
 	w_bugbait,
 };

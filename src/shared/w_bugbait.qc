@@ -137,8 +137,6 @@ void w_bugbait_secondary(player pl)
 void w_bugbait_hud(player pl)
 {
 #ifdef CLIENT
-	HUD_DrawAmmo2();
-
 	vector pos = g_hudmins + [g_hudres[0] / 2, g_hudres[1] / 2];
 	Font_DrawText_RGBA(pos + [-7, -14], "Q", g_hud_color, 1.0, FONT_HUD_CROSS);
 #endif
@@ -235,8 +233,6 @@ w_bugbait_hudpic(player pl, int selected, vector pos, float a)
 			DRAWFLAG_ADDITIVE
 		);
 	}
-
-	HUD_DrawAmmoBar(pos, pl.ammo_handgrenade, MAX_A_HANDGRENADE, a);
 #endif
 }
 

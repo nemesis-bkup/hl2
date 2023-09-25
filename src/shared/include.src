@@ -26,6 +26,8 @@ w_pistol.qc
 w_rpg.qc
 w_shotgun.qc
 w_smg1.qc
+w_stunstick.qc
+w_slam.qc
 weapons.qc
 ../../../valve/src/shared/weapon_common.qc
 #endlist

@@ -23,7 +23,7 @@ vector g_vecHUDNums[8] =
 	[131 / 256,44 / 64],
 	[153 / 256,44 / 64],
 	[175 / 256,44 / 64],
-	[197 / 256,44 / 64],
+	[24/256, 44/64]
 };
 
 void
@@ -107,8 +107,6 @@ HUD_DrawWeaponSelect_Last(void)
 void
 HUD_DrawWeaponSelect_Num2(vector vecPos, float fValue)
 {
-	drawsubpic(vecPos, [16,16], g_hud7_spr, [24/256, 44/64], [16/256, 16/64], g_hud_color, 1, DRAWFLAG_ADDITIVE);
-
 	drawsubpic(vecPos, [16,16], g_hud7_spr, g_vecHUDNums[fValue], [16/255, 16/64], g_hud_color, 1, DRAWFLAG_ADDITIVE);
 }
 
@@ -212,7 +210,6 @@ HUD_DrawWeaponSelect(void)
 		int slot_selected = 0;
 		vecPos[1] = g_hudmins[1] + 16;
 
-		
 		if (i == wantslot)
 			HUD_DrawWeaponSelect_Num2(vecPos, i);
 		else 
@@ -239,7 +236,7 @@ HUD_DrawWeaponSelect(void)
 		}
 
 		if (slot_selected == TRUE) {
-			vecPos[0] += 128;
+			vecPos[0] += 132;
 		} else {
 			vecPos[0] += 25;
 		}
