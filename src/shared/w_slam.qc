@@ -14,21 +14,212 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+
+/* MONSTER_TRIPMINE SEGMENT 
+ * 
+ * Because not being able to place it around levels would be boring.
+ * Some maps, such as subtransit and a few singleplayer chapters have this. */
+
+#ifdef SERVER
+class monster_tripmine:NSMonster
+{
+	int m_iDist;
+	void(void) monster_tripmine;
+
+	virtual float(entity, float) SendEntity;
+	virtual void(int) Trip;
+	virtual void(void) Damaged;
+	virtual void(void) Ready;
+	virtual void(void) Respawn;
+};
+
+float
+monster_tripmine::SendEntity(entity pvsent, float flags)
+{
+	WriteByte(MSG_ENTITY, ENT_TRIPMINE);
+	WriteCoord(MSG_ENTITY, origin[0]);
+	WriteCoord(MSG_ENTITY, origin[1]);
+	WriteCoord(MSG_ENTITY, origin[2]);
+	WriteCoord(MSG_ENTITY, angles[0]);
+	WriteCoord(MSG_ENTITY, angles[1]);
+	WriteCoord(MSG_ENTITY, angles[2]);
+	WriteByte(MSG_ENTITY, health);
+	WriteShort(MSG_ENTITY, modelindex);
+	return (1);
+}
+
+void
+monster_tripmine::Trip(int walkthrough)
+{
+	float dmg;
+	if (!walkthrough) {
+		real_owner = g_dmg_eAttacker;
+	}
+
+	/* This is to prevent infinite loops in Damage_Radius */
+	Death =
+	Pain = __NULL__;
+	takedamage = DAMAGE_NO;
+	dmg = Skill_GetValue("plr_tripmine", 150);
+
+	pointparticles(particleeffectnum("fx_explosion.main"), origin, [0,0,0], 1);
+	Damage_Radius(origin, real_owner, dmg, dmg * 2.5f, TRUE, WEAPON_SLAM);
+	Sound_Play(self, CHAN_VOICE, "fx.explosion");
+	Destroy();
+}
+
+void
+monster_tripmine::Damaged(void)
+{
+	Trip(0);
+}
+
+void
+monster_tripmine::Ready(void)
+{
+	makevectors(angles);
+	traceline(origin, origin + v_forward * 2048, FALSE, this);
+	SetSolid(SOLID_BBOX);
+
+	/* first time we're marked as ready, we play a sound and set the distance */
+	if (!health) {
+		SendFlags = -1;
+		health = 1;
+		Death =
+		Pain = Damaged;
+		takedamage = DAMAGE_YES;
+		m_iDist = (int)trace_plane_dist;
+		Sound_Play(this, CHAN_WEAPON, "weapon_tripmine.activate");
+	}
+
+	if ((int)trace_plane_dist != m_iDist) {
+		Trip(1);
+	}
+	nextthink = time;
+}
+
+void
+monster_tripmine::Respawn(void)
+{
+	SetModel("models/weapons/w_slam.mdl");
+	SetSolid(SOLID_NOT);
+	SetMovetype(MOVETYPE_NONE);
+	SetSize([-8,-8,-8], [8,8,8]);
+	SetOrigin(origin);
+	SendFlags = 1; /* force update */
+
+	/* ready in 4 seconds flat */
+	think = Ready;
+
+	/* fast beam */
+	if (spawnflags & 1) {
+		nextthink = time;
+	} else {
+		nextthink = time + 4.0f;
+	}
+}
+
+void
+monster_tripmine::monster_tripmine(void)
+{
+	Respawn();
+}
+#else
+class csitem_tripmine
+{
+	int m_iActive;
+
+	void(void) csitem_tripmine;
+	virtual float(void) predraw;
+};
+
+float csitem_tripmine::predraw(void)
+{
+	if (m_iActive) {
+		makevectors(angles);
+		traceline(origin, origin + v_forward * 8196, FALSE, this);
+		trailparticles(BEAM_TRIPMINE, this, origin, trace_endpos);
+	}
+
+	addentity(this);
+	return PREDRAW_NEXT;
+}
+
+void
+csitem_tripmine::csitem_tripmine(void)
+{
+	solid = SOLID_BBOX;
+	movetype = MOVETYPE_NONE;
+	drawmask = MASK_ENGINE;
+	m_iActive = FALSE;
+}
+
+void w_tripmine_parse(void)
+{
+	csitem_tripmine tm = (csitem_tripmine)self;
+	spawnfunc_csitem_tripmine();
+
+	tm.origin[0] = readcoord();
+	tm.origin[1] = readcoord();
+	tm.origin[2] = readcoord();
+	tm.angles[0] = readcoord();
+	tm.angles[1] = readcoord();
+	tm.angles[2] = readcoord();
+	tm.m_iActive = readbyte();
+	tm.modelindex = readshort();
+
+	setorigin(tm, tm.origin);
+	setsize(tm, [-8,-8,-8], [8,8,8]);
+}
+#endif
+
+
+
+
+
 enum
 {
-	SLAM_IDLE,
-	SLAM_FIDGET,
-	SLAM_DRAW,
-	SLAM_THROW
+	SLAM_IDLE,						// 3.36
+	SLAM_IDLE_NOHAND,				// 3.36
+	SLAM_THROW,						// 0.50
+	SLAM_DRAWHAND,					// 0.83
+	SLAM_THROW_NOHAND,				// 0.50
+	SLAM_WAVE,						// 0.83
+	SLAM_DRAW,						// 1.00
+	SLAM_DRAW_NOHAND,				// 1.00
+	SLAM_PLACE,						// 1.36
+	SLAM_DETONATE,					// 1.36
+	SLAM_PLACE_ONEHAND,				// 1.36
+	SLAM_PLACE_NOHAND,				// 1.36
+	SLAM_DETONATOR_DRAW,			// 1.00
+	SLAM_DETONATOR_IDLE,			// 3.36
+	SLAM_DETONATOR_BOOM,			// 0.70
+	SLAM_DETONATOR_THROWDRAW,		// 1.00
+	SLAM_DETONATOR_HOLSTER,			// 0.43
+	SLAM_TRIPMINE_IDLE,				// 3.36
+	SLAM_TRIPMINE_DRAW,				// 0.86
+	SLAM_TRIPMINE_TOTHROW,			// 1.70
+	SLAM_TRIPMINE_STARTATTACH,		// 0.26
+	SLAM_TRIPMINE_ENDATTACH,		// 0.63
+	/* hopefully unused */
+	SLAM_STICKWALL_IDLE,			// 1.36
+	SLAM_STICKWALL_IDLE_NOHAND,		// 1.36
+	SLAM_STICKWALL_STARTATTACH,		// 0.20
+	SLAM_STICKWALL_ENDATTACH,		// 0.63
+	SLAM_STICKWALL_TOTHROW,			// 1.00
+	SLAM_STICKWALL_TOTHROW_NOHAND,	// 1.00
 };
 
 enum
 {
-	RADIO_IDLE,
-	RADIO_FIDGET,
-	RADIO_DRAW,
-	RADIO_USE,
-	RADIO_HOLSTER
+	SLAMSTATE_NONE,
+	SLAMSTATE_RAISEDETONATOR,
+	SLAMSTATE_LOWERDETONATOR,
+	SLAMSTATE_GOTOTRIPMINE,
+	SLAMSTATE_TRIPMINE,
+	SLAMSTATE_LEAVETRIPMINE,
+	SLAMSTATE_ENDATTACH,
+	SLAMSTATE_GOTOTRIPDRAW
 };
 
 #ifdef SERVER
@@ -101,14 +292,26 @@ w_slam_pickup(player pl, int new, int startammo)
 void
 w_slam_draw(player pl)
 {
-	if (pl.satchel_chg > 0) {
-		Weapons_SetModel("models/v_slam_radio.mdl");
-		Weapons_ViewAnimation(pl, RADIO_DRAW);
-		
+	Weapons_SetModel("models/weapons/v_slam.mdl");
+
+	if (pl.mode_tempstate == SLAMSTATE_TRIPMINE) {
+		Weapons_ViewAnimation(pl, SLAM_TRIPMINE_DRAW);
 	} else {
-		Weapons_SetModel("models/weapons/v_slam.mdl");
-		Weapons_ViewAnimation(pl, SLAM_DRAW);
+
+		if (pl.satchel_chg) {
+			if (pl.ammo_satchel)
+				Weapons_ViewAnimation(pl, SLAM_DETONATOR_THROWDRAW);
+			else
+				Weapons_ViewAnimation(pl, SLAM_DETONATOR_DRAW);
+		} else {
+			if (pl.ammo_satchel)
+				Weapons_ViewAnimation(pl, SLAM_DRAW_NOHAND);
+			else
+				Weapons_ViewAnimation(pl, SLAM_DRAWHAND);
+		}
 	}
+
+	pl.w_idle_next = 0.9f;
 }
 
 void
@@ -125,84 +328,77 @@ w_slam_primary(player pl)
 	}
 
 	/* Ammo check */
-	if (pl.satchel_chg <= 0 && pl.ammo_satchel <= 0) {
+	if (pl.ammo_satchel <= 0) {
 		return;
 	}
 
-	if (pl.satchel_chg <= 0) {
-		Weapons_ViewAnimation(pl, RADIO_DRAW);
-	} else {
-		Weapons_ViewAnimation(pl, RADIO_USE);
-	}
-
+	if (pl.mode_tempstate == SLAMSTATE_TRIPMINE) {
 #ifdef SERVER
-	/* if we don't have any slams placed yet, place one */
-	if (!pl.satchel_chg) {
-		NSProjectile_SpawnDef("projectile_slam", pl);
-		pl.satchel_chg++;
-		pl.ammo_satchel--;
-		pl.mode_tempstate = 1; /* mark us as having deployed something */
+		vector src = Weapons_GetCameraPos(pl);
+		Weapons_MakeVectors(pl);
+		traceline(src, src + v_forward * 64, FALSE, pl);
+		vector ang = vectoangles(trace_plane_normal);
+		monster_tripmine mine = spawn(monster_tripmine, real_owner: pl, angles: ang, spawnflags: MSF_MULTIPLAYER);
+		mine.health = 0;
+		mine.SetOrigin(trace_endpos + (trace_plane_normal * 8));
 
-		if (pl.flags & FL_CROUCHING)
-			Animation_PlayerTop(pl, ANIM_CR_SHOOTSQUEAK, 0.41f);
-		else
-			Animation_PlayerTop(pl, ANIM_SHOOTSQUEAK, 0.5f);
-	} else {
-		/* detonate all we have */
-		s_slam_detonate(pl);
-		pl.satchel_chg = 0;
-
-		/* no slams left to place? just get rid of this thing */
-		if (pl.ammo_satchel <= 0) {
-			Weapons_RemoveItem(pl, WEAPON_SLAM);
-		}
-	}
-#else
-	Weapons_SetModel("models/v_slam_radio.mdl");
-
-	/* same thing as the SERVER ifdef above... */
-	if (!pl.satchel_chg) {
-		pl.satchel_chg++;
-		pl.ammo_satchel--;
-	} else {
-		pl.satchel_chg = 0;
-	}
+		Sound_Play(pl, CHAN_WEAPON, "weapon_tripmine.deploy");
+		Sound_Play(mine, CHAN_WEAPON, "weapon_tripmine.charge");
 #endif
+		Weapons_ViewAnimation(pl, SLAM_TRIPMINE_STARTATTACH);
+		pl.mode_tempstate = SLAMSTATE_ENDATTACH;
+		pl.w_attack_next = 
+		pl.w_idle_next = 0.20f;
+		pl.ammo_satchel--;
 
-	pl.w_attack_next = 1.0f;
-	pl.w_idle_next = 1.0f;
+		if (pl.ammo_satchel <= 0 && pl.satchel_chg <= 0) {
+#ifdef SERVER
+			Weapons_RemoveItem(pl, WEAPON_SLAM);
+#endif
+		}
+	} else {
+		if (pl.satchel_chg)
+			Weapons_ViewAnimation(pl, SLAM_THROW);
+		else {
+			Weapons_ViewAnimation(pl, SLAM_THROW_NOHAND);
+			pl.mode_tempstate = SLAMSTATE_RAISEDETONATOR;
+		}
+
+	#ifdef SERVER
+		NSProjectile_SpawnDef("projectile_slam", pl);
+	#endif
+		pl.satchel_chg++;
+		pl.ammo_satchel--;
+		pl.w_attack_next = 
+		pl.w_idle_next = 0.50f;
+	}
+
+
 }
 
 void
 w_slam_secondary(player pl)
 {
-	if (pl.w_attack_next) {
+	if (pl.satchel_chg <= 0)
 		return;
-	}
 
-	/* Ammo check */
 	if (pl.ammo_satchel <= 0) {
-		return;
+		Weapons_ViewAnimation(pl, SLAM_DETONATOR_BOOM);
+		pl.w_attack_next = 
+		pl.w_idle_next = 0.7f;
+	} else {
+		Weapons_ViewAnimation(pl, SLAM_DETONATE);
+		pl.w_attack_next = 
+		pl.w_idle_next = 1.36f;
 	}
-
-	Weapons_SetModel("models/v_slam_radio.mdl");
-	Weapons_ViewAnimation(pl, RADIO_DRAW);
 
 #ifdef SERVER
-	NSProjectile_SpawnDef("projectile_slam", pl);
+	s_slam_detonate(pl);
 #endif
 
-	if (pl.flags & FL_CROUCHING)
-		Animation_PlayerTop(pl, ANIM_CR_SHOOTSQUEAK, 0.41f);
-	else
-		Animation_PlayerTop(pl, ANIM_SHOOTSQUEAK, 0.5f);
+	pl.mode_tempstate = 0;
+	pl.satchel_chg = 0;
 
-	pl.satchel_chg++;
-	pl.ammo_satchel--;
-	pl.mode_tempstate = 1; /* mark us as having deployed something */
-
-	pl.w_attack_next = 1.0f;
-	pl.w_idle_next = 0.5f;
 }
 
 void
@@ -214,25 +410,65 @@ w_slam_reload(player pl)
 void
 w_slam_release(player pl)
 {
+	if (pl.w_attack_next > 0.0) {
+		return;
+	}
+
+	/* we're in either slam or tripmine mode */
+	if (pl.mode_tempstate == SLAMSTATE_NONE || pl.mode_tempstate == SLAMSTATE_TRIPMINE) {
+		Weapons_MakeVectors(pl);
+		vector src = pl.origin + pl.view_ofs;
+		traceline(src, src + (v_forward * 64), FALSE, pl);
+
+		if (trace_fraction >= 1.0 && pl.mode_tempstate == SLAMSTATE_TRIPMINE) {
+			pl.mode_tempstate = SLAMSTATE_LEAVETRIPMINE;
+		} else if (trace_fraction < 1.0 && pl.mode_tempstate == SLAMSTATE_NONE) {
+			pl.mode_tempstate = SLAMSTATE_GOTOTRIPMINE;
+		}
+	}
+
 	if (pl.w_idle_next > 0.0) {
 		return;
 	}
 
-	/* keep track of the model via tempstates */
-	if (pl.satchel_chg < 1i && pl.mode_tempstate != 0) {
-		pl.mode_tempstate = 0;
-		Weapons_SetModel("models/v_slam.mdl");
-		Weapons_ViewAnimation(pl, SLAM_DRAW);
-		pl.w_idle_next = 15.0f;
-		return;
-	}
-
-	if (pl.satchel_chg <= 0) {
-		Weapons_ViewAnimation(pl, SLAM_FIDGET);
+	if (pl.mode_tempstate == SLAMSTATE_RAISEDETONATOR) {
+		w_slam_draw(pl);
+		pl.mode_tempstate = SLAMSTATE_NONE;
+	} else if (pl.mode_tempstate == SLAMSTATE_GOTOTRIPMINE) {
+		Weapons_ViewAnimation(pl, SLAM_PLACE);
+		pl.w_idle_next = 1.30;
+		pl.mode_tempstate = SLAMSTATE_TRIPMINE;
+	} else if (pl.mode_tempstate == SLAMSTATE_LEAVETRIPMINE) {
+		Weapons_ViewAnimation(pl, SLAM_TRIPMINE_TOTHROW);
+		pl.w_idle_next = 1.68;
+		pl.mode_tempstate = SLAMSTATE_NONE;
+	} else if (pl.mode_tempstate == SLAMSTATE_ENDATTACH ) {
+		Weapons_ViewAnimation(pl, SLAM_TRIPMINE_ENDATTACH);
+		pl.w_idle_next = 0.6f;
+		pl.mode_tempstate = SLAMSTATE_GOTOTRIPDRAW;
+	} else if (pl.mode_tempstate == SLAMSTATE_TRIPMINE) {
+		Weapons_ViewAnimation(pl, SLAM_TRIPMINE_IDLE);
+	} else if (pl.mode_tempstate == SLAMSTATE_GOTOTRIPDRAW ) {
+		pl.mode_tempstate = SLAMSTATE_TRIPMINE;
+		w_slam_draw(pl);
 	} else {
-		Weapons_ViewAnimation(pl, RADIO_FIDGET);
+		if (pl.satchel_chg) {
+			if (pl.ammo_satchel)
+				Weapons_ViewAnimation(pl, SLAM_IDLE);
+			else
+				Weapons_ViewAnimation(pl, SLAM_DETONATOR_IDLE);
+		} else {
+			if (pl.ammo_satchel) {
+				Weapons_ViewAnimation(pl, SLAM_IDLE_NOHAND);
+			} else {
+#ifdef SERVER
+				Weapons_RemoveItem(pl, WEAPON_SLAM);
+#endif
+			}
+		}
+
+		//pl.w_idle_next = 3.36f;
 	}
-	pl.w_idle_next = 15.0f;
 }
 
 float
@@ -246,8 +482,6 @@ w_slam_hud(player pl)
 {
 #ifdef CLIENT
 	HUD_DrawAmmo2();
-	vector aicon_pos = g_hudmins + [g_hudres[0] - 48, g_hudres[1] - 42];
-	drawsubpic(aicon_pos, [24,24], g_hud7_spr, [72/256,96/128], [24/256, 24/128], g_hud_color, pSeatLocal->m_flAmmo2Alpha, DRAWFLAG_ADDITIVE);
 #endif
 }
 

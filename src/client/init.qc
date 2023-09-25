@@ -51,5 +51,5 @@ ClientGame_RendererRestart(string rstr)
 	MUZZLE_SMALL = (int)getmodelindex("sprites/muzzleflash2.spr");
 	MUZZLE_WEIRD = (int)getmodelindex("sprites/muzzleflash3.spr");
 
-	BEAM_TRIPMINE = particleeffectnum("weapon_tripmine.beam");
+	BEAM_TRIPMINE = particleeffectnum("weapon_slam.beam");
 }

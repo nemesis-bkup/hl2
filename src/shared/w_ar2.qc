@@ -282,10 +282,3 @@ weapon_t w_ar2 =
 	.type		= w_ar2_type,
 	.hudpic		= w_ar2_hudpic
 };
-
-#ifdef CLIENT
-void w_tripmine_parse(void)
-{
-
-}
-#endif

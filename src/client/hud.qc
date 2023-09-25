@@ -308,7 +308,7 @@ HUD_DrawHealth(void)
 		HUD_DrawNums(pl.health, pos + [40, 0], pSeatLocal->m_flHealthAlpha, g_hud_color);
 	} else {
 		drawsubpic(
-			pos + [-72,-14],
+			pos + [0,-14],
 			[48,16],
 			g_hud7_spr,
 			[spr_health[0], spr_health[1]],
