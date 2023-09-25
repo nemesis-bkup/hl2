@@ -38,8 +38,8 @@ defs.h
 ../../../src/botlib/include.src
 
 gamerules.qc
-../../../valve/src/server/gamerules_singleplayer.qc
-../../../valve/src/server/gamerules_multiplayer.qc
+gamerules_singleplayer.qc
+gamerules_multiplayer.qc
 server.qc
 ../../../valve/src/server/damage.qc
 ../../../valve/src/server/flashlight.qc
