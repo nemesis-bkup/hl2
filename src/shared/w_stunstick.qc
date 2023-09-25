@@ -31,9 +31,6 @@ void
 w_stunstick_precache(void)
 {
 #ifdef SERVER
-	Sound_Precache("weapon_stunstick.hit");
-	Sound_Precache("weapon_stunstick.miss");
-	Sound_Precache("weapon_stunstick.hitbody");
 	precache_model("models/w_stunstick.mdl");
 #else
 	precache_model("models/weapons/v_stunstick.mdl");
@@ -123,7 +120,7 @@ w_stunstick_primary(player pl)
 		Animation_PlayerTop(pl, ANIM_SHOOTCROWBAR, 0.5f);
 
 #ifdef SERVER
-	Sound_Play(pl, CHAN_WEAPON, "Weapon_Stunstick.Single");
+	Sound_Play(pl, CHAN_WEAPON, "Weapon_StunStick.Swing");
 
 	if (trace_fraction >= 1.0) {
 		return;
@@ -139,10 +136,10 @@ w_stunstick_primary(player pl)
 	if (trace_ent.takedamage) {
 		Damage_Apply(trace_ent, pl, Skill_GetValue("plr_stunstick", 10), WEAPON_STUNSTICK, DMG_BLUNT);
 		if (trace_ent.iBleeds) {
-			Sound_Play(pl, CHAN_WEAPON, "Weapon_Stunstick.Melee_Hit");
+			Sound_Play(pl, CHAN_WEAPON, "Weapon_StunStick.Melee_Hit");
 		}
 	} else {
-		//Sound_Play(pl, CHAN_WEAPON, "Weapon_Stunstick.Melee_HitWorld");
+		Sound_Play(pl, CHAN_WEAPON, "Weapon_StunStick.Melee_HitWorld");
 	}
 #endif
 }
