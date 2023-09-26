@@ -7,7 +7,7 @@ entityDef weapon_ar2
 	"editor_rotatable"	"1"
 
 	"spawnclass"		"NSItem"
-	"model"		"models/weapons/w_crowbar.mdl"
+	"model"		"models/weapons/w_irifle.mdl"
 	"inv_item"		"$WEAPON_AR2"
 	"snd_acquire"		"weapon.pickup"
 	"snd_respawn"		"item.respawn"
