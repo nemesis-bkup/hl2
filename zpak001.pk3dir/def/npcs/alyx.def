@@ -1,0 +1,15 @@
+entityDef npc_alyx
+{
+	"spawnclass"		"NSTalkMonster"
+	"model"		"models/alyx.mdl"
+	"netname"		"Alyx"
+	"health"		"200"
+	"mins"			"-16 -16 0"
+	"maxs"			"16 16 72"
+	"eye_height"		"64"
+	"team"			"0"
+	"propdata"		"actor_human"
+
+	"speed_walk"		"77"
+	"speed_run"		"364"
+}
