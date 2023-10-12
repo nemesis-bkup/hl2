@@ -29,7 +29,6 @@ cmds.qc
 ../../../valve/src/client/game_event.qc
 ../../../valve/src/client/camera.qc
 viewmodel.qc
-../../../valve/src/client/view.qc
 ../../../valve/src/client/obituary.qc
 ../../../valve/src/client/hud_sprite.qc
 ../../../valve/src/client/hud_ammonotify.qc
@@ -38,7 +37,6 @@ viewmodel.qc
 hud.qc
 hud_weaponselect.qc
 ../../../valve/src/client/scoreboard.qc
-../../../valve/src/client/modelevent.qc
 
 ../../../src/client/include.src
 vgui_changechar.qc
