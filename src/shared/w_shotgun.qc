@@ -212,7 +212,6 @@ w_shotgun_primary(player pl)
 	Sound_Play(pl, CHAN_WEAPON, "Weapon_Shotgun.Single");
 #else
 	View_SetMuzzleflash(MUZZLE_WEIRD);
-	View_AddEvent(w_shotgun_ejectshell, 0.5f);
 #endif
 
 	Weapons_ViewAnimation(pl, SHOTGUN_FIRE);
@@ -285,7 +284,6 @@ w_shotgun_secondary(player pl)
 	Sound_Play(pl, CHAN_WEAPON, "Weapon_Shotgun.Double");
 #else
 	View_SetMuzzleflash(MUZZLE_WEIRD);
-	View_AddEvent(w_shotgun_ejectshell, 1.0f);
 #endif
 	/* after 1 second, play the cocksound and eject shell */
 	pl.mode_tempstate = SHOTTY_RELOAD_END;
@@ -337,6 +335,8 @@ w_shotgun_release(player pl)
 		Weapons_ViewAnimation(pl, SHOTGUN_PUMP);
 #ifdef SERVER
 		Sound_Play(pl, CHAN_AUTO, "Weapon_Shotgun.Special1");
+#else
+		View_AddEvent(w_shotgun_ejectshell, 0.0f);
 #endif
 		pl.mode_tempstate = SHOTTY_IDLE;
 		pl.w_idle_next = 0.5f;

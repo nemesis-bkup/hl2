@@ -87,7 +87,7 @@ void w_rpg_draw(player pl)
 	Weapons_SetModel("models/weapons/v_rpg.mdl");
 	Weapons_ViewAnimation(pl, RPG_DRAW);
 	pl.ammo_rpg_state = 1;
-	pl.w_idle_next = 1.13f;;
+	pl.w_idle_next = 1.13f;
 }
 
 void w_rpg_holster(player pl)

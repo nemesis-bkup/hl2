@@ -14,18 +14,6 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#ifdef CLIENT
-var float TRAIL_EGONBEAM;
-
-string w_gravitygun_sparkframes[11];
-
-void
-w_gravitygun_beamfx(vector vecPos, vector vecEndPos, entity eOwner)
-{
-	trailparticles(TRAIL_EGONBEAM, eOwner, vecPos, vecEndPos);
-}
-#endif
-
 enum
 {
 	GRAVGUN_PADDING1,
@@ -40,20 +28,8 @@ enum
 
 void w_gravitygun_precache(void)
 {
-#ifdef SERVER
-	precache_sound("weapons/egon_windup2.wav");
-	precache_sound("weapons/egon_run3.wav");
-	precache_sound("weapons/egon_off1.wav");
-	precache_model("models/w_gravitygun.mdl");
-	Sound_Precache("weapon_egon.empty");
-#else
-	TRAIL_EGONBEAM = particleeffectnum("weapon_egon.beam");
+#ifdef CLIENT
 	precache_model("models/weapons/v_physcannon.mdl");
-	precache_model("models/p_egon.mdl");
-	precache_model("sprites/xspark1.spr");
-
-	for (int i = 0; i < 11; i++)
-		w_gravitygun_sparkframes[i] = spriteframe("sprites/xspark1.spr", i, 0.0f);
 #endif
 }
 
@@ -111,12 +87,40 @@ void w_gravitygun_release(player pl);
 void w_gravitygun_primary(player pl)
 {
 	if (pl.w_attack_next > 0.0f) {
+		w_gravitygun_release(pl);
 		return;
 	}
 
-	Weapons_ViewAnimation(pl, GRAVGUN_FIRE);
-	pl.w_attack_next = 0.6f;
-	pl.w_idle_next = 0.6f;
+	Weapons_MakeVectors(pl);
+	vector srcOrg, endOrg;
+	srcOrg = pl.GetEyePos();
+	endOrg = srcOrg + v_forward * 1024;
+
+	traceline(srcOrg, endOrg, MOVE_NORMAL, pl);
+
+	print(sprintf("%v %v: %f %s\n", srcOrg, endOrg, trace_fraction, trace_ent.classname));
+
+	if (trace_fraction < 1.0) {
+#ifdef SERVER
+		if (trace_ent.isPhysics) {
+			NSPhysicsEntity physEnt = (NSPhysicsEntity)trace_ent;
+
+			physEnt.PhysicsEnable();
+			physEnt.ApplyForceCenter(v_forward * 15000);
+			physEnt.ApplyForceOffset(v_forward * 600, trace_endpos);
+
+			physEnt.nextthink = time;
+		}
+#endif
+		Weapons_ViewAnimation(pl, GRAVGUN_ALTFIRE);
+		pl.w_attack_next = 0.6f;
+		pl.w_idle_next = 0.1f;
+	} else {
+		Weapons_ViewAnimation(pl, GRAVGUN_FIRE);
+		pl.w_attack_next = 0.6f;
+		pl.w_idle_next = 0.6f;
+	}
+
 }
 void w_gravitygun_secondary(player pl)
 {
@@ -124,10 +128,34 @@ void w_gravitygun_secondary(player pl)
 		return;
 	}
 
+	Weapons_MakeVectors(pl);
+	vector srcOrg, endOrg;
+	srcOrg = pl.GetEyePos();
+	endOrg = srcOrg + v_forward * 1024;
 
-	Weapons_ViewAnimation(pl, GRAVGUN_FIRE);
-	pl.w_attack_next = 0.4f;
-	pl.w_idle_next = 0.4f;
+	traceline(srcOrg, endOrg, MOVE_NORMAL, pl);
+
+	if (trace_fraction < 1.0) {
+#ifdef SERVER
+		if (trace_ent.isPhysics) {
+			vector pullDirection;
+			NSPhysicsEntity physEnt = (NSPhysicsEntity)trace_ent;
+			physEnt.PhysicsEnable();
+
+			pullDirection = normalize(srcOrg - physEnt.WorldSpaceCenter());
+			//pullDirection *= (physEnt.mass + 0.5) * (1/50.0f);
+			physEnt.ApplyForceCenter(pullDirection * 50.0);
+			//physEnt.velocity = v_forward * -100.0f;
+			physEnt.nextthink = time;
+		}
+#endif
+	} else {
+
+	}
+
+	//Weapons_ViewAnimation(pl, GRAVGUN_FIRE);
+	//pl.w_attack_next = 0.4f;
+	//pl.w_idle_next = 0.4f;
 }
 
 void w_gravitygun_reload(player pl)
@@ -142,50 +170,6 @@ void w_gravitygun_release(player pl)
 
 	Weapons_ViewAnimation(pl, GRAVGUN_IDLE);
 	pl.w_idle_next = 2.0f;
-}
-
-void
-w_gravitygun_postdraw(player pl, int thirdperson)
-{
-#ifdef CLIENT
-	if (!(pl.gflags & GF_EGONBEAM))
-		return;
-
-	vector src;
-	vector endpos;
-
-	if (thirdperson) {
-		makevectors(pl.v_angle);
-		src = pl.origin;
-		endpos = pl.origin + (v_forward * 1024);
-		traceline(src, endpos, MOVE_NORMAL, pl);
-		w_gravitygun_beamfx(gettaginfo(pl.p_model, 10), trace_endpos, pl);
-	} else {
-		vector gunpos = gettaginfo(pSeat->m_eViewModel, 33);
-		src = gettaginfo(pSeat->m_eViewModel, 0);
-		makevectors(view_angles);
-		endpos = src + v_forward * 1024;
-		traceline(src, endpos, FALSE, pl);
-		w_gravitygun_beamfx(gunpos, endpos, pl);
-	}
-
-	int i = (cltime*10.0f) % 11.0f;
-	vector fsize = [32,32];
-	makevectors(view_angles);
-	trace_endpos += v_forward * -16; /* nudge towards our camera */
-	dynamiclight_add(trace_endpos, 128, [0.5, 0.5, 1.0]);
-
-	R_BeginPolygon(w_gravitygun_sparkframes[i], 1, 0);
-	R_PolygonVertex(trace_endpos + v_right * fsize[0] - v_up * fsize[1],
-		[1,1], [1,1,1], 1.0f);
-	R_PolygonVertex(trace_endpos - v_right * fsize[0] - v_up * fsize[1],
-		[0,1], [1,1,1], 1.0f);
-	R_PolygonVertex(trace_endpos - v_right * fsize[0] + v_up * fsize[1],
-		[0,0], [1,1,1], 1.0f);
-	R_PolygonVertex(trace_endpos + v_right * fsize[0] + v_up * fsize[1],
-		[1,0], [1,1,1], 1.0f);
-	R_EndPolygon();
-#endif
 }
 
 void w_gravitygun_crosshair(player pl)
@@ -279,5 +263,5 @@ weapon_t w_gravitygun =
 	.hudpic		= w_gravitygun_hudpic,
 	.isempty	= w_gravitygun_isempty,
 	.type		= w_gravitygun_type,
-	.predraw	= w_gravitygun_postdraw
+	.predraw	= __NULL__
 };

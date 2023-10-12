@@ -241,8 +241,6 @@ w_pistol_reload(player pl)
 void
 w_pistol_release(player pl)
 {
-	int r;
-
 	/* auto-reload if need be */
 	if (pl.w_attack_next <= 0.0)
 	if (pl.glock_mag == 0 && pl.ammo_9mm > 0) {
