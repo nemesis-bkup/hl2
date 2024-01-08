@@ -154,6 +154,9 @@ w_pistol_isempty(player pl)
 	return 0;
 }
 
+.entity first_ent;
+.vector first_pos;
+
 void
 w_pistol_primary(player pl)
 {
@@ -178,7 +181,29 @@ w_pistol_primary(player pl)
 	View_SetMuzzleflash(MUZZLE_SMALL);
 	View_AddEvent(w_pistol_ejectshell, 0.0f);
 #else
-	TraceAttack_FireBullets(1, pl.origin + pl.view_ofs, Skill_GetValue("plr_9mm_bullet", 8), [0.01,0.01], WEAPON_PISTOL);
+
+	#if 0
+	TraceAttack_FireBullets(1, pl.origin + pl.view_ofs, Skill_GetValue("plr_dmg_buckshot", 5), [0.01,0.01], WEAPON_PISTOL);
+	#else
+	makevectors(pl.v_angle);
+	traceline(pl.GetEyePos(), pl.GetEyePos() + v_forward * 1024, MOVE_NORMAL, pl);
+
+	if (1) {
+
+			print("Weld ingggg\n");
+		if (!pl.first_ent) {
+			pl.first_ent = trace_ent;
+			pl.first_pos = trace_endpos;
+			print("Weld 1\n");
+		} else {
+			NSPhysicsConstraint::Weld(pl.first_ent, trace_ent, 0,0,0,0,0);
+			pl.first_ent = 0;
+			pl.first_pos = g_vec_null;
+			print("Weld done\n");
+		}
+	}
+
+	#endif
 	Sound_Play(pl, CHAN_WEAPON, "Weapon_Pistol.Single");
 #endif
 

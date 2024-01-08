@@ -225,6 +225,8 @@ HLMultiplayerRules::PlayerSpawn(NSClientPlayer pp)
 
 	spot = Spawn_SelectRandom("info_player_deathmatch");
 	pl.Transport(spot.origin, spot.angles);
+	setorigin_safe(pl, pl.origin + [0,0,1]);
+
 	Weapons_RefreshAmmo(pl);
 	Client_FixAngle(pl, pl.angles);
 }

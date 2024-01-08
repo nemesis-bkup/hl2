@@ -137,7 +137,7 @@ w_crowbar_primary(player pl)
 	}
 
 	if (trace_ent.takedamage) {
-		Damage_Apply(trace_ent, pl, Skill_GetValue("plr_crowbar", 10), WEAPON_CROWBAR, DMG_BLUNT);
+		Damage_Apply(trace_ent, pl, Skill_GetValue("plr_dmg_crowbar", 10), WEAPON_CROWBAR, DMG_BLUNT);
 		if (trace_ent.iBleeds) {
 			Sound_Play(pl, CHAN_WEAPON, "Weapon_Crowbar.Melee_Hit");
 		}

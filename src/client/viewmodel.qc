@@ -20,12 +20,12 @@
 	  like viewmodel bob that people may like
 */
 
-var float autocvar_v_bob = 0.005;
-var float autocvar_v_bobcycle = 0.6;
+var float autocvar_v_bob = 0.01;
+var float autocvar_v_bobcycle = 0.8;
 var float autocvar_v_bobup = 0.5;
 
 var float autocvar_v_bob2 = 0.005;
-var float autocvar_v_bob2cycle = 1.4;
+var float autocvar_v_bob2cycle = 1.6;
 var float autocvar_v_bob2up = 0.5;
 
 struct

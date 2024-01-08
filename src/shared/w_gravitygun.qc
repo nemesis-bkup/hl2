@@ -74,7 +74,7 @@ void w_gravitygun_draw(player pl)
 
 	Weapons_SetModel("models/weapons/v_physcannon.mdl");
 	Weapons_ViewAnimation(pl, GRAVGUN_DRAW);
-	pl.w_idle_next = 0.95f;
+	pl.w_idle_next = 0.28f;
 }
 
 void w_gravitygun_holster(player pl)
@@ -105,7 +105,6 @@ void w_gravitygun_primary(player pl)
 		if (trace_ent.isPhysics) {
 			NSPhysicsEntity physEnt = (NSPhysicsEntity)trace_ent;
 
-			physEnt.PhysicsEnable();
 			physEnt.ApplyForceCenter(v_forward * 15000);
 			physEnt.ApplyForceOffset(v_forward * 600, trace_endpos);
 
@@ -122,6 +121,7 @@ void w_gravitygun_primary(player pl)
 	}
 
 }
+
 void w_gravitygun_secondary(player pl)
 {
 	if (pl.w_attack_next > 0.0f) {
@@ -140,11 +140,10 @@ void w_gravitygun_secondary(player pl)
 		if (trace_ent.isPhysics) {
 			vector pullDirection;
 			NSPhysicsEntity physEnt = (NSPhysicsEntity)trace_ent;
-			physEnt.PhysicsEnable();
 
 			pullDirection = normalize(srcOrg - physEnt.WorldSpaceCenter());
 			//pullDirection *= (physEnt.mass + 0.5) * (1/50.0f);
-			physEnt.ApplyForceCenter(pullDirection * 50.0);
+			physEnt.ApplyForceCenter(pullDirection * 500.0f);
 			//physEnt.velocity = v_forward * -100.0f;
 			physEnt.nextthink = time;
 		}

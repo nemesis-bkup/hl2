@@ -82,6 +82,7 @@ void w_shotgun_precache(void)
 	precache_model("models/weapons/v_shotgun.mdl");
 	precache_model("models/p_shotgun.mdl");
 	precache_model("models/shotgunshell.mdl");
+	precache_model("models/weapons/shotgun_shell.mdl");
 #endif
 }
 

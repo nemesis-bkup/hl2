@@ -128,9 +128,12 @@ w_ar2_primary(player pl)
 		//return;
 	}
 
+	Weapons_ViewPunchAngle(pl, [-3,0,0]);
+
 #ifdef SERVER
 	w_ar2_shoothornet(pl);
 	Sound_Play(pl, CHAN_WEAPON, "Weapon_AR2.Single");
+	TraceAttack_FireBullets(1, Weapons_GetCameraPos(pl), Skill_GetValue("plr_dmg_ar2", 8), [0.025,0.025], WEAPON_AR2);
 #endif
 
 //	pl.ammo_hornet--;
@@ -158,6 +161,8 @@ w_ar2_secondary(player pl)
 		w_ar2_release(pl);
 		return;
 	}
+
+	Weapons_ViewPunchAngle(pl, [-3,0,0]);
 
 #ifdef SERVER
 //	w_ar2_shoothornet(pl);

@@ -23,10 +23,9 @@ defs.h
 
 ../../../valve/src/server/player.qc
 ../../../valve/src/server/items.qc
-../../../valve/src/server/item_longjump.qc
-../../../valve/src/server/item_suit.qc
-../../../valve/src/server/item_healthkit.qc
-../../../valve/src/server/item_battery.qc
+item_suit.qc
+item_healthkit.qc
+item_battery.qc
 ../../../valve/src/server/world_items.qc
 ../../../valve/src/server/xen_spore_small.qc
 ../../../valve/src/server/xen_spore_medium.qc

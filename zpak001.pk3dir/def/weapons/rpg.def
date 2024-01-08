@@ -57,12 +57,11 @@ entityDef projectile_rocket_homing
 
 entityDef damage_rocketDirect
 {
-	"damage"	"skill:plr_rocketlauncher_impact"
-	"damage_random"	"skill:plr_rocketlauncher_impact_rand"
+	"damage"	"skill:plr_dmg_rpg_round"
 }
 
 entityDef damage_rocketSplash
 {
-	"damage"	"skill:plr_rpg"
+	"damage"	"skill:plr_dmg_rpg_round"
 	"radius"	"250"
 }

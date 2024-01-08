@@ -72,6 +72,7 @@ w_smg1_precache(void)
 #else
 	precache_model("models/weapons/v_smg1.mdl");
 	precache_model("models/p_9mmar.mdl");
+	precache_model("models/weapons/rifleshell.mdl");
 #endif
 }
 
@@ -183,9 +184,9 @@ w_smg1_primary(player pl)
 #else
 	/* singleplayer is more accurate */
 	if (cvar("sv_playerslots") == 1) {
-		TraceAttack_FireBullets(1, Weapons_GetCameraPos(pl), Skill_GetValue("plr_9mmAR_bullet", 5), [0.025,0.025], WEAPON_SMG1);
+		TraceAttack_FireBullets(1, Weapons_GetCameraPos(pl), Skill_GetValue("plr_dmg_smg1", 4), [0.025,0.025], WEAPON_SMG1);
 	} else {
-		TraceAttack_FireBullets(1, Weapons_GetCameraPos(pl), Skill_GetValue("plr_9mmAR_bullet", 5), [0.05,0.05], WEAPON_SMG1);
+		TraceAttack_FireBullets(1, Weapons_GetCameraPos(pl), Skill_GetValue("plr_dmg_smg1", 4), [0.05,0.05], WEAPON_SMG1);
 	}
 
 	Sound_Play(pl, CHAN_WEAPON, "Weapon_SMG1.Single");

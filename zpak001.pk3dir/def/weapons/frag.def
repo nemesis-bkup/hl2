@@ -13,11 +13,6 @@ entityDef weapon_frag
 	"snd_respawn"		"item.respawn"
 }
 
-
-
-
-
-
 entityDef projectile_frag
 {
 	"spawnclass"		"NSProjectile"
@@ -42,6 +37,6 @@ entityDef damage_handgrenadeDirect
 
 entityDef damage_handgrenadeSplash
 {
-	"damage"	"skill:plr_hand_grenade"
+	"damage"	"skill:plr_dmg_fraggrenade"
 	"radius"	"250"
 }

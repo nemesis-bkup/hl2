@@ -136,7 +136,7 @@ w_crossbow_primary(player pl)
 		traceline(src, dest, MOVE_LAGGED, pl);
 
 		if (trace_ent.takedamage == DAMAGE_YES)
-			Damage_Apply(trace_ent, pl, Skill_GetValue("plr_xbow_bolt_monster", 50), WEAPON_CROSSBOW, DMG_BLUNT);
+			Damage_Apply(trace_ent, pl, Skill_GetValue("plr_dmg_crossbow", 50), WEAPON_CROSSBOW, DMG_BLUNT);
 
 		if (other.iBleeds == FALSE)
 			pointparticles(particleeffectnum("platform.spark"), self.origin, trace_plane_normal, 1);

@@ -243,7 +243,6 @@ void w_rpg_hud(player pl)
 {
 #ifdef CLIENT
 	vector laser_pos;
-	vector aicon_pos;
 
 	/* crosshair/laser */
 	if (pl.ammo_rpg_state == 1) {
@@ -260,7 +259,7 @@ void w_rpg_hud(player pl)
 		drawsubpic(
 			laser_pos + jitter,
 			[lerp,lerp],
-			g_laser_spr,
+			"materials/Sprites/redglow1",
 			[0,0],
 			[1.0, 1.0],
 			[1,1,1],

@@ -128,7 +128,7 @@ w_357_primary(player pl)
 #ifdef CLIENT
 	View_SetMuzzleflash(MUZZLE_SMALL);
 #else
-	TraceAttack_FireBullets(1, pl.origin + pl.view_ofs, Skill_GetValue("plr_357_bullet", 40), [0.008, 0.008], WEAPON_357);
+	TraceAttack_FireBullets(1, pl.origin + pl.view_ofs, Skill_GetValue("plr_dmg_357", 40), [0.008, 0.008], WEAPON_357);
 	Sound_Play(pl, CHAN_WEAPON, "Weapon_357.Single");
 #endif
 

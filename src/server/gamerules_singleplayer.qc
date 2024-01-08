@@ -96,6 +96,7 @@ HLSingleplayerRules::PlayerSpawn(NSClientPlayer pl)
 		spawnPoint = find(world, ::classname, "info_player_start");
 		pl.Transport(spawnPoint.origin, spawnPoint.angles);
 	}
+	setorigin_safe(pl, pl.origin + [0,0,1]);
 
 	Weapons_RefreshAmmo(pl);
 	Client_FixAngle(pl, pl.angles);
