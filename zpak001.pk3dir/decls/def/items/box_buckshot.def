@@ -1,6 +1,6 @@
 entityDef item_box_buckshot
 {
-	"inherit"		"ammo_base"
-	"model"			"models/items/BoxBRounds.mdl"
-	"inv_ammo_ar2"	"skill:item_buckshot"
+	"inherit"			"ammo_base"
+	"model"				"models/items/BoxBRounds.mdl"
+	"inv_ammo_buckshot"	"skill:item_buckshot"
 }
