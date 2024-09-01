@@ -1,4 +1,4 @@
-#include "items/ammo_base.def"
+#include "ammo/base.def"
 #include "items/ammo_357.def"
 #include "items/ammo_ar2.def"
 #include "items/ammo_crossbow.def"
