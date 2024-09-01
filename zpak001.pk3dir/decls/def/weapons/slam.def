@@ -3,7 +3,7 @@ entityDef weapon_slam
 	"editor_color"		".3 .3 1"
 	"editor_mins"		"-16 -16 -16"
 	"editor_maxs"		"16 16 16"
-	"editor_usage"		"Crowbar"
+	"editor_usage"		"#HL2_SLAM"
 	"editor_rotatable"	"1"
 
 	"spawnclass"		"HLWeapon"
@@ -12,8 +12,9 @@ entityDef weapon_slam
 	"snd_acquire"		"weapon.pickup"
 	"snd_respawn"		"item.respawn"
 
+	"inv_name"			"#HL2_SLAM"
 	"ammoType"			"ammo_slam"
-	"inv_ammo_slam"		"1"
+	"inv_ammo_slam"		"3"
 	"ammoRequired"		"1"
 	"def_onFire"		"projectile_slam"
 	"detonateOnFire"	"projectile_slam"
@@ -32,8 +33,8 @@ entityDef weapon_slam
 
 	// HLWeapon specific
 	"hudSlot"		"4"
-	"hudSlotPos"	"1"
-	"weight"		"-20"
+	"hudSlotPos"	"2"
+	"weight"		"1"
 	"crosshair"		"none"
 }
 
