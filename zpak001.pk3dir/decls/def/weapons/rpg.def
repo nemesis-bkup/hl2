@@ -3,20 +3,41 @@ entityDef weapon_rpg
 	"editor_color"		".3 .3 1"
 	"editor_mins"		"-16 -16 -16"
 	"editor_maxs"		"16 16 16"
-	"editor_usage"		"Crowbar"
+	"editor_usage"		"#HL2_RPG"
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"NSItem"
-	"model"		"models/weapons/w_rocket_launcher.mdl"
-	"inv_item"		"$WEAPON_RPG"
+	"spawnclass"		"HLWeapon"
+	"model"				"models/weapons/w_rocket_launcher.mdl"
+	"model_view"		"models/weapons/v_rpg.mdl"
 	"snd_acquire"		"weapon.pickup"
 	"snd_respawn"		"item.respawn"
+
+	"inv_name"			"#HL2_RPG"
+	"def_fireInfo"		"fireInfo_rpg_homing"
+	"def_altFireInfo"	"fireInfo_rpg"
+	"ammoType"			"ammo_rocket"
+	"clipSize"			"1"
+	"ammoRequired" 		"1"
+	"ammoPerShot" 		"1"
+	"inv_ammo_rocket"	"2"
+	"fireRate"			"2.5"
+
+	"actIdle"			"0"
+	"actDraw"			"1"
+	"actFire"			"2"
+	"actReload"			"3"
+
+	// HLWeapon specific
+	"hudSlot"		"4"
+	"hudSlotPos"	"1"
+	"weight"		"0"
+	"altLaser"		"1"
 }
 
 entityDef projectile_rocket
 {
 	"spawnclass"		"NSProjectile"
-	"model"		"models/weapons/w_missile.mdl"
+	"model"				"models/weapons/w_missile_launch.mdl"
 
 	"def_damage"		"damage_rocketDirect"
 	"def_splash_damage"	"damage_rocketSplash"

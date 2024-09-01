@@ -1,4 +1,0 @@
-include "npcs/alyx.def"
-include "npcs/barney.def"
-include "npcs/gman.def"
-include "npcs/zombie.def"

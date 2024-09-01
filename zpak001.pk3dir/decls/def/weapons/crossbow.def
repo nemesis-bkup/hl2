@@ -1,0 +1,79 @@
+entityDef weapon_crossbow
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"#HL2_Crossbow"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/weapons/w_crossbow.mdl"
+	"model_view"		"models/weapons/v_crossbow.mdl"
+	"snd_acquire"		"weapon.pickup"
+	"snd_respawn"		"item.respawn"
+
+	// weapon specific
+	"def_fireInfo"		"fireInfo_crossbow"
+	"inv_name"			"#HL2_Crossbow"
+	"clipSize"			"5"
+
+	"actFire"			"3"
+	"actFireLast"		"6"
+	"actHolster"		"5"
+	"actReload"			"4"
+	"actDraw"			"2"
+	"actIdle"			"0"
+	"actIdleEmpty"		"1"
+
+	"snd_fire"		"Weapon_Crossbow.Single"
+	"snd_reload"	"Weapon_Crossbow.Reload"
+
+	// HLWeapon specific
+	"hudSlot"		"3"
+	"hudSlotPos"	"1"
+	"weight"		"6"
+	"zoomFov"		"18"
+}
+
+entityDef fireInfo_crossbow
+{
+	"def_onFire"		"projectile_bolt"
+	"ammoType"			"ammo_bolt"
+	"ammoRequired"		"1"
+	"ammoPerShot"		"1"
+	"fireRate"			"2.0"
+	"punchAngle"		"-2 0 0"
+}
+
+entityDef debris_bolt
+{
+	"spawnclass"		"NSProjectile"
+	"model"				"models/crossbow_bolt.mdl"
+}
+
+entityDef projectile_bolt
+{
+	"spawnclass"		"NSProjectile"
+	"model"				"models/crossbow_bolt.mdl"
+	"velocity"			"2000 0 0"
+	"angular_velocity"	"0 0 20"
+	"mins"				"0 0 0"
+	"maxs"				"0 0 0"
+	"bounce"			"1"
+	"def_damage"		"damage_boltDirect"
+	"model_detonate"	"fx_spark.main"
+	"snd_explode"		"Weapon_Crossbow.BoltElectrify"
+	"detonate_on_fuse"	"0"
+	"detonate_on_death"	"1"
+	"detonate_on_world"	"1"
+	"detonate_on_actor"	"1"
+	"projectile_debris" "debris_bolt"
+	"debris_count"		"1"
+	"debris_stick"		"1"
+	"debris_offset"		"-16 0 0"
+}
+
+entityDef damage_boltDirect
+{
+	"damage"	"skill:plr_xbow_bolt"
+}

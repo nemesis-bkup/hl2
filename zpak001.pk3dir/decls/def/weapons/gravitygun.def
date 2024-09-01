@@ -1,0 +1,57 @@
+entityDef weapon_physcannon
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"#HL2_GravityGun"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/weapons/w_physcannon.mdl"
+	"model_view"		"models/weapons/v_physcannon.mdl"
+	"snd_acquire"		"weapon.pickup"
+	"snd_respawn"		"item.respawn"
+
+	// weapon specific
+	"def_fireInfo"		"fireInfo_physcannon"
+	"def_altFireInfo"	"fireInfo_physcannonAlt"
+	"inv_name"			"#HL2_GravityGun"
+
+
+	"actDraw"			"4"
+	"actHolster"		"5"
+	"actIdle"			"2"
+
+	"snd_empty"			"Weapon_PhysCannon.DryFire"
+
+	// HLWeapon specific
+	"hudSlot"		"0"
+	"hudSlotPos"	"1"
+	"weight"		"0"
+}
+
+entityDef damage_physcannonDirect
+{
+	"damage"	"50"
+}
+
+entityDef fireInfo_physcannon
+{
+//	"def_onFire"		"projectile_smg1"
+	"fireRate"			"0.7"
+	"punchAngle"		"-10 0 0"
+	"model_flash"		"sprites/muzzleflash2.spr"
+	"actFire"			"6"
+	"snd_fire"			"Weapon_PhysCannon.Launch"
+}
+
+entityDef fireInfo_physcannonAlt
+{
+//	"def_onFire"		"projectile_ARgrneade"
+	"fireRate"			"1.0"
+	"punchAngle"		"-10 0 0"
+	"model_flash"		"sprites/muzzleflash2.spr"
+	"actFire"			"5"
+	"actFireLoop"		"3"
+	"snd_fire"			"Weapon_PhysCannon.Pickup"
+}

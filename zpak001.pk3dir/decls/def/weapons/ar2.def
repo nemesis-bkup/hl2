@@ -1,0 +1,102 @@
+entityDef weapon_ar2
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"#HL2_Pulse_Rifle"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/weapons/w_irifle.mdl"
+	"model_view"		"models/weapons/v_irifle.mdl"
+	"snd_acquire"		"weapon.pickup"
+	"snd_respawn"		"item.respawn"
+
+	// weapon specific
+	"def_fireInfo"		"fireInfo_ar2"
+	"def_altFireInfo"	"fireInfo_ar2Alt"
+	"inv_name"			"#HL2_Pulse_Rifle"
+	"clipSize"			"30"
+
+	"actHolster"	"8"
+	"actReload"		"6"
+	"actDraw"		"7"
+	"actIdle"		"0"
+
+	"snd_empty"		"Weapon_IRifle.Empty"
+
+	// HLWeapon specific
+	"hudSlot"		"2"
+	"hudSlotPos"	"1"
+	"weight"		"5"
+}
+
+entityDef projectile_ar2
+{
+	"inherit"	"projectile_bullet_base"
+	"damage"	"skill:plr_ar2_bullet"
+}
+
+entityDef projectile_combineBall
+{
+	"spawnclass"		"NSProjectile"
+	"model"				"models/rpgrocket.mdl"
+
+	"def_damage"		"damage_rocketDirect"
+	"def_splash_damage"	"damage_rocketSplash"
+
+	"bounce"				"1"
+	"velocity"				"2500"
+	"angular_velocity"		"0 0 200"
+	"fuse"					"10"
+	"detonate_on_fuse"		"0"
+	"detonate_on_death"		"1"
+	"detonate_on_world"		"0"
+	"detonate_on_actor"		"0"
+	"impact_damage_effect"	"1"
+	"impact_gib"			"1"
+
+	"thrust"			"2000"
+	"thrust_start"		"0.1"
+	"thrust_end"		"2"
+
+	"smoke_fly"			"weapon_rpg.trail"
+	"decal_detonate"	"ExplosionScorch"
+	"model_detonate"	"fx_explosion.main"
+	"light_color"		"1 0.8 0.4"
+	"light_radius"		"160"
+	"light_offset"		"0 0 0"
+
+	"explode_light_color"		"2 1.6 0.8"
+	"explode_light_radius"		"320"
+	"explode_light_fadetime"	"0.5"
+
+	"snd_explode"	"fx.explosion"
+}
+
+entityDef fireInfo_ar2
+{
+	"def_onFire"		"projectile_ar2"
+	"ammoType"			"ammo_ar2"
+	"ammoRequired"		"1"
+	"ammoPerShot"		"1"
+	"fireRate"			".45"
+	"punchAngle"		"-10 0 0"
+	"model_flash"		"sprites/muzzleflash2.spr"
+	"actFire"			"1,2,3,4"
+	"snd_fire"			"Weapon_AR2.Single"
+}
+
+entityDef fireInfo_ar2Alt
+{
+	"def_onFire"		"projectile_combineBall"
+	"ammoType"			"ammo_ar2Alt"
+	"ammoRequired"		"1"
+	"ammoPerShot"		"1"
+	"fireRate"			".45"
+	"punchAngle"		"-10 0 0"
+	"model_flash"		"sprites/muzzleflash2.spr"
+	"actFireEnd"		"5"
+	"actFire"			"12"
+	"snd_fire"			"Weapon_CombineGuard.Special1"
+}

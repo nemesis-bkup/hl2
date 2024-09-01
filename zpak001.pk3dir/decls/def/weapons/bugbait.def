@@ -1,0 +1,77 @@
+entityDef weapon_bugbait
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"#HL2_Bugbait"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/w_bugbait.mdl"
+	"model_view"		"models/v_bugbait.mdl"
+	"snd_acquire"		"dmc_weapon.pickup"
+	"snd_respawn"		"dmc_item.respawn"
+	"spin"				"1"
+
+	// weapon specific
+	"def_fireInfo"		"fireInfo_bugbait"
+	"def_altFireInfo"	"fireInfo_bugbaitAlt"
+	"inv_name"			"#HL2_Bugbait"
+	"ammoType"			"ammo_bugbait"
+	"inv_ammo_rockets"	"5"
+	"ammoRequired"		"1"
+	"ammoPerShot"		"1"
+
+	"actIdle"			"2"
+	"actDraw"			"3"
+	"actHolster"		"4"
+
+	"snd_fire"			"weapon_bugbait.fire"
+	"snd_empty"			"weapon.empty"
+
+	// HLWeapon specific
+	"hudSlot"			"5"
+	"hudSlotPos"		"0"
+	"weight"			"25"
+
+entityDef fireInfo_bugbait
+{
+	"def_onFire"		"projectile_bugbait"
+	"fireRate"			"1.5"
+	"actFire"			"1"
+}
+
+entityDef fireInfo_bugbaitAlt
+{
+//	"def_onFire"		"projectile_bugbait"	TODO Follow
+	"fireRate"			"1.0"
+	"actFire"			"5"
+}
+
+entityDef projectile_bugbait
+{
+	"spawnclass"				"NSProjectile"
+	"model"						"models/w_bugbait.mdl"
+	"offset"					"24 0 -8"
+	"velocity"					"600 0 200"
+	"angular_velocity"			"300 300 300"
+	"fuse"						"20"
+	"bounce"					"1"
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"1"
+	"impact_damage_effect"		"1"
+	"impact_gib"				"1"
+
+	"decal_detonate"			"ExplosionScorch"
+	"model_detonate"			"fx_explosion.main"
+
+	"explode_light_color"		"2 1.6 0.8"
+	"explode_light_radius"		"320"
+	"explode_light_fadetime"	"0.5"
+
+	"snd_explode"				"weapon_grenadelauncher.explode"
+	"snd_bounce"				"weapon_grenadelauncher.bounce"
+
+}

@@ -1,0 +1,12 @@
+entityDef weapon_citizensuitcase
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 0"
+	"editor_maxs"		"16 16 32"
+	"editor_usage"		"Citizen Suitcase"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"NSItem"
+	"model"				"models/weapons/w_suitcase_passenger.mdl"
+	"inv_item"			"Citizen Suitcase"
+}

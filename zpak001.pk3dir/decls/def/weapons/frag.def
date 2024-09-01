@@ -1,0 +1,66 @@
+entityDef weapon_frag
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"#HL2_Grenade"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/items/grenadeAmmo.mdl"
+	"model_view"		"models/weapons/v_grenade.mdl"
+	"snd_acquire"		"weapon.pickup"
+	"snd_respawn"		"item.respawn"
+
+	"inv_name"				"#HL2_Grenade"
+	"inv_weapon"			"weapon_grenade"
+	"inv_ammo_grenade"		"5"
+	"def_onRelease"			"projectile_grenade"
+	"def_explode_inhand"	"env_grenade_explodeinhand"
+	"def_damage_inhand"		"damage_grenadeSplash"
+	"ammoType"				"ammo_grenade"
+	"ammoRequired"			"1"
+	"silent_fire"			"1"
+	"primed_fuse"			"4"
+	"removeOnEmpty"			"1"
+
+	"actIdle"		"0,1"
+	"actDraw"		"7"
+	"actHolster"	"6"
+	"actFire"		"2"
+	"actRelease"	"3,4,5"
+
+	// HLWeapon specific
+	"hudSlot"		"4"
+	"hudSlotPos"	"0"
+	"weight"		"1"
+	"crosshair"		"none"
+}
+
+entityDef projectile_frag
+{
+	"spawnclass"		"NSProjectile"
+	"model"				"models/items/grenadeAmmo.mdl"
+	"frame"				"1"
+	"fuse"				"4"
+	"detonate_on_fuse"	"1"
+	"bounce"			"1"
+	"angular_velocity"	"-350 0 0"
+	"model_detonate"	"fx_explosion.main"
+	"snd_explode"		"BaseGrenade.Explode"
+	"snd_bounce"		"WeaponFrag.Roll"
+
+	"def_damage"		"damage_grenadeDirect"
+	"def_splash_damage"	"damage_grenadeSplash"
+}
+
+entityDef damage_grenadeDirect
+{
+	"damage"	"1"
+}
+
+entityDef damage_grenadeSplash
+{
+	"damage"	"skill:plr_dmg_grenade"
+	"radius"	"250"
+}
