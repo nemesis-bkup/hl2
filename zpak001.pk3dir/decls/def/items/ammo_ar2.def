@@ -1,0 +1,21 @@
+entityDef item_ammo_ar2
+{
+	"inherit"		"ammo_base"
+	"model"			"models/items/BoxBRounds.mdl"
+	"inv_ammo_ar2"	"skill:item_ar2"
+}
+
+entityDef item_ammo_ar2_large
+{
+	"inherit"		"ammo_base"
+	"model"			"models/items/LargeBoxBRounds.mdl"
+	"inv_ammo_ar2"	"skill:item_ar2_large"
+}
+
+
+entityDef item_ammo_ar2_altfire
+{
+	"inherit"				"ammo_base"
+	"model"					"models/items/combine_rifle_ammo01.mdl"
+	"inv_ammo_ar2_altfire"	"skill:item_ar2_altfire"
+}

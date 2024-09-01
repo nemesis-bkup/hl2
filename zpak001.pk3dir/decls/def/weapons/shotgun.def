@@ -41,7 +41,7 @@ entityDef weapon_shotgun
 entityDef projectile_shotgun
 {
 	"inherit"		"projectile_bullet_base"
-	"damage"		"skill:plr_buckshot"
+	"damage"		"skill:plr_dmg_buckshot"
 	"hitscans"		"12"
 	"spread"		"0.08716 0.08716"
 }
@@ -49,7 +49,7 @@ entityDef projectile_shotgun
 entityDef projectile_shotgun_alt
 {
 	"inherit"		"projectile_bullet_base"
-	"damage"		"skill:plr_buckshot"
+	"damage"		"skill:plr_dmg_buckshot"
 	"hitscans"		"24"
 	"spread"		"0.08716 0.08716"
 }

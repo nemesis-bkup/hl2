@@ -75,5 +75,5 @@ entityDef projectile_bolt
 
 entityDef damage_boltDirect
 {
-	"damage"	"skill:plr_xbow_bolt"
+	"damage"	"skill:plr_dmg_crossbow"
 }

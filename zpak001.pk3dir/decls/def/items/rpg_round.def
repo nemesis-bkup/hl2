@@ -1,0 +1,6 @@
+entityDef item_rpg_round
+{
+	"inherit"			"ammo_base"
+	"model"				"models/items/w_missile_closed.mdl"
+	"inv_ammo_pistol"	"skill:item_rpg"
+}

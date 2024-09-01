@@ -1,0 +1,21 @@
+entityDef item_ammo_smg1
+{
+	"inherit"		"ammo_base"
+	"model"			"models/items/BoxMRounds.mdl"
+	"inv_ammo_smg1"	"skill:item_smg1"
+}
+
+entityDef item_ammo_smg1_large
+{
+	"inherit"		"ammo_base"
+	"model"			"models/items/LargeBoxMRounds.mdl"
+	"inv_ammo_smg1"	"skill:item_smg1_large"
+}
+
+
+entityDef item_ammo_smg1_grenade
+{
+	"inherit"				"ammo_base"
+	"model"					"models/items/AR2_Grenade.mdl"
+	"inv_ammo_smg1_grenade"	"skill:item_smg1_grenade"
+}

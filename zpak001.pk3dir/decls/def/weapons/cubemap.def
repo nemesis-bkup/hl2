@@ -1,0 +1,13 @@
+entityDef weapon_cubemap
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 0"
+	"editor_maxs"		"16 16 32"
+	"editor_usage"		"#HL2_Cubemap"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/shadertest/envballs.mdl"
+	"model_view"		"models/shadertest/envballs.mdl"
+	"inv_item"			"#HL2_Cubemap"
+}

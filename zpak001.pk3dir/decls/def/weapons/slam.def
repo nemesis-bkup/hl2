@@ -61,6 +61,6 @@ entityDef projectile_slam
 
 entityDef damage_satchelExplosion
 {
-	"damage"	"skill:plr_dmg_slam"
-	"radius"	"375"
+	"damage"	"skill:plr_dmg_satchel"
+	"radius"	"skill:satchel_radius"
 }

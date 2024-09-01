@@ -1,0 +1,6 @@
+entityDef item_ammo_crossbow
+{
+	"inherit"			"ammo_base"
+	"model"				"models/items/CrossbowRounds.mdl"
+	"inv_ammo_pistol"	"skill:item_crossbow"
+}

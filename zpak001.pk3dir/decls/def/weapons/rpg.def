@@ -15,7 +15,7 @@ entityDef weapon_rpg
 	"inv_name"			"#HL2_RPG"
 	"def_fireInfo"		"fireInfo_rpg_homing"
 	"def_altFireInfo"	"fireInfo_rpg"
-	"ammoType"			"ammo_rocket"
+	"ammoType"			"ammo_rpg"
 	"clipSize"			"1"
 	"ammoRequired" 		"1"
 	"ammoPerShot" 		"1"

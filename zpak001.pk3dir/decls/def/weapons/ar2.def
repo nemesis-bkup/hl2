@@ -34,44 +34,7 @@ entityDef weapon_ar2
 entityDef projectile_ar2
 {
 	"inherit"	"projectile_bullet_base"
-	"damage"	"skill:plr_ar2_bullet"
-}
-
-entityDef projectile_combineBall
-{
-	"spawnclass"		"NSProjectile"
-	"model"				"models/rpgrocket.mdl"
-
-	"def_damage"		"damage_rocketDirect"
-	"def_splash_damage"	"damage_rocketSplash"
-
-	"bounce"				"1"
-	"velocity"				"2500"
-	"angular_velocity"		"0 0 200"
-	"fuse"					"10"
-	"detonate_on_fuse"		"0"
-	"detonate_on_death"		"1"
-	"detonate_on_world"		"0"
-	"detonate_on_actor"		"0"
-	"impact_damage_effect"	"1"
-	"impact_gib"			"1"
-
-	"thrust"			"2000"
-	"thrust_start"		"0.1"
-	"thrust_end"		"2"
-
-	"smoke_fly"			"weapon_rpg.trail"
-	"decal_detonate"	"ExplosionScorch"
-	"model_detonate"	"fx_explosion.main"
-	"light_color"		"1 0.8 0.4"
-	"light_radius"		"160"
-	"light_offset"		"0 0 0"
-
-	"explode_light_color"		"2 1.6 0.8"
-	"explode_light_radius"		"320"
-	"explode_light_fadetime"	"0.5"
-
-	"snd_explode"	"fx.explosion"
+	"damage"	"skill:plr_dmg_ar2"
 }
 
 entityDef fireInfo_ar2
@@ -89,8 +52,8 @@ entityDef fireInfo_ar2
 
 entityDef fireInfo_ar2Alt
 {
-	"def_onFire"		"projectile_combineBall"
-	"ammoType"			"ammo_ar2Alt"
+	"def_onFire"		"prop_combine_ball"
+	"ammoType"			"ammo_ar2_altfire"
 	"ammoRequired"		"1"
 	"ammoPerShot"		"1"
 	"fireRate"			".45"

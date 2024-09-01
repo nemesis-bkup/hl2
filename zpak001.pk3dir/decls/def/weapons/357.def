@@ -35,7 +35,7 @@ entityDef weapon_357
 entityDef projectile_357
 {
 	"inherit"	"projectile_bullet_base"
-	"damage"	"skill:plr_357_bullet"
+	"damage"	"skill:plr_dmg_357"
 }
 
 entityDef fireInfo_357

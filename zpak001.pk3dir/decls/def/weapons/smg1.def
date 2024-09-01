@@ -55,19 +55,19 @@ entityDef projectile_ARgrenade
 
 entityDef damage_ARgrneadeDirect
 {
-	"damage"	"50"
+	"damage"	"sk_max_smg1_grenade"
 }
 
 entityDef damage_ARgrneadeSplash
 {
-	"damage"	"skill:plr_smg1_grenade"
-	"radius"	"160"
+	"damage"	"skill:smg1_grenade_radius"
+	"radius"	"skill:smg1_grenade_radius"
 }
 
 entityDef projectile_smg1
 {
-	"inherit"	"projectile_bullet_base"
-	"damage"	"skill:plr_smg1_bullet"
+	"inherit"		"projectile_bullet_base"
+	"damage"		"skill:plr_dmg_smg1"
 }
 
 entityDef fireInfo_smg1

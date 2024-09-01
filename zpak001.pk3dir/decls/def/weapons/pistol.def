@@ -39,7 +39,7 @@ entityDef weapon_pistol
 entityDef projectile_pistol
 {
 	"inherit"	"projectile_bullet_base"
-	"damage"	"skill:plr_pistol_bullet"
+	"damage"	"skill:plr_dmg_pistol"
 }
 
 entityDef fireInfo_pistol

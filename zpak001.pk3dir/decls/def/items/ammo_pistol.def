@@ -1,0 +1,13 @@
+entityDef item_ammo_pistol
+{
+	"inherit"			"ammo_base"
+	"model"				"models/items/boxsrounds.mdl"
+	"inv_ammo_pistol"	"skill:item_pistol"
+}
+
+entityDef item_ammo_pistol_large
+{
+	"inherit"			"ammo_base"
+	"model"				"models/items/largeBoxSRounds.mdl"
+	"inv_ammo_pistol"	"skill:item_pistol_large"
+}
