@@ -12,8 +12,8 @@ entityDef player
 entityDef player_mp
 {
 	"inherit"			"player"
-	"ammo_9mm"			"44"
+	"ammo_pistol"			"150"
 	"item"				"item_suit"
 	"weapon"			"weapon_crowbar,weapon_pistol"
-	"current_weapon"	"1"
+	"current_weapon"		"1"
 }

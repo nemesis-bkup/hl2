@@ -56,7 +56,6 @@ entityDef fireInfo_shotgun
 {
 	"def_onFire"		"projectile_shotgun"
 	"ammoPerShot"		"1"
-	"fireRate"			"0.75"
 	"actFire"			"1"
 	"actFireStop"		"8"
 	"punchAngle"		"-5 0 0"
@@ -68,7 +67,6 @@ entityDef fireInfo_altShotgun
 {
 	"def_onFire"		"projectile_shotgun_alt"
 	"ammoPerShot"		"2"
-	"fireRate"			"1.5"
 	"actFire"			"2"
 	"actFireStop"		"8"
 	"punchAngle"		"-10 0 0"

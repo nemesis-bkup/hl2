@@ -15,7 +15,7 @@
 ../../../src/botlib/botinfo.h
 ../../../src/gs-entbase/server.src
 ../../../src/gs-entbase/shared.src
-../../../valve/src/server/defs.h
+../../../hl2/src/server/defs.h
 ../shared/include.src
 ../../../valve/src/server/player.qc
 ../../../valve/src/server/HLScientist.qc

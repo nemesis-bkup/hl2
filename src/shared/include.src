@@ -9,6 +9,6 @@
 ../../../valve/src/shared/fx_gaussbeam.qc
 ../../../valve/src/shared/fx_corpse.qc
 ../../../valve/src/shared/HLGaussBeam.qc
-../../../valve/src/shared/HLWeapon.qc
+../../../hl2/src/shared/HL2Weapon.qc
 ../../../valve/src/shared/w_tripmine.qc
 #endlist

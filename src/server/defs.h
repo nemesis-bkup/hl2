@@ -14,6 +14,7 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include "../shared/defs.h"
 #include "../../../valve/src/server/gamerules.h"
 #include "../../../valve/src/server/items.h"
 #include "../../../valve/src/server/flashlight.h"
