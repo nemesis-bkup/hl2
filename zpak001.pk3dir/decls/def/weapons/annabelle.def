@@ -50,7 +50,6 @@ entityDef fireInfo_annebelle
 	"ammoPerShot"		"1"
 	"fireRate"			"0.75"
 	"actFire"			"1"
-	"actFireStop"		"8"
 	"punchAngle"		"-5 0 0"
 	"model_flash"		"sprites/muzzleflash2.spr"
 	"snd_fire"			"Weapon_Shotgun.Single"

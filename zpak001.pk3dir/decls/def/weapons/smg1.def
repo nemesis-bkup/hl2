@@ -85,7 +85,7 @@ entityDef fireInfo_smg1
 
 entityDef fireInfo_smg1Alt
 {
-	"def_onFire"		"projectile_ARgrneade"
+	"def_onFire"		"projectile_ARgrenade"
 	"ammoType"			"ammo_smg1_grenade"
 	"ammoRequired"		"1"
 	"ammoPerShot"		"1"
