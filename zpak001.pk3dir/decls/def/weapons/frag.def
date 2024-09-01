@@ -13,7 +13,7 @@ entityDef weapon_frag
 	"snd_respawn"		"item.respawn"
 
 	"inv_name"				"#HL2_Grenade"
-	"inv_weapon"			"weapon_grenade"
+	"inv_weapon"			"weapon_frag"
 	"inv_ammo_grenade"		"5"
 	"def_onRelease"			"projectile_grenade"
 	"def_explode_inhand"	"env_grenade_explodeinhand"
@@ -37,7 +37,7 @@ entityDef weapon_frag
 	"crosshair"		"none"
 }
 
-entityDef projectile_frag
+entityDef projectile_grenade
 {
 	"spawnclass"		"NSProjectile"
 	"model"				"models/items/grenadeAmmo.mdl"

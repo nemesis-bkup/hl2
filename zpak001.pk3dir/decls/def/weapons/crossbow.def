@@ -15,7 +15,8 @@ entityDef weapon_crossbow
 	// weapon specific
 	"def_fireInfo"		"fireInfo_crossbow"
 	"inv_name"			"#HL2_Crossbow"
-	"clipSize"			"5"
+	"inv_ammo_crossbow"	"4"
+	"clipSize"			"1"
 
 	"actFire"			"3"
 	"actFireLast"		"6"
@@ -26,7 +27,7 @@ entityDef weapon_crossbow
 	"actIdleEmpty"		"1"
 
 	"snd_fire"		"Weapon_Crossbow.Single"
-	"snd_reload"	"Weapon_Crossbow.Reload"
+//	"snd_reload"	"Weapon_Crossbow.Reload"
 
 	// HLWeapon specific
 	"hudSlot"		"3"
@@ -38,10 +39,9 @@ entityDef weapon_crossbow
 entityDef fireInfo_crossbow
 {
 	"def_onFire"		"projectile_bolt"
-	"ammoType"			"ammo_bolt"
+	"ammoType"			"ammo_crossbow"
 	"ammoRequired"		"1"
 	"ammoPerShot"		"1"
-	"fireRate"			"2.0"
 	"punchAngle"		"-2 0 0"
 }
 
@@ -62,7 +62,7 @@ entityDef projectile_bolt
 	"bounce"			"1"
 	"def_damage"		"damage_boltDirect"
 	"model_detonate"	"fx_spark.main"
-	"snd_explode"		"Weapon_Crossbow.BoltElectrify"
+	"snd_explode"		"Weapon_Crossbow.BoltFly"
 	"detonate_on_fuse"	"0"
 	"detonate_on_death"	"1"
 	"detonate_on_world"	"1"

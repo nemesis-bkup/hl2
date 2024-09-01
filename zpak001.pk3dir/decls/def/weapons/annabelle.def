@@ -13,14 +13,12 @@ entityDef weapon_annabelle
 	"snd_respawn"		"item.respawn"
 
 	// weapon specific
-	"def_fireInfo"		"fireInfo_shotgun"
-	"def_altFireInfo"	"fireInfo_altShotgun"
+	"def_fireInfo"		"fireInfo_annebelle"
 	"inv_name"			"#HL2_Annabelle"
 	"clipSize"			"2"
-	"ammoType"			"ammo_buckshot"
+	"ammoType"			"ammo_annabelle"
 	"ammoRequired"		"1"
 
-	"actPump"			"8"
 	"actHolster"		"4"
 	"actReloadStart"	"5"
 	"actReload"			"6"
@@ -36,4 +34,24 @@ entityDef weapon_annabelle
 	"hudSlot"		"3"
 	"hudSlotPos"	"1"
 	"weight"		"4"
+}
+
+entityDef projectile_annebelle
+{
+	"inherit"		"projectile_bullet_base"
+	"damage"		"skill:plr_dmg_buckshot"
+	"hitscans"		"12"
+	"spread"		"0.08716 0.08716"
+}
+
+entityDef fireInfo_annebelle
+{
+	"def_onFire"		"projectile_annebelle"
+	"ammoPerShot"		"1"
+	"fireRate"			"0.75"
+	"actFire"			"1"
+	"actFireStop"		"8"
+	"punchAngle"		"-5 0 0"
+	"model_flash"		"sprites/muzzleflash2.spr"
+	"snd_fire"			"Weapon_Shotgun.Single"
 }

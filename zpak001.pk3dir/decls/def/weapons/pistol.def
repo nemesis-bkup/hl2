@@ -33,7 +33,7 @@ entityDef weapon_pistol
 	// HLWeapon specific
 	"hudSlot"		"1"
 	"hudSlotPos"	"0"
-	"weight"		"2"
+	"weight"		"2" 
 }
 
 entityDef projectile_pistol
@@ -48,7 +48,8 @@ entityDef fireInfo_pistol
 	"ammoType"			"ammo_pistol"
 	"ammoRequired"		"1"
 	"ammoPerShot"		"1"
-	"fireRate"			".25"
-	"punchAngle"		"-10 0 0"
+	"fireRate"			"0.1"
+	"semiAuto"			"1"
+	"punchAngle"		"-1 0 0"
 	"model_flash"		"sprites/muzzleflash2.spr"
 }

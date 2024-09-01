@@ -30,8 +30,6 @@ entityDef weapon_shotgun
 
 	"snd_empty"			"Weapon_Shotgun.Empty"
 
-//	"snd_reload"		"Weapon_Shotgun.Reload"
-
 	// HLWeapon specific
 	"hudSlot"		"3"
 	"hudSlotPos"	"0"
