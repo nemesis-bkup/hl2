@@ -8,6 +8,6 @@ entityDef item_ammo_357
 entityDef item_ammo_357_large
 {
 	"inherit"		"ammo_base"
-	"model"			"models/items/357ammobox+.mdl"
+	"model"			"models/items/357ammobox.mdl"
 	"inv_ammo_357"	"skill:item_357_large"
 }
