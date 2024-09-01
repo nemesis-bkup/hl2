@@ -206,7 +206,7 @@ HLMultiplayerRules::PlayerSpawn(NSClientPlayer pp)
 	pl.SetInfoKey("*dead", "0");
 	pl.SetInfoKey("*deaths", ftos(pl.deaths));
 	pl.SetPropData("actor_human");
-	pl.SetCanBleed(true);
+	pl.EnableBleeding();
 
 	LevelNewParms();
 	LevelDecodeParms(pl);

@@ -1,5 +1,12 @@
 {
 	{
-		map "materials/console/background01.vtf"
+		// 01 = Train station/HL2:DM
+		// 02 = River bed
+		// 03 = Ravenholm
+		// 04 = Highway
+		// 05 = Nova Prospect
+		// 06 = City17 Ruins
+		// 07 = Citadel Interior
+		map "materials/console/background02.vtf"
 	}
 }

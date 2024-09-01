@@ -474,7 +474,7 @@ w_slam_release(player pl)
 float
 w_slam_aimanim(player pl)
 {
-	return pl.flags & FL_CROUCHING ? ANIM_CR_AIMSQUEAK : ANIM_AIMSQUEAK;
+	return pl.IsCrouching() ? ANIM_CR_AIMSQUEAK : ANIM_AIMSQUEAK;
 }
 
 void

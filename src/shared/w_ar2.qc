@@ -140,7 +140,7 @@ w_ar2_primary(player pl)
 	int r = floor(pseudorandom() * 4.0);
 	Weapons_ViewAnimation(pl, AR2_FIRE1 + r);
 
-	if (pl.flags & FL_CROUCHING)
+	if (pl.IsCrouching())
 		Animation_PlayerTop(pl, ANIM_CR_SHOOTHIVE, 0.43f);
 	else
 		Animation_PlayerTop(pl, ANIM_SHOOTHIVE, 0.43f);
@@ -172,7 +172,7 @@ w_ar2_secondary(player pl)
 	pl.ammo_hornet--;
 	Weapons_ViewAnimation(pl, AR2_ALTFIRE);
 
-	if (pl.flags & FL_CROUCHING)
+	if (pl.IsCrouching())
 		Animation_PlayerTop(pl, ANIM_CR_SHOOTHIVE, 0.43f);
 	else
 		Animation_PlayerTop(pl, ANIM_SHOOTHIVE, 0.43f);
@@ -213,7 +213,7 @@ w_ar2_crosshair(player pl)
 float
 w_ar2_aimanim(player pl)
 {
-	return pl.flags & FL_CROUCHING ? ANIM_CR_AIMHIVE : ANIM_AIMHIVE;
+	return pl.IsCrouching() ? ANIM_CR_AIMHIVE : ANIM_AIMHIVE;
 }
 
 void

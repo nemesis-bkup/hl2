@@ -173,7 +173,7 @@ w_crossbow_primary(player pl)
 
 	Weapons_ViewAnimation(pl, CROSSBOW_FIRE);
 
-	if (pl.flags & FL_CROUCHING)
+	if (pl.IsCrouching())
 		Animation_PlayerTop(pl, ANIM_CR_SHOOTBOW, 0.25f);
 	else
 		Animation_PlayerTop(pl, ANIM_SHOOTBOW, 0.25f);
@@ -274,7 +274,7 @@ w_crossbow_crosshair(player pl)
 float
 w_crossbow_aimanim(player pl)
 {
-	return pl.flags & FL_CROUCHING ? ANIM_CR_AIMBOW : ANIM_AIMBOW;
+	return pl.IsCrouching() ? ANIM_CR_AIMBOW : ANIM_AIMBOW;
 }
 
 void

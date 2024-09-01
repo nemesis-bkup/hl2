@@ -192,7 +192,7 @@ w_smg1_primary(player pl)
 	Sound_Play(pl, CHAN_WEAPON, "Weapon_SMG1.Single");
 #endif
 
-	if (pl.flags & FL_CROUCHING)
+	if (pl.IsCrouching())
 		Animation_PlayerTop(pl, ANIM_CR_SHOOTMP5, 0.1f);
 	else
 		Animation_PlayerTop(pl, ANIM_SHOOTMP5, 0.1f);
@@ -229,7 +229,7 @@ w_smg1_secondary(player pl)
 	Weapons_ViewPunchAngle(pl, [-10.0f, 0.0f, 0.0f]);
 	Weapons_ViewAnimation(pl, SMG1_ALTFIRE);
 
-	if (pl.flags & FL_CROUCHING)
+	if (pl.IsCrouching())
 		Animation_PlayerTop(pl, ANIM_CR_SHOOTMP5, 0.45f);
 	else
 		Animation_PlayerTop(pl, ANIM_SHOOTMP5, 0.45f);

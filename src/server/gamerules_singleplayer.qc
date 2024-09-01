@@ -85,7 +85,7 @@ HLSingleplayerRules::PlayerSpawn(NSClientPlayer pl)
 	pl.ClearVelocity();
 	pl.SetInfoKey("*spec", "0");
 	pl.SetInfoKey("*deaths", ftos(pl.deaths));
-	pl.SetCanBleed(true);
+	pl.EnableBleeding();
 
 	if (startspot != "") {
 		LevelDecodeParms(pl);

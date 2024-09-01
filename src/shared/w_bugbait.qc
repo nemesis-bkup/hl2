@@ -178,7 +178,7 @@ void w_bugbait_release(player pl)
 		pl.w_attack_next = 1.0f;
 		pl.w_idle_next = 0.5f;
 
-		if (pl.flags & FL_CROUCHING)
+		if (pl.IsCrouching())
 			Animation_PlayerTop(pl, ANIM_CR_SHOOTCROWBAR, 0.41f);
 		else
 			Animation_PlayerTop(pl, ANIM_SHOOTCROWBAR, 0.5f);
@@ -201,7 +201,7 @@ void w_bugbait_release(player pl)
 float
 w_bugbait_aimanim(player pl)
 {
-	return pl.flags & FL_CROUCHING ? ANIM_CR_AIMCROWBAR : ANIM_AIMCROWBAR;
+	return pl.IsCrouching() ? ANIM_CR_AIMCROWBAR : ANIM_AIMCROWBAR;
 }
 
 void

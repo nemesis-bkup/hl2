@@ -182,7 +182,7 @@ void w_gravitygun_crosshair(player pl)
 
 float w_gravitygun_aimanim(player pl)
 {
-	return pl.flags & FL_CROUCHING ? ANIM_CR_AIMEGON : ANIM_AIMEGON;
+	return pl.IsCrouching() ? ANIM_CR_AIMEGON : ANIM_AIMEGON;
 }
 
 void w_gravitygun_hudpic(player pl, int selected, vector pos, float a)

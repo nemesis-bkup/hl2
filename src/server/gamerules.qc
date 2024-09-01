@@ -86,12 +86,6 @@ HLGameRules::LevelDecodeParms(NSClientPlayer pp)
 	pl.sniper_mag = parm37;
 	pl.m249_mag = parm38;
 	pl.sporelauncher_mag = parm39;
-
-	if (pl.flags & FL_CROUCHING) {
-		setsize(pl, VEC_CHULL_MIN, VEC_CHULL_MAX);
-	} else {
-		setsize(pl, VEC_HULL_MIN, VEC_HULL_MAX);
-	}
 }
 
 void

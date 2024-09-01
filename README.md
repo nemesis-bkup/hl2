@@ -1,4 +1,4 @@
-# FreeHL2
+# Rad-Therapy 2 (FreeHL2)
 Clean-room reimplementation of Half-Life 2 & Half-Life 2: Deathmatch in QuakeC.
 
 This is 100% original code, feel free to audit however you wish.

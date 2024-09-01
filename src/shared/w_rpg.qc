@@ -126,7 +126,7 @@ void w_rpg_primary(player pl)
 	Weapons_ViewAnimation(pl, RPG_FIRE);
 	Weapons_ViewPunchAngle(pl, [-10,0,0]);
 
-	if (pl.flags & FL_CROUCHING)
+	if (pl.IsCrouching())
 		Animation_PlayerTop(pl, ANIM_CR_SHOOTRPG, 0.43f);
 	else
 		Animation_PlayerTop(pl, ANIM_SHOOTRPG, 0.43f);
@@ -198,7 +198,7 @@ void w_rpg_secondary(player pl)
 
 float w_rpg_aimanim(player pl)
 {
-	return pl.flags & FL_CROUCHING ? ANIM_CR_AIMRPG : ANIM_AIMRPG;
+	return pl.IsCrouching() ? ANIM_CR_AIMRPG : ANIM_AIMRPG;
 }
 
 void w_rpg_hudpic(player pl, int selected, vector pos, float a)
@@ -246,19 +246,19 @@ void w_rpg_hud(player pl)
 
 	/* crosshair/laser */
 	if (pl.ammo_rpg_state == 1) {
-		float lerp;
+		float lerpFrac;
 		vector jitter = [0.0f, 0.0f, 0.0f];
 		Weapons_MakeVectors(pl);
 		vector src = pl.origin + pl.view_ofs;
 		traceline(src, src + (v_forward * 256), FALSE, pl);
-		lerp = Math_Lerp(18,6, trace_fraction);
+		lerpFrac = lerp(18,6, trace_fraction);
 		jitter[0] = (random(0,2) - 2) * (1 - trace_fraction);
 		jitter[1] = (random(0,2) - 2) * (1 - trace_fraction);
-		laser_pos = g_hudmins + (g_hudres / 2) + ([-lerp,-lerp] / 2);
+		laser_pos = g_hudmins + (g_hudres / 2) + ([-lerpFrac,-lerpFrac] / 2);
 
 		drawsubpic(
 			laser_pos + jitter,
-			[lerp,lerp],
+			[lerpFrac,lerpFrac],
 			"materials/Sprites/redglow1",
 			[0,0],
 			[1.0, 1.0],

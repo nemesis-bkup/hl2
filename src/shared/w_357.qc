@@ -135,7 +135,7 @@ w_357_primary(player pl)
 	Weapons_ViewPunchAngle(pl, [-10,0,0]);
 	Weapons_ViewAnimation(pl, PYTHON_FIRE);
 
-	if (pl.flags & FL_CROUCHING)
+	if (pl.IsCrouching())
 		Animation_PlayerTop(pl, ANIM_CR_SHOOTPYTHON, 0.43f);
 	else
 		Animation_PlayerTop(pl, ANIM_SHOOTPYTHON, 0.43f);
@@ -236,7 +236,7 @@ w_357_crosshair(player pl)
 float
 w_357_aimanim(player pl)
 {
-	return pl.flags & FL_CROUCHING ? ANIM_CR_AIMPYTHON : ANIM_AIMPYTHON;
+	return pl.IsCrouching() ? ANIM_CR_AIMPYTHON : ANIM_AIMPYTHON;
 }
 
 void

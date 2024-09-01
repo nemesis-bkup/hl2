@@ -4,42 +4,38 @@
 
 #define CSQC
 #define CLIENT
-#define HL2
+#define VALVE
 #define SOUNDSHADER_MAX 9000
 
 #includelist
 ../../../src/shared/fteextensions.qc
 ../../../src/shared/defs.h
-../../../valve/src/client/defs.h
 ../../../src/client/defs.h
-defs.h
-
+../../../valve/src/client/defs.h
+../../../hl2/src/client/defs.h
 ../../../src/vgui/include.src
-
 ../../../src/gs-entbase/client.src
 ../../../src/gs-entbase/shared.src
 ../shared/include.src
-
-flashlight.qc
+../../../valve/src/client/draw.qc
 ../../../valve/src/client/damage.qc
-draw.qc
-init.qc
+../../../valve/src/client/init.qc
+../../../valve/src/client/flashlight.qc
 ../../../valve/src/client/entities.qc
-cmds.qc
+../../../valve/src/client/cmds.qc
 ../../../valve/src/client/game_event.qc
 ../../../valve/src/client/camera.qc
-viewmodel.qc
+../../../valve/src/client/viewmodel.qc
 ../../../valve/src/client/obituary.qc
 ../../../valve/src/client/hud_sprite.qc
-../../../valve/src/client/hud_ammonotify.qc
-../../../valve/src/client/hud_dmgnotify.qc
 ../../../valve/src/client/hud_itemnotify.qc
-hud.qc
-hud_weaponselect.qc
+../../../valve/src/client/hud_dmgnotify.qc
+../../../valve/src/client/hud_ammonotify.qc
+../../../hl2/src/client/hud.qc
+../../../valve/src/client/HLWeaponSelect.qc
+../../../valve/src/client/hud_weaponselect.qc
 ../../../valve/src/client/scoreboard.qc
-
 ../../../src/client/include.src
-vgui_changechar.qc
-vgui_chooseteam.qc
+../../../valve/src/client/vgui_motd.qc
 ../../../src/shared/include.src
 #endlist

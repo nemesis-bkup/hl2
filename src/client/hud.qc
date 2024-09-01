@@ -281,7 +281,7 @@ void
 HUD_DrawHealth(void)
 {
 	vector pos;
-	player pl = (player)pSeat->m_ePlayer;
+	NSClientPlayer pl = (NSClientPlayer)pSeat->m_ePlayer;
 
 	if (pl.health != pSeatLocal->m_iHealthOld) {
 		pSeatLocal->m_flHealthAlpha = 1.0;
@@ -328,7 +328,7 @@ void
 HUD_DrawArmor(void)
 {
 	vector pos;
-	player pl = (player)pSeat->m_ePlayer;
+	NSClientPlayer pl = (NSClientPlayer)pSeat->m_ePlayer;
 
 	if (pl.armor != pSeatLocal->m_iArmorOld) {
 		pSeatLocal->m_flArmorAlpha = 1.0;
@@ -374,7 +374,7 @@ HUD_DrawArmor(void)
 void
 HUD_DrawAmmo1(void)
 {
-	player pl = (player)pSeat->m_ePlayer;
+	NSClientPlayer pl = (NSClientPlayer)pSeat->m_ePlayer;
 	vector pos;
 
 	if (pl.a_ammo1 != pSeatLocal->m_iAmmo1Old) {
@@ -409,7 +409,7 @@ HUD_DrawAmmo1(void)
 void
 HUD_DrawAmmo2(void)
 {
-	player pl = (player)pSeat->m_ePlayer;
+	NSClientPlayer pl = (NSClientPlayer)pSeat->m_ePlayer;
 	vector pos;
 
 	if (pl.a_ammo2 != pSeatLocal->m_iAmmo2Old) {
@@ -431,7 +431,7 @@ HUD_DrawAmmo2(void)
 void
 HUD_DrawAmmo3(void)
 {
-	player pl = (player)pSeat->m_ePlayer;
+	NSClientPlayer pl = (NSClientPlayer)pSeat->m_ePlayer;
 	vector pos;
 
 	if (pl.a_ammo3 != pSeatLocal->m_iAmmo3Old) {
@@ -466,7 +466,7 @@ HUD_DrawAmmoBar(vector pos, float val, float max, float a)
 void
 HUD_DrawNotify(void)
 {
-	player pl = (player)self;
+	NSClientPlayer pl = (NSClientPlayer)self;
 	vector pos;
 	float a;
 
@@ -481,7 +481,7 @@ HUD_DrawNotify(void)
 
 	a = bound(0.0, pSeatLocal->m_flPickupAlpha, 1.0);
 	pos[1] += 48 * (1.0 - a);
-	Weapons_HUDPic(pl, pSeatLocal->m_iPickupWeapon, 1, pos, a);
+	//Weapons_HUDPic(pl, pSeatLocal->m_iPickupWeapon, 1, pos, a);
 	//HUD_ItemNotify_Draw(pos);
 	//HUD_AmmoNotify_Draw(pos);
 	pSeatLocal->m_flPickupAlpha -= (clframetime * 0.5);
@@ -490,20 +490,6 @@ HUD_DrawNotify(void)
 void
 HUD_WeaponPickupNotify(int w)
 {
-#if defined (VALVE) || defined (GEARBOX)
-	switch (w) {
-		case WEAPON_SNARK:
-		case WEAPON_SATCHEL:
-		case WEAPON_HANDGRENADE:
-		case WEAPON_TRIPMINE:
-#if defined(GEARBOX)
-		case WEAPON_PENGUIN:
-#endif
-		return;
-		default:
-	}
-#endif
-
 	pSeatLocal->m_iPickupWeapon = w;
 	pSeatLocal->m_flPickupAlpha = 2.5f;
 }
@@ -548,15 +534,13 @@ HUD_TimeRemaining(void)
 void
 HUD_Draw(void)
 {
-	player pl = (player)pSeat->m_ePlayer;
+	NSClientPlayer pl = (NSClientPlayer)pSeat->m_ePlayer;
 
 	g_hud_color = [1, 0.75f, 0.25];
 
 	/* little point in not drawing these, even if you don't have a suit */
-	Weapons_DrawCrosshair(pl);
-
-	{
-		
+	if (pl.m_activeWeapon) {
+		pl.m_activeWeapon.UpdateGUI();
 	}
 
 	HUD_DrawDamageIndicator();
@@ -566,7 +550,7 @@ HUD_Draw(void)
 
 	HUD_TimeRemaining();
 
-	if (!(pl.g_items & ITEM_SUIT)) {
+	if (pl.HasItem("item_suit") == false) {
 		return;
 	}
 

@@ -114,7 +114,7 @@ w_stunstick_primary(player pl)
 		Weapons_ViewAnimation(pl, trace_fraction >= 1 ? CBAR_ATTACK2MISS:CBAR_ATTACK3HIT);
 	}
 
-	if (pl.flags & FL_CROUCHING)
+	if (pl.IsCrouching())
 		Animation_PlayerTop(pl, ANIM_CR_SHOOTCROWBAR, 0.41f);
 	else
 		Animation_PlayerTop(pl, ANIM_SHOOTCROWBAR, 0.5f);
@@ -158,7 +158,7 @@ w_stunstick_release(player pl)
 float
 w_stunstick_aimanim(player pl)
 {
-	return pl.flags & FL_CROUCHING ? ANIM_CR_AIMCROWBAR : ANIM_AIMCROWBAR;
+	return pl.IsCrouching() ? ANIM_CR_AIMCROWBAR : ANIM_AIMCROWBAR;
 }
 
 void

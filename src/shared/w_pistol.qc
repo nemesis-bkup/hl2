@@ -216,7 +216,7 @@ w_pistol_primary(player pl)
 		Weapons_ViewAnimation(pl, PISTOL_FIRE_EMPTY);
 	}
 
-	if (pl.flags & FL_CROUCHING)
+	if (pl.IsCrouching())
 		Animation_PlayerTop(pl, ANIM_CR_SHOOT1HAND, 0.2f);
 	else
 		Animation_PlayerTop(pl, ANIM_SHOOT1HAND, 0.2f);
@@ -286,7 +286,7 @@ w_pistol_release(player pl)
 float
 w_pistol_aimanim(player pl)
 {
-	return pl.flags & FL_CROUCHING ? ANIM_CR_AIM1HAND : ANIM_AIM1HAND;
+	return pl.IsCrouching() ? ANIM_CR_AIM1HAND : ANIM_AIM1HAND;
 }
 
 void
