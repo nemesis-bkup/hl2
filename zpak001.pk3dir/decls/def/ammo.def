@@ -11,7 +11,7 @@
 entityDef ammo_types {
 	"ammo_none"				"0"
 	"ammo_357"				"1"
-	"ammo_annebelle"		"2"
+	"ammo_annabelle"		"2"
 	"ammo_alyxgun"			"3"
 	"ammo_ar2"				"4"
 	"ammo_ar2_altfire"		"5"
@@ -29,8 +29,8 @@ entityDef ammo_types {
 entityDef ammo_names {
 	"ammo_none"				"None"
 	"ammo_357"				".357 Bullets"
-	"ammo_annebelle"		"Annebelle Bullets"
-	"ammo_alyxgun"			"Alyxgun Bullets"
+	"ammo_annabelle"		"Annabelle Bullets"
+	"ammo_alyxgun"			"Alyx's Gun Bullets"
 	"ammo_ar2"				"AR2 Bullets"
 	"ammo_ar2_altfire"		"AR2 Combine Balls"
 	"ammo_buckshot"			"Buckshot Shells"
@@ -47,7 +47,7 @@ entityDef ammo_names {
 entityDef ammo_max {
 	"ammo_none"				"0"
 	"ammo_357"				"skill:max_357"
-	"ammo_annebelle"		"skill:max_annebelle"
+	"ammo_annabelle"		"skill:max_annabelle"
 	"ammo_alyxgun"			"skill:max_alyxgun"
 	"ammo_ar2"				"skill:max_ar2"
 	"ammo_ar2_altfire"		"skill:max_ar2_altfire"
