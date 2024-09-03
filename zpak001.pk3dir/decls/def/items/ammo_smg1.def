@@ -1,14 +1,14 @@
 entityDef item_ammo_smg1
 {
 	"inherit"		"ammo_base"
-	"model"			"models/items/BoxMRounds.mdl"
+	"model"			"models/items/boxmrounds.mdl"
 	"inv_ammo_smg1"	"skill:item_smg1"
 }
 
 entityDef item_ammo_smg1_large
 {
 	"inherit"		"ammo_base"
-	"model"			"models/items/LargeBoxMRounds.mdl"
+	"model"			"models/items/boxmrounds.mdl"
 	"inv_ammo_smg1"	"skill:item_smg1_large"
 }
 
