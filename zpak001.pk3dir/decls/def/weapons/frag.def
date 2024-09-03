@@ -9,8 +9,8 @@ entityDef weapon_frag
 	"spawnclass"		"HLWeapon"
 	"model"				"models/items/grenadeAmmo.mdl"
 	"model_view"		"models/weapons/v_grenade.mdl"
-	"snd_acquire"		"weapon.pickup"
-	"snd_respawn"		"item.respawn"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
 
 	"inv_name"				"#HL2_Grenade"
 	"inv_weapon"			"weapon_frag"

@@ -1,14 +1,14 @@
 entityDef item_ammo_ar2
 {
 	"inherit"		"ammo_base"
-	"model"			"models/items/BoxBRounds.mdl"
+	"model"			"models/items/combine_rifle_cartridge01.mdl"
 	"inv_ammo_ar2"	"skill:item_ar2"
 }
 
 entityDef item_ammo_ar2_large
 {
 	"inherit"		"ammo_base"
-	"model"			"models/items/LargeBoxBRounds.mdl"
+	"model"			"models/items/combine_rifle_cartridge01.mdl"
 	"inv_ammo_ar2"	"skill:item_ar2_large"
 }
 

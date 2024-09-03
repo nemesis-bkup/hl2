@@ -108,7 +108,6 @@ void
 HLWeapon::UpdateGUI(void)
 {
 	NSClientPlayer ourOwner = __NULL__;
-	vector ammoPos;
 
 	/* draw crosshair */
 	//HLSprite_DrawCrosshair(m_crossHair);

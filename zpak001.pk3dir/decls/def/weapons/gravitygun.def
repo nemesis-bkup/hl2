@@ -9,8 +9,8 @@ entityDef weapon_physcannon
 	"spawnclass"		"HLWeapon"
 	"model"				"models/weapons/w_physcannon.mdl"
 	"model_view"		"models/weapons/v_physcannon.mdl"
-	"snd_acquire"		"weapon.pickup"
-	"snd_respawn"		"item.respawn"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
 
 	// weapon specific
 	"def_fireInfo"		"fireInfo_physcannon"

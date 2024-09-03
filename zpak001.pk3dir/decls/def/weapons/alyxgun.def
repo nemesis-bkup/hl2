@@ -9,8 +9,8 @@ entityDef weapon_alyxgun
 	"spawnclass"		"HLWeapon"
 	"model"				"models/weapons/W_Alyx_Gun.mdl"
 	"model_view"		"models/weapons/v_pistol.mdl"
-	"snd_acquire"		"weapon.pickup"
-	"snd_respawn"		"item.respawn"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
 
 	// weapon specific
 	"def_fireInfo"		"fireInfo_pistol"

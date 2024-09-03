@@ -9,8 +9,8 @@ entityDef weapon_rpg
 	"spawnclass"		"HLWeapon"
 	"model"				"models/weapons/w_rocket_launcher.mdl"
 	"model_view"		"models/weapons/v_rpg.mdl"
-	"snd_acquire"		"weapon.pickup"
-	"snd_respawn"		"item.respawn"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
 
 	"inv_name"			"#HL2_RPG"
 	"def_fireInfo"		"fireInfo_rpg"

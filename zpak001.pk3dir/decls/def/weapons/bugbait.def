@@ -9,8 +9,8 @@ entityDef weapon_bugbait
 	"spawnclass"		"HLWeapon"
 	"model"				"models/w_bugbait.mdl"
 	"model_view"		"models/v_bugbait.mdl"
-	"snd_acquire"		"dmc_weapon.pickup"
-	"snd_respawn"		"dmc_item.respawn"
+	"snd_acquire"		"dmc_HL2Player.PickupWeapon"
+	"snd_respawn"		"dmc_Item.Materialize"
 	"spin"				"1"
 
 	// weapon specific

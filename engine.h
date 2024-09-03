@@ -1,6 +1,6 @@
 #define FULLENGINENAME		"Rad-Therapy II"
 #define GAME_SHORTNAME		"halflife2"
-#define GAME_BASEGAMES		"platform","hl2"
+#define GAME_BASEGAMES		"hl2","hl2mp"
 #define GAME_PROTOCOL		"FTE-RadTherapy2"
 #define GAME_DEFAULTCMDS	"game_hl2;fteplug_ffmpeg;fteplug_hl2;fteplug_ode;plug_load ffmpeg;plug_load hl2;plug_load ode"
 #define GAME_DOWNLOADSURL	"https://www.frag-net.com/pkgs/list"

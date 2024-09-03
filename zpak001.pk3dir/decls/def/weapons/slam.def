@@ -9,8 +9,8 @@ entityDef weapon_slam
 	"spawnclass"		"HLWeapon"
 	"model"				"models/weapons/w_slam.mdl"
 	"model_view"		"models/weapons/v_slam.mdl"
-	"snd_acquire"		"weapon.pickup"
-	"snd_respawn"		"item.respawn"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
 
 	"inv_name"			"#HL2_SLAM"
 	"ammoType"			"ammo_slam"

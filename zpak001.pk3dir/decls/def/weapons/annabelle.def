@@ -9,8 +9,8 @@ entityDef weapon_annabelle
 	"spawnclass"		"HLWeapon"
 	"model"				"models/weapons/w_annabelle.mdl"
 	"model_view"		"models/weapons/v_shotgun.mdl"
-	"snd_acquire"		"weapon.pickup"
-	"snd_respawn"		"item.respawn"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
 
 	// weapon specific
 	"def_fireInfo"		"fireInfo_annebelle"

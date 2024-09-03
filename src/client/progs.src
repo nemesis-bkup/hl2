@@ -20,7 +20,7 @@
 ../../../valve/src/client/damage.qc
 ../../../valve/src/client/init.qc
 ../../../valve/src/client/flashlight.qc
-../../../valve/src/client/entities.qc
+../../../hl2/src/client/entities.qc
 ../../../valve/src/client/cmds.qc
 ../../../valve/src/client/game_event.qc
 ../../../valve/src/client/camera.qc
