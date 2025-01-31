@@ -1,0 +1,51 @@
+entityDef weapon_crowbar
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"#HL2_Crowbar"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/weapons/w_crowbar.mdl"
+	"model_view"		"models/weapons/v_crowbar.mdl"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
+
+	// weapon specific
+	"inv_name"			"CROWBAR"
+	"ammoRequired"		"0"
+	"silent_fire"		"1"
+	"hl2hud_icon"		"c"
+
+	"def_onFire"		"projectile_crowbar"
+	"testDistance"		"-64"
+	"failRate"			"0.5"
+	"fireRate"			"0.45"
+
+	"act_idle"			"0"
+	"act_draw"			"1"
+	"act_holster"		"8"
+	"act_fireFailed"	"2,3"
+	"act_fire"			"4,5,6,7"
+	"punchSpring"		"1.5 -1.5 0"
+
+	// HLWeapon specific
+	"hudSlot"		"0"
+	"hudSlotPos"	"0"
+	"weight"		"0"
+	"crosshair"		"none"
+	"ammoIcon"		"none"
+	"physics"		"1"
+	"buggyIdleAnim"	"1"
+}
+
+
+entityDef projectile_crowbar
+{
+	"spawnclass"			"ncProjectile"
+	"damage"				"skill:plr_dmg_crowbar"
+	"is_bullet"				"1"
+	"detonate_on_world" 	"1"
+}
+

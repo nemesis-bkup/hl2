@@ -1,0 +1,98 @@
+entityDef weapon_rpg
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"#HL2_RPG"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/weapons/w_rocket_launcher.mdl"
+	"model_view"		"models/weapons/v_rpg.mdl"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
+
+	"inv_name"			"RPG\n(ROCKET PROPELLED GRENADE)"
+	"def_fireInfo"		"fireInfo_rpg"
+	"ammoType"			"ammo_rpg"
+	"ammoRequired" 		"1"
+	"ammoPerShot" 		"1"
+	"inv_ammo_rpg"		"3"
+	"fireRate"			"2.5"
+	"hl2hud_icon"		"i"
+
+	"act_idle"			"0"
+	"act_draw"			"1"
+	"act_fire"			"2"
+	"act_fireStop"		"3"
+	"snd_fire"			"Weapon_RPG.Single"
+
+	// HLWeapon specific
+	"hudSlot"		"4"
+	"hudSlotPos"	"1"
+	"weight"		"0"
+	"laser"			"1"
+	"physics"		"1"
+	"buggyIdleAnim"	"1"
+}
+
+entityDef projectile_rocket
+{
+	"spawnclass"		"ncProjectile"
+	"model"				"models/weapons/w_missile_launch.mdl"
+
+	"def_damage"		"damage_rocketDirect"
+	"def_splash_damage"	"damage_rocketSplash"
+
+	"health"			"0"
+	"velocity"			"250"
+	"angular_velocity"	"0 0 200"
+	"detonate_on_fuse"	"0"
+	"detonate_on_death"	"1"
+	"detonate_on_world"	"1"
+	"detonate_on_actor"	"1"
+	"impact_damage_effect"	"1"
+	"impact_gib"		"1"
+
+	"thrust"			"2000"
+	"thrust_start"		"0.1"
+	"thrust_end"		"2"
+
+	"smoke_fly"			"weapon_rpg.trail"
+	"model_detonate"	"fx_explosion.main"
+	"detonate_offset"			"24"
+	"light_color"		"1 0.8 0.4"
+	"light_radius"		"160"
+	"light_offset"		"0 0 0"
+
+	"explode_light_color"		"2 1.6 0.8"
+	"explode_light_radius"		"320"
+	"explode_light_fadetime"	"0.5"
+
+	"snd_explode"		"BaseGrenade.Explode"
+}
+
+entityDef projectile_rocket_homing
+{
+	"inherit"	"projectile_rocket"
+	"thrust_homing"	"1"
+}
+
+entityDef damage_rocketDirect
+{
+	"damage"	"skill:plr_dmg_rpg_round"
+	"knockback"	"1025"
+}
+
+entityDef damage_rocketSplash
+{
+	"damage"	"skill:plr_dmg_rpg_round"
+	"knockback"	"1025"
+	"radius"	"250"
+}
+
+entityDef fireInfo_rpg
+{
+	"def_onFire"	"projectile_rocket_homing"
+	"punchAngle"	"-5 0 0"
+}

@@ -196,7 +196,7 @@ w_pistol_primary(player pl)
 			pl.first_pos = trace_endpos;
 			print("Weld 1\n");
 		} else {
-			NSPhysicsConstraint::Weld(pl.first_ent, trace_ent, 0,0,0,0,0);
+			ncPhysicsConstraint::Weld(pl.first_ent, trace_ent, 0,0,0,0,0);
 			pl.first_ent = 0;
 			pl.first_pos = g_vec_null;
 			print("Weld done\n");

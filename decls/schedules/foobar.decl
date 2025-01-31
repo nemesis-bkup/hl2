@@ -1,0 +1,10 @@
+typeInfo foobar
+{
+	"task_1"           "Wait 1"
+	"task_2"           "TargetNearestPlayer"
+	"task_3"           "WalkToTarget"
+	"task_4"           "Wait 3"
+	"task_5"           "TargetNearestPlayer"
+	"task_6"           "WalkToTarget"
+	"task_7"           "PerformSchedule foobar"
+}

@@ -1,0 +1,107 @@
+entityDef weapon_smg1
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"SMG1 from Half-Life 2. Uses item_ammo_smg1 and item_ammo_smg1_large."
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/weapons/w_smg1.mdl"
+	"model_view"		"models/weapons/v_smg1.mdl"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
+
+	// weapon specific
+	"def_fireInfo"		"fireInfo_smg1"
+	"def_altFireInfo"	"fireInfo_smg1Alt"
+	"inv_name"			"SMG\n(SUBMACHINE GUN)"
+	"clipSize"			"45"
+	"hl2hud_icon"		"a"
+
+	// acts are temp until FTEQW natively reads Source MDL activities
+	"act_reload"		"7"
+	"act_draw"		"6"
+	"act_idle"		"0"
+
+	"snd_reload"		"Weapon_SMG1.Reload"
+	"snd_empty"		"Weapon_SMG1.Empty"
+
+	// HLWeapon specific
+	"hudSlot"		"2"
+	"hudSlotPos"	"0"
+	"weight"		"3"
+	"physics"		"1"
+	"buggyIdleAnim"	"1"
+
+	// muzzle
+	"barrel"			"ValveBiped.muzzle"
+	"def_ejectBrass"	"debris_pistolBrass"
+	"smoke_muzzle"		"muzzle.smoke"
+	"muzzleOffset"		"0 5 -2"
+}
+
+entityDef projectile_ARgrenade
+{
+	"spawnclass"		"ncProjectile"
+	"model"				"models/items/ar2_grenade.mdl"
+	"offset"			"16 0 0"
+	"velocity"			"800 0 0"
+	"angular_velocity"	"-300 0 0"
+	"gravity"			"0.5"
+	"bounce"			"1"
+	"mins"				"0 0 0"
+	"maxs"				"0 0 0"
+	"detonate_on_fuse"	"0"
+	"detonate_on_death"	"1"
+	"detonate_on_world"	"1"
+	"detonate_on_actor"	"1"
+	"snd_explode"		"BaseExplosionEffect.Sound"
+	"model_detonate"	"fx_explosion.main"
+
+	"def_damage"		"damage_ARgrneadeDirect"
+	"def_splash_damage"	"damage_ARgrneadeSplash"
+}
+
+
+entityDef damage_ARgrneadeDirect
+{
+	"damage"	"sk_max_smg1_grenade"
+}
+
+entityDef damage_ARgrneadeSplash
+{
+	"damage"	"skill:smg1_grenade_radius"
+	"radius"	"skill:smg1_grenade_radius"
+}
+
+entityDef projectile_smg1
+{
+	"inherit"		"projectile_bullet_base"
+	"damage"		"skill:plr_dmg_smg1"
+}
+
+entityDef fireInfo_smg1
+{
+	"def_onFire"		"projectile_smg1"
+	"ammoType"			"ammo_smg1"
+	"ammoRequired"		"1"
+	"ammoPerShot"		"1"
+	"fireRate"			"0.085"
+	"punchSpring"		"-0.5 0.25 0.1"
+	"act_fire"			"1,2,3,4"
+	"snd_fire"			"Weapon_SMG1.Single"
+}
+
+entityDef fireInfo_smg1Alt
+{
+	"def_onFire"		"projectile_ARgrenade"
+	"ammoType"			"ammo_smg1_grenade"
+	"ammoRequired"		"1"
+	"ammoPerShot"		"1"
+	"fireRate"			"1.0"
+	"punchSpring"		"-1 0.5 0.1"
+	"act_fire"			"5"
+	"snd_fire"			"Weapon_SMG1.Special1"
+}
+

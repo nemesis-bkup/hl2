@@ -25,7 +25,7 @@ When SUIT_LONGINTRO is set, the intro dialog will be longer.
 
 */
 
-class item_suit:NSRenderableEntity
+class item_suit:ncRenderableEntity
 {
 	string m_strOnPlayerTouch;
 

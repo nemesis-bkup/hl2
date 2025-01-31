@@ -1,0 +1,71 @@
+entityDef weapon_bugbait
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"#HL2_Bugbait"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	//"model"			"models/weapons/w_bugbait.mdl"
+	//"model_view"		"models/weapons/v_bugbait.mdl"
+	"model"				"models/items/grenadeAmmo.mdl"
+	"model_view"		"models/weapons/v_grenade.mdl"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
+
+	// weapon specific
+	"def_fireInfo"		"fireInfo_bugbait"
+	"def_altFireInfo"	"fireInfo_bugbaitAlt"
+	"inv_name"			"PHEROPOD\n(BUGBAIT)"
+	"ammoRequired"		"0"
+	"hl2hud_icon"		"j"
+
+	"act_idle"			"2"
+	"act_draw"			"3"
+	"act_holster"		"4"
+
+	// HLWeapon specific
+	"hudSlot"			"5"
+	"hudSlotPos"		"0"
+	"weight"			"25"
+	"buggyIdleAnim"		"1"
+}
+
+entityDef projectile_bugbait
+{
+	"spawnclass"				"ncProjectile"
+	//"model"					"models/weapons/w_bugbait.mdl"
+	"model"						"models/items/grenadeAmmo.mdl"
+	"offset"					"24 0 -8"
+	"velocity"					"600 0 200"
+	"angular_velocity"			"300 300 300"
+	"fuse"						"20"
+	"bounce"					"1"
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"1"
+	"impact_damage_effect"		"1"
+	"impact_gib"				"1"
+
+	"decal_detonate"			"ExplosionScorch"
+	"model_detonate"			"fx_explosion.main"
+
+	"snd_explode"				"GrenadeBugBait.Splat"
+}
+
+entityDef fireInfo_bugbait
+{
+	"def_onFire"		"projectile_bugbait"
+	"fireRate"			"1.5"
+	"act_fire"			"1"
+}
+
+entityDef fireInfo_bugbaitAlt
+{
+	"def_onFire"		"projectile_bugbait"
+	"fireRate"			"1.0"
+	"act_fire"			"5"
+	"snd_fire"			"Weapon_Bugbait.Splat"
+}

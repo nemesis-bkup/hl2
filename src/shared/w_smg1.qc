@@ -222,7 +222,7 @@ w_smg1_secondary(player pl)
 	pl.ammo_m203_grenade--;
 
 #ifdef SERVER
-	NSProjectile_SpawnDef("projectile_ARgrenade", pl);
+	ncProjectile_SpawnDef("projectile_ARgrenade", pl);
 	Sound_Play(pl, CHAN_WEAPON, "Weapon_SMG1.Double");
 #endif
 

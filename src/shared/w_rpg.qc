@@ -115,9 +115,9 @@ void w_rpg_primary(player pl)
 
 #ifdef SERVER
 	if (pl.ammo_rpg_state > 0) {
-		NSProjectile_SpawnDef("projectile_rocket_homing", pl);
+		ncProjectile_SpawnDef("projectile_rocket_homing", pl);
 	} else {
-		NSProjectile_SpawnDef("projectile_rocket", pl);
+		ncProjectile_SpawnDef("projectile_rocket", pl);
 	}
 
 	Sound_Play(pl, CHAN_WEAPON, "weapon_rpg.shoot");

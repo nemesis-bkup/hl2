@@ -14,7 +14,7 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "../../../valve/src/shared/animations.h"
+#include "animations.h"
 
 /* all custom SendFlags bits we can possibly send */
 enumflags
@@ -23,15 +23,15 @@ enumflags
 	PLAYER_BOTTOMFRAME
 };
 
-class HLPlayer:NSClientPlayer
+class HLPlayer:ncPlayer
 {
 	void(void) HLPlayer;
 
 	/* animation */
-	PREDICTED_INT(anim_top)
+	PREDICTED_FLOAT(anim_top)
 	PREDICTED_FLOAT(anim_top_time)
 	PREDICTED_FLOAT(anim_top_delay)
-	PREDICTED_INT(anim_bottom)
+	PREDICTED_FLOAT(anim_bottom)
 	PREDICTED_FLOAT(anim_bottom_time)
 
 	virtual void Physics_Jump(void);
@@ -45,7 +45,7 @@ class HLPlayer:NSClientPlayer
 	virtual void UpdateAliveCam(void);
 	virtual void ClientInputFrame(void);
 #else
-	virtual void Death(entity, entity, int, vector, int);
+	virtual void Death(entity, entity, int, vector, vector, int);
 	virtual void EvaluateEntity(void);
 	virtual float SendEntity(entity, float);
 	virtual void Save(float);
@@ -73,31 +73,21 @@ void
 HLPlayer::UpdatePlayerAnimation(float timelength)
 {
 	/* calculate our skeletal progression */
-	//Animation_PlayerUpdate(this);
+	Animation_PlayerUpdate(this);
 	/* advance animation timers */
-	//Animation_TimerUpdate(this, timelength);
+	Animation_TimerUpdate(this, timelength);
 }
 
 #ifdef CLIENT
 void
 HLPlayer::ClientInputFrame(void)
 {
-	if (pSeatLocal->weaponSelectionHUD.Active()) {
-		if (input_buttons & INPUT_PRIMARY) {
-			pSeatLocal->weaponSelectionHUD.Trigger();
-		} else if (input_buttons & INPUT_SECONDARY) {
-			pSeatLocal->weaponSelectionHUD.Deactivate();
-		}
-
-		pSeat->m_flInputBlockTime = time + 0.2;
-	}
-
 	super::ClientInputFrame();
 }
 
 void Camera_RunPosBob(vector angles, __inout vector camera_pos);
 void Camera_StrafeRoll(__inout vector camera_angle);
-void Shake_Update(NSClientPlayer);
+void Shake_Update(ncPlayer);
 
 void
 HLPlayer::UpdateAliveCam(void)
@@ -110,7 +100,7 @@ HLPlayer::UpdateAliveCam(void)
 	g_view.SetCameraAngle(view_angles);
 
 	if (vehicle) {
-		NSVehicle veh = (NSVehicle)vehicle;
+		ncVehicle veh = (ncVehicle)vehicle;
 
 		if (veh.UpdateView)
 			veh.UpdateView();
@@ -129,7 +119,7 @@ HLPlayer::UpdateAliveCam(void)
 }
 
 .string oldmodel;
-//string Weapons_GetPlayermodel(NSClientPlayer, int);
+//string Weapons_GetPlayermodel(ncPlayer, int);
 
 void
 HLPlayer::UpdatePlayerAttachments(bool visible)
@@ -153,7 +143,7 @@ HLPlayer::UpdatePlayerAttachments(bool visible)
 		if (serverkeyfloat("*bspversion") == BSPVER_HL) {
 			dynamiclight_add(trace_endpos + (trace_plane_normal * 4), 128, [1,1,1]);
 		} else {
-			float p = dynamiclight_add(src, 512, [1,1,1], 0, "textures/flashlight");
+			float p = dynamiclight_add(src + (v_forward * 16), 512, [1,1,1], 0, "lights/flashlight");
 			dynamiclight_set(p, LFIELD_ANGLES, ang);
 			dynamiclight_set(p, LFIELD_FLAGS, 3);
 		}
@@ -209,8 +199,8 @@ HLPlayer::UpdatePlayerAttachments(bool visible)
 	}
 }
 
-void HUD_AmmoNotify_Check(NSClientPlayer pl);
-void HUD_ItemNotify_Check(NSClientPlayer pl);
+void HUD_AmmoNotify_Check(ncPlayer pl);
+void HUD_ItemNotify_Check(ncPlayer pl);
 /*
 =================
 HLPlayer::ReceiveEntity
@@ -295,7 +285,7 @@ HLPlayer::Save(float handle)
 {
 	super::Save(handle);
 
-	SaveInt(handle, "anim_top", anim_top);
+	SaveFloat(handle, "anim_top", anim_top);
 	SaveFloat(handle, "anim_top_time", anim_top_time);
 	SaveFloat(handle, "anim_top_delay", anim_top_delay);
 	SaveInt(handle, "anim_bottom", anim_bottom);
@@ -307,7 +297,7 @@ HLPlayer::Restore(string strKey, string strValue)
 {
 	switch (strKey) {
 	case "anim_top":
-		anim_top = ReadInt(strValue);
+		anim_top = ReadFloat(strValue);
 		break;
 	case "anim_top_time":
 		anim_top_time = ReadFloat(strValue);
@@ -330,7 +320,7 @@ void
 HLPlayer::EvaluateEntity(void)
 {
 	/* the generic client attributes */
-	NSClientPlayer::EvaluateEntity();
+	ncPlayer::EvaluateEntity();
 
 	EVALUATE_FIELD(anim_top, PLAYER_TOPFRAME)
 	EVALUATE_FIELD(anim_top_time, PLAYER_TOPFRAME)
@@ -341,49 +331,18 @@ HLPlayer::EvaluateEntity(void)
 }
 
 void
-HLPlayer::Death(entity inflictor, entity attacker, int damagePoints, vector dir, int location)
+HLPlayer::Death(entity inflictor, entity attacker, int damagePoints, vector dir, vector absImpactPos, int hitBody)
 {
-	/* either gib, or make a corpse */
-	if (GetHealth()< -50) {
-		vector gibDir = vectoangles(GetOrigin() - attacker.origin);
-		float gibStrength = damagePoints * 2.0f;
-		BreakModel_Entity(this, gibDir, gibStrength);
-	} else {
-		float deathAnimation = ANIM_DIESIMPLE;
+	float randomAnim = floor(random(18, 26));
+	ncRenderableEntity newCorpse = (ncRenderableEntity)BodyQue_Spawn(this, randomAnim);
 
-		switch (location) {
-		case BODY_HEAD:
-			deathAnimation = ANIM_DIEHEADSHOT;
-			break;
-		case BODY_CHEST:
-			deathAnimation = ANIM_DIESPIN;
-			break;
-		case BODY_STOMACH:
-			deathAnimation = ANIM_DIEGUTSHOT;
-			break;
-		default:
-			bool isFacing = IsFacingPosition(GetOrigin() + (dir * 128));
-
-			/* we still want a change to play ANIM_DIESIMPLE */
-			if (random() < 0.5)
-			if (isFacing == false) {
-				deathAnimation = ANIM_DIEFORWARD;
-			} else {
-				deathAnimation = random() < 0.5 ? ANIM_DIEBACKWARDS1 : ANIM_DIEBACKWARDS1;
-			}
-
-			break;
-		}
-
-		NSEntity newCorpse = (NSEntity)FX_Corpse_Spawn(this, deathAnimation);
-
-		/* if we were crouching, adjust the bbox (thx 2 lack of crouch death animation) */
-		if (IsCrouching()) {
-			newCorpse.SetSize(VEC_HULL_MIN, [16, 16, -16]);
-		}
+	/* if we were crouching, adjust the bbox (thx 2 lack of crouch death animation) */
+	if (IsCrouching()) {
+		newCorpse.SetSize(VEC_HULL_MIN, [16, 16, -16]);
 	}
-	
-	super::Death(inflictor,  attacker,  damagePoints,  dir,  location);
+
+	super::Death(inflictor, attacker, damagePoints, dir, absImpactPos, hitBody);
+	SpectatorDeathcam(newCorpse, (ncEntity)attacker, 3.0f);
 }
 
 /*
@@ -407,7 +366,7 @@ HLPlayer::SendEntity(entity ePEnt, float flChanged)
 	flChanged = OptimiseChangedFlags(ePEnt, flChanged);
 
 	/* the generic client attributes */
-	NSClientPlayer::SendEntity(ePEnt, flChanged);
+	ncPlayer::SendEntity(ePEnt, flChanged);
 
 	SENDENTITY_BYTE(anim_top, PLAYER_TOPFRAME)
 	SENDENTITY_FLOAT(anim_top_time, PLAYER_TOPFRAME)

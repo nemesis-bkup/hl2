@@ -24,7 +24,7 @@ Adds 20 of health to the player.
 -------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
 model="models/w_medkit.mdl"
 */
-class item_healthkit:NSRenderableEntity
+class item_healthkit:ncRenderableEntity
 {
 	void(void) item_healthkit;
 

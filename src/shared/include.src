@@ -3,10 +3,8 @@
 ../../../valve/src/shared/events.h
 ../../../valve/src/shared/flags.h
 ../../../valve/src/shared/skeleton.h
-../../../valve/src/shared/fx_corpse.qc
 ../../../hl2/src/shared/HL2Player.qc
-../../../valve/src/shared/animations.qc
-../../../valve/src/shared/fx_blood.qc
+../../../hl2/src/shared/animations.qc
 ../../../valve/src/shared/fx_gaussbeam.qc
 ../../../valve/src/shared/HLGaussBeam.qc
 ../../../hl2/src/shared/HL2Weapon.qc

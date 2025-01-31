@@ -1,0 +1,6 @@
+entityDef prop_vehicle_jeep
+{
+	"spawnclass"	"prop_vehicle_driveable"
+	"model"			"models/buggy.mdl"
+	"seatOffset"	"0 0 0"
+}

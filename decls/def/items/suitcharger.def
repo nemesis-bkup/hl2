@@ -1,0 +1,11 @@
+entityDef item_suitcharger
+{
+	"spawnclass"			"ncCharger"
+	"chargeType"			"armor"
+	"model"					"models/props_combine/suit_charger001.mdl"
+	"frametimeTransfer"		"1"
+
+	when "spawnflags" equals "16384" {
+		"charge"	"25"
+	}
+}

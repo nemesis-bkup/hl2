@@ -24,7 +24,7 @@ HLMultiplayerRules::IsMultiplayer(void)
 }
 
 bool
-HLMultiplayerRules::PlayerRequestRespawn(NSClientPlayer bp)
+HLMultiplayerRules::PlayerRequestRespawn(ncPlayer bp)
 {
 	if (bp.TimeSinceDeath() > 0.5f) {
 		bp.ScheduleThink(PutClientInServer, 0.0f);
@@ -93,7 +93,7 @@ HLMultiplayerRules::CheckRules(void)
 }
 
 void
-HLMultiplayerRules::PlayerDeath(NSClientPlayer pl)
+HLMultiplayerRules::PlayerDeath(ncPlayer pl)
 {
 	/* obituary networking */
 	WriteByte(MSG_MULTICAST, SVC_CGAMEPACKET);
@@ -152,7 +152,7 @@ HLMultiplayerRules::PlayerDeath(NSClientPlayer pl)
 }
 
 void
-HLMultiplayerRules::PlayerSpawn(NSClientPlayer pp)
+HLMultiplayerRules::PlayerSpawn(ncPlayer pp)
 {
 	player pl = (player)pp;
 	string playerModel;
@@ -232,7 +232,7 @@ HLMultiplayerRules::PlayerSpawn(NSClientPlayer pp)
 }
 
 bool
-HLMultiplayerRules::ConsoleCommand(NSClientPlayer pp, string cmd)
+HLMultiplayerRules::ConsoleCommand(ncPlayer pp, string cmd)
 {
 	tokenize(cmd);
 

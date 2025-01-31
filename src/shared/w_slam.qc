@@ -21,7 +21,7 @@
  * Some maps, such as subtransit and a few singleplayer chapters have this. */
 
 #ifdef SERVER
-class monster_tripmine:NSMonster
+class monster_tripmine:ncMonster
 {
 	int m_iDist;
 	void(void) monster_tripmine;
@@ -230,7 +230,7 @@ s_slam_detonate(entity master)
 		if (b.owner != master)
 			continue;
 
-		NSEntity slamEnt = (NSEntity)b;
+		ncEntity slamEnt = (ncEntity)b;
 		slamEnt.Trigger(master, TRIG_TOGGLE);
 	}
 }
@@ -365,7 +365,7 @@ w_slam_primary(player pl)
 		}
 
 	#ifdef SERVER
-		NSProjectile_SpawnDef("projectile_slam", pl);
+		ncProjectile_SpawnDef("projectile_slam", pl);
 	#endif
 		pl.satchel_chg++;
 		pl.ammo_satchel--;

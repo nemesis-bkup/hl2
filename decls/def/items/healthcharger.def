@@ -1,0 +1,8 @@
+entityDef item_healthcharger
+{
+	"spawnclass"			"ncCharger"
+	"chargeType"			"health"
+	"model"					"models/props_combine/health_charger001.mdl"
+	"frametimeTransfer"		"1"
+}
+

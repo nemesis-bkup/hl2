@@ -1,6 +1,0 @@
-entityDef projectile_bullet_base
-{
-	"spawnclass"			"NSProjectile"
-	"is_bullet"			"1"
-	"detonate_on_world" 		"1"
-}

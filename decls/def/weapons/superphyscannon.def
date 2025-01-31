@@ -1,0 +1,43 @@
+entityDef weapon_superphyscannon
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"#HL2_GravityGun"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/weapons/w_physics.mdl"
+	"model_view"		"models/weapons/v_superphyscannon.mdl"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
+	"skin"				"1"
+
+	// weapon specific
+	"def_fireInfo"		"fireInfo_physcannon"
+	"def_altFireInfo"	"fireInfo_physcannonAlt"
+	"inv_name"		"ZERO-POINT ENERGY GUN\n(GRAVITY GUN)"
+	"hl2hud_icon"		"m"
+
+	"act_draw"		"4"
+	"act_holster"		"5"
+	"act_idle"		"2"
+
+	"snd_empty"		"Weapon_PhysCannon.DryFire"
+
+	// HLWeapon specific
+	"hudSlot"		"0"
+	"hudSlotPos"	"1"
+	"weight"		"0"
+	"physics"		"1"
+
+	// HL2Weapon specific
+	"physcannon"			"1"
+	"physcannonCenterForce"		"1500"
+	"physcannonPushRange"		"256"
+	"physcannonPullRange"		"1024"
+	"physcannonForceOffset"		"60"
+	"physcannonPullForce"		"8000"
+	"physcannonReflectMultiplier"	"-0.65"
+	"buggyIdleAnim"	"1"
+}

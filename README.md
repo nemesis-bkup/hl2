@@ -1,49 +1,50 @@
-# Rad-Therapy 2 (FreeHL2)
-Clean-room reimplementation of Half-Life 2 & Half-Life 2: Deathmatch in QuakeC.
+# ![](img/rt2.png) Rad-Therapy II
 
-This is 100% original code, feel free to audit however you wish.
-No proprietary SDKs have been looked at or taken apart, unlike similar projects.
+The original port of **Half-Life 2** (2004) to Quake(World).
 
-The engine you want to use to run this is FTEQW (https://www.fteqw.org), which is a project unrelated to this. It just happens to support the file-formats FreeHL2 needs.
+The game is **not** playable from start to finish. *You can play deathmatch and other odd modes.*
 
 ![Preview 1](img/preview1.jpg)
 ![Preview 2](img/preview2.jpg)
 ![Preview 3](img/preview3.jpg)
 ![Preview 4](img/preview4.jpg)
 
+Requires both `hl2` and `hl2dm` directories in order to function. Any copy will do fine. If you're on a case-insensitive filesystem and you're running pre .vpk data files you might want to put them in a .zip and name it 'pak0.pk3'. It's generally easier to just use the latest data from Steam.
+
+## Playing/Installing
+
+Run [FTE](https://www.fteqw.org/) like so:
+
+`fteqw.exe -halflife2`
+
+It will then automatically attempt to install **Rad-Therapy II** - when run from within your **Half-Life 2: Deathmatch** directory.
+
 ## Building
-Clone the repository into the Nuclide-SDK:
+Git clone [Nuclide](https://code.idtech.space/vera/nuclide) first, run `make update` and `make fteqcc`, then clone the repository inside the Nuclide-SDK:
 
-> git clone REPOURL hl2
+```
+git clone https://code.idtech.space/fn/hl2 hl2
+make game GAME=hl2
+```
 
-then either run Nuclide's ./build_game.sh shell script, or issue 'make' inside
-./hl2/src!
-
-Obviously make sure that Nuclide has fteqw and fteqcc set-up for building and that you have some proficiency in QuakeC.
-
-## Notes
-If you're playing a mod that relies on FreeHL2, selecting it from the Custom Game
-menu alone works fine. However if you want to launch it via the command-line
-you need to make sure to add `-game hl2` before `-game modname`.
-The order is important.
+The last command will build the game-logic.
+Make sure that Nuclide-SDK has `fteqcc` and `fteqw` present for building and running, respectively.
+It will also respect versions installed by the package manager, just make sure it's up to date.
 
 ## Community
 
 ### Matrix
-If you're a fellow Matrix user, join the Nuclide Space to see live-updates and more!
+If you're a fellow Matrix user, join the Nuclide Space. Where you can ask questions, or prod devs about what they're up to.
 https://matrix.to/#/#nuclide:matrix.org
 
 ### IRC
-Join us on #freecs via irc.libera.chat and talk/lurk or discuss bugs, issues
-and other such things. It's bridged with the Matrix room of the same name!
-
-### Others
-We've had people ask in the oddest of places for help, please don't do that.
+You can also join us on #nuclide via irc.libera.chat.
+It's bridged with the main room of the Matrix space.
 
 ## License
 ISC License
 
-Copyright (c) 2016-2023 Marco Hladik <marco@icculus.org>
+Copyright (c) 2019-2025 Marco "eukara" Cawthorne <marco@icculus.org>
 
 Permission to use, copy, modify, and distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
@@ -56,3 +57,8 @@ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
 WHATSOEVER RESULTING FROM LOSS OF MIND, USE, DATA OR PROFITS, WHETHER
 IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING
 OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+# Content Copyright Notice
+
+Half-Life 2 and Half-Life 2: Deathmatch belong to Valve Corporation.
+Original licensed assets from Steam or a disc are required in order to experience **Rad-Therapy II**.

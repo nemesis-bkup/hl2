@@ -18,7 +18,6 @@
 #include "../../../valve/src/client/obituary.h"
 #include "../../../valve/src/client/particles.h"
 #include "../../../valve/src/client/hud_sprite.h"
-#include "../../../valve/src/client/HLWeaponSelect.h"
 
 var int autocvar_cl_autoweaponswitch = TRUE;
 
@@ -26,20 +25,9 @@ vector g_hud_color;
 vector g_hudmins;
 vector g_hudres;
 
-var string g_hud1_spr;
-var string g_hud2_spr;
-var string g_hud3_spr;
 var string g_hud4_spr;
 var string g_hud5_spr;
-var string g_hud6_spr;
 var string g_hud7_spr;
-var string g_cross_spr;
-var string g_laser_spr;
-
-/* muzzleflash indices */
-var int MUZZLE_SMALL;
-var int MUZZLE_RIFLE;
-var int MUZZLE_WEIRD;
 
 struct
 {
@@ -62,14 +50,6 @@ struct
 
 	float m_flDamageIndicator;
 	float m_flTitleAlpha;
-
-	HLWeaponSelect weaponSelectionHUD;
 } g_seatslocal[4], *pSeatLocal;
 
-void HUD_DrawAmmo1(void);
-void HUD_DrawAmmo2(void);
-void HUD_DrawAmmo3(void);
-void HUD_DrawAmmoBar(vector pos, float val, float max, float a);
-void HUD_WeaponPickupNotify(int);
-
-font_s FONT_HUD_CROSS;
+font_s FONT_TOOL;

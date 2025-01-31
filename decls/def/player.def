@@ -1,0 +1,36 @@
+entityDef player
+{
+	"spawnclass"		"HLPlayer"
+	"health"			"100"
+	"maxarmor"			"100"
+	"bleeds"			"1"
+	"surfdata"			"flesh"
+	"armorProtection"	"0.2"
+	"armorBonus"		"0.5"
+	"def_precache1"		"weapon_ar2"
+}
+
+entityDef player_mp
+{
+	"inherit"			"player"
+	"ammo_pistol"		"150"
+	"ammo_smg1"			"45"
+	"ammo_frag"			"2"
+	"item"				"item_suit"
+	"weapon"			"weapon_crowbar,weapon_pistol,weapon_physcannon,weapon_frag,weapon_smg1"
+	"current_weapon"	"2"
+}
+
+entityDef player_rebels
+{
+	"inherit"	"player_mp"
+	"weapon"	"weapon_crowbar,weapon_pistol,weapon_physcannon,weapon_frag,weapon_smg1"
+	"team"		"2"
+}
+
+entityDef player_combine
+{
+	"inherit"	"player"
+	"weapon"	"weapon_stunstick,weapon_pistol,weapon_physcannon,weapon_frag,weapon_smg1"
+	"team"		"1"
+}

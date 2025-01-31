@@ -1,0 +1,37 @@
+entityDef npc_zombie_poison
+{
+	"spawnclass"		"ncMonster"
+	"model"		"models/zombie/poison.mdl"
+	"netname"		"Zombie"
+	"health"		"skill:zombie_health"
+	"mins"		"-16 -16 0"
+	"maxs"		"16 16 72"
+	"eye_height"		"64"
+	"team"		"2"
+	"surfdata"		"flesh"
+	"speed_walk"		"72"
+	"ragdoll"		"1"
+
+	"def_attack_melee"	"melee_zombie_stab"
+	"melee_range"		"96"
+
+	"act_idle"		"1"
+	"act_walk"		"3"
+	"act_run"		"4"
+
+	"act_smallFlinch"		"9,10"
+	"act_bigFlinch"			"11"
+
+	"act_meleeAttack1"		"7"
+	"act_meleeAttack2"		"7"
+	"act_dieSimple"			"12"
+
+	"snd_sight"		"monster_zombie.alert"
+	"snd_idle"		"monster_zombie.idle"
+	"snd_pain"		"monster_zombie.pain"
+	"snd_death"		""
+	"snd_melee_attack"	"monster_zombie.attack"
+	"snd_melee_attack_hit"	"monster_zombie.attackhit"
+	"snd_melee_attack_miss"	"monster_zombie.attackmiss"
+	"snd_thud"		"monster_generic.thud"
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 Marco Cawthorne <marco@icculus.org>
+ * Copyright (c) 2016-2021 Marco Cawthorne <marco@icculus.org>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -14,9 +14,6 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-float(entity foo, float chanid) getchannellevel = #0;
-void VGUI_ChooseTeam(void);
-
 /*
 =================
 ClientGame_Init
@@ -27,29 +24,39 @@ Comparable to worldspawn in SSQC in that it's mostly used for precaches
 void
 ClientGame_Init(float apilevel, string enginename, float engineversion)
 {
-	registercommand("changeteam");
-	registercommand("changeclass");
 	Obituary_Init();
+	registercommand("chooseteam");
+	registercommand("printSpawnList");
+
+	registercommand("lastinv");
+	registercommand("invnext");
+	registercommand("invprev");
 }
+
+void VGUI_ShowMOTD();
 
 void
 ClientGame_InitDone(void)
 {
+	VGUI_ShowMOTD();
+
+	Font_Load("fonts/tool.font", FONT_TOOL);
+
+	bool gameTitle = serverkeyfloat("gametitle");
+
+	if (gameTitle == true) {
+		pSeatLocal->m_flTitleAlpha = 4.0f;
+	}
 }
 
-void HLSprite_Init(void);
 void
 ClientGame_RendererRestart(string rstr)
 {
-	Obituary_Precache();
 	Damage_Precache();
+	Obituary_Precache();
 
-	FX_Blood_Init();
-
-	/* there's also muzzleflash.spr, but that's just MUZZLE_SMALL again */
-	MUZZLE_RIFLE = (int)getmodelindex("sprites/muzzleflash1.spr");
-	MUZZLE_SMALL = (int)getmodelindex("sprites/muzzleflash2.spr");
-	MUZZLE_WEIRD = (int)getmodelindex("sprites/muzzleflash3.spr");
+	HUD_Init();
+	Animation_Init();
 
 	BEAM_TRIPMINE = particleeffectnum("weapon_slam.beam");
 }

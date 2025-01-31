@@ -21,7 +21,7 @@ HLSingleplayerRules::IsMultiplayer(void)
 }
 
 void
-HLSingleplayerRules::PlayerDeath(NSClientPlayer pl)
+HLSingleplayerRules::PlayerDeath(ncPlayer pl)
 {
 	pl.SetMovetype(MOVETYPE_NONE);
 	pl.SetSolid(SOLID_NOT);
@@ -56,7 +56,7 @@ HLSingleplayerRules::PlayerDeath(NSClientPlayer pl)
 }
 
 void
-HLSingleplayerRules::PlayerSpawn(NSClientPlayer pl)
+HLSingleplayerRules::PlayerSpawn(ncPlayer pl)
 {
 	string playerModel = "models/player.mdl";
 
@@ -103,7 +103,7 @@ HLSingleplayerRules::PlayerSpawn(NSClientPlayer pl)
 } 
 
 bool
-HLSingleplayerRules::ImpulseCommand(NSClient bp, float num)
+HLSingleplayerRules::ImpulseCommand(ncClient bp, float num)
 {
 	switch (num) {
 	case 101:

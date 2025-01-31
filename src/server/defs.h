@@ -15,6 +15,3 @@
  */
 
 #include "../shared/defs.h"
-#include "../../../valve/src/server/gamerules.h"
-#include "../../../valve/src/server/items.h"
-#include "../../../valve/src/server/flashlight.h"

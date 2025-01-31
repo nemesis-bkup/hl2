@@ -1,0 +1,56 @@
+entityDef weapon_annabelle
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"#HL2_Annabelle"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/weapons/w_annabelle.mdl"
+	"model_view"		"models/weapons/v_shotgun.mdl"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
+
+	// weapon specific
+	"def_fireInfo"		"fireInfo_annabelle"
+	"inv_name"			"#HL2_Annabelle"
+	"clipSize"			"2"
+	"ammoType"			"ammo_annabelle"
+	"ammoRequired"		"1"
+
+	"act_holster"		"4"
+	"act_reloadStart"	"5"
+	"act_reload"			"6"
+	"act_reloadEnd"		"7"
+	"act_draw"			"3"
+	"act_idle"			"0"
+
+	"snd_empty"			"Weapon_Shotgun.Empty"
+
+//	"snd_reload"		"Weapon_Shotgun.Reload"
+
+	// HLWeapon specific
+	"hudSlot"		"3"
+	"hudSlotPos"	"1"
+	"weight"		"4"
+}
+
+entityDef projectile_annabelle
+{
+	"inherit"		"projectile_bullet_base"
+	"damage"		"skill:plr_dmg_buckshot"
+	"hitscans"		"12"
+	"spread"		"0.08716 0.08716"
+}
+
+entityDef fireInfo_annabelle
+{
+	"def_onFire"		"projectile_annabelle"
+	"ammoPerShot"		"1"
+	"fireRate"			"0.75"
+	"act_fire"			"1"
+	"punchAngle"		"-5 0 0"
+	"model_flash"		"sprites/muzzleflash2.spr"
+	"snd_fire"			"Weapon_Shotgun.Single"
+}

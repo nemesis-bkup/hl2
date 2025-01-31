@@ -23,7 +23,7 @@ HLGameRules::IsMultiplayer(void)
 /* we check what fields have changed over the course of the frame and network
  * only the ones that have actually changed */
 void
-HLGameRules::PlayerPostFrame(NSClientPlayer pp)
+HLGameRules::PlayerPostFrame(ncPlayer pp)
 {
 }
 
@@ -39,7 +39,7 @@ HLGameRules::LevelNewParms(void)
 }
 
 void
-HLGameRules::LevelDecodeParms(NSClientPlayer pp)
+HLGameRules::LevelDecodeParms(ncPlayer pp)
 {
 	player pl = (player)pp;
 	g_landmarkpos[0] = parm1;
@@ -89,7 +89,7 @@ HLGameRules::LevelDecodeParms(NSClientPlayer pp)
 }
 
 void
-HLGameRules::LevelChangeParms(NSClientPlayer pp)
+HLGameRules::LevelChangeParms(ncPlayer pp)
 {
 	player pl = (player)pp;
 	parm1 = g_landmarkpos[0];
@@ -137,14 +137,14 @@ HLGameRules::LevelChangeParms(NSClientPlayer pp)
 }
 
 void
-HLGameRules::PlayerConnect(NSClientPlayer pl)
+HLGameRules::PlayerConnect(ncPlayer pl)
 {
 	if (Plugin_PlayerConnect(pl) == FALSE)
 		bprint(PRINT_HIGH, sprintf("%s connected\n", pl.netname));
 }
 
 void
-HLGameRules::PlayerDisconnect(NSClientPlayer pl)
+HLGameRules::PlayerDisconnect(ncPlayer pl)
 {
 	bprint(PRINT_HIGH, sprintf("%s disconnected\n", pl.netname));
 
@@ -158,7 +158,7 @@ HLGameRules::PlayerDisconnect(NSClientPlayer pl)
 }
 
 void
-HLGameRules::PlayerKill(NSClientPlayer pp)
+HLGameRules::PlayerKill(ncPlayer pp)
 {
 	player pl = (player)pp;
 	Damage_Apply(pl, pl, pl.health, WEAPON_NONE, DMG_SKIP_ARMOR);
@@ -166,7 +166,7 @@ HLGameRules::PlayerKill(NSClientPlayer pp)
 
 
 void
-TriggerFlashlight(NSClient target)
+TriggerFlashlight(ncClient target)
 {
 	entity oldself = self;
 	self = target;
@@ -175,7 +175,7 @@ TriggerFlashlight(NSClient target)
 }
 
 void
-DropCTFItem(NSClientPlayer pl)
+DropCTFItem(ncPlayer pl)
 {
 	string item;
 
@@ -201,7 +201,7 @@ DropCTFItem(NSClientPlayer pl)
 }
 
 bool
-HLGameRules::ImpulseCommand(NSClient bp, float num)
+HLGameRules::ImpulseCommand(ncClient bp, float num)
 {
 	switch (num) {
 	case 100:

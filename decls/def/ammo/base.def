@@ -1,0 +1,9 @@
+entityDef ammo_base
+{
+	"spawnclass"	"ncItem"
+	"snd_acquire"	"HL2Player.PickupWeapon"
+	"snd_respawn"	"Item.Materialize"
+	"mins"			"-16 -16 0"
+	"maxs"			"16 16 16"
+	"physics"	"1"
+}

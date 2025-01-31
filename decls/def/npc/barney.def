@@ -1,0 +1,16 @@
+entityDef npc_barney
+{
+	"spawnclass"		"ncTalkMonster"
+	"model"		"models/barney.mdl"
+	"netname"		"Barney"
+	"health"		"200"
+	"mins"			"-16 -16 0"
+	"maxs"			"16 16 72"
+	"eye_height"		"64"
+	"team"			"0"
+	"propdata"		"actor_human"
+	"ragdoll"		"1"
+
+	"speed_walk"		"77"
+	"speed_run"		"364"
+}

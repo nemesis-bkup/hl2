@@ -67,7 +67,11 @@ Viewmodel_CalcBob2(void)
 	iCycle = (pViewBob2->m_flBobTime / var_cycle);
 
 	/* increment the input value for our cycle */
-	pViewBob2->m_flBobTime += frametime;
+
+	if (pSeat->m_ePlayer.vv_flags & VFL_SPRINTING)
+		pViewBob2->m_flBobTime += frametime * autocvar(v_bob_sprintscale, 2.0);
+	else
+		pViewBob2->m_flBobTime += frametime;
 
 	/* calculate the point in the cycle based on the input time */
 	pViewBob2->m_flBobCycle = pViewBob2->m_flBobTime - (iCycle * var_cycle);
@@ -116,7 +120,10 @@ Viewmodel_CalcBob(void)
 	iCycle = (pViewBob->m_flBobTime / var_cycle);
 
 	/* increment the input value for our cycle */
-	pViewBob->m_flBobTime += frametime;
+	if (pSeat->m_ePlayer.vv_flags & VFL_SPRINTING)
+		pViewBob->m_flBobTime += frametime * autocvar(v_bob_sprintscale, 2.0);
+	else
+		pViewBob->m_flBobTime += frametime;
 
 	/* calculate the point in the cycle based on the input time */
 	pViewBob->m_flBobCycle = pViewBob->m_flBobTime - (iCycle * var_cycle);

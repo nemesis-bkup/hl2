@@ -2,6 +2,7 @@
 #pragma target fte_5768
 //#pragma flag enable assumeint
 #pragma progs_dat  "../../progs.dat"
+#pragma forcecrc 54730
 
 #define QWSSQC
 #define SERVER
@@ -17,15 +18,10 @@
 ../../../src/gs-entbase/shared.src
 ../../../hl2/src/server/defs.h
 ../shared/include.src
-../../../valve/src/server/player.qc
+../../../hl2/src/server/HL2Suit.qc
 ../../../valve/src/server/HLScientist.qc
 ../../../src/botlib/include.src
-../../../valve/src/server/gamerules.qc
-../../../valve/src/server/gamerules_singleplayer.qc
-../../../valve/src/server/gamerules_multiplayer.qc
-../../../valve/src/server/server.qc
-../../../valve/src/server/flashlight.qc
-../../../valve/src/server/spawn.qc
+../../../hl2/src/server/server.qc
 ../../../src/server/include.src
 ../../../src/shared/include.src
 #endlist

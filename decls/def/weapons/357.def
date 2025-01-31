@@ -1,0 +1,61 @@
+entityDef weapon_357
+{
+	"editor_color"		".3 .3 1"
+	"editor_mins"		"-16 -16 -16"
+	"editor_maxs"		"16 16 16"
+	"editor_usage"		"#HL2_357Handgun"
+	"editor_rotatable"	"1"
+
+	"spawnclass"		"HLWeapon"
+	"model"				"models/weapons/w_357.mdl"
+	"model_view"		"models/weapons/v_357.mdl"
+	"snd_acquire"		"HL2Player.PickupWeapon"
+	"snd_respawn"		"Item.Materialize"
+
+	// weapon specific
+	"inv_ammo_357"	"6"
+	"def_fireInfo"	"fireInfo_357"
+	"inv_name"		".357 MAGNUM"
+	"clipSize"		"6"
+	"hl2hud_icon"	"e"
+
+	"act_fire"		"1"
+	"act_holster"	"4"
+	"act_reload"		"3"
+	"act_draw"		"2"
+	"act_idle"		"0"
+
+	"snd_fire"		"Weapon_357.Single"
+	"snd_empty"		"Weapon_Pistol.Empty"
+
+	// HLWeapon specific
+	"hudSlot"		"1"
+	"hudSlotPos"	"1"
+	"weight"		"7"
+	"physics"		"1"
+	"buggyIdleAnim"	"1"
+
+
+
+	// muzzle
+	"barrel"			"ValveBiped.Muzzle" // optimised out by compiler, wait for attachments
+	"def_ejectBrass"	"debris_pistolBrass"
+	"smoke_muzzle"		"muzzle.smoke"
+	"muzzleRelativeOffset"			"16 6 -1"
+}
+
+entityDef projectile_357
+{
+	"inherit"	"projectile_bullet_base"
+	"damage"	"skill:plr_dmg_357"
+}
+
+entityDef fireInfo_357
+{
+	"def_onFire"		"projectile_357"
+	"ammoType"			"ammo_357"
+	"ammoRequired"		"1"
+	"ammoPerShot"		"1"
+	"fireRate"			".75"
+	"punchSpring"		"-10 0 0"
+}

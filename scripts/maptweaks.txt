@@ -1,0 +1,4 @@
+gmod_compat
+{
+	replace gmod_player_start info_player_deathmatch
+}

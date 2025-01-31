@@ -114,7 +114,7 @@
 #undef PACKAGE_DOOMWAD
 #undef DOOMWADS
 #undef MAP_PROC
-#undef Q2BSPS
+#define Q2BSPS
 #define RFBSPS
 #define	VERTEXINDEXBYTES	2	//16bit indexes work everywhere but may break some file types, 32bit indexes are optional in gles<=2 and d3d<=9 and take more memory/copying but allow for bigger batches/models. Plugins need to be compiled the same way so this is no longer set per-renderer.
 #define SPRMODELS
@@ -136,8 +136,8 @@
 #undef HAVE_SPEEX	/* .xz decompression */
 #undef AVAIL_GZDEC	/* .gz decompression */
 #undef PACKAGE_DZIP	/* .dzip special-case archive support */
-#undef AVAIL_PNGLIB	/* .png image format support (read+screenshots) */
-#undef AVAIL_JPEGLIB	/* .jpeg image format support (read+screenshots) */
+#define AVAIL_PNGLIB	/* .png image format support (read+screenshots) */
+#define AVAIL_JPEGLIB	/* .jpeg image format support (read+screenshots) */
 #undef AVAIL_MP3_ACM	/* .mp3 support (in windows). */
 #undef IMAGEFMT_DDS
 #undef IMAGEFMT_PKM
@@ -177,7 +177,7 @@
 #define HAVE_MEDIA_DECODER	/* can play cin/roq, more with plugins */
 #undef HAVE_MEDIA_ENCODER	/* capture/capturedemo work */
 #undef HAVE_SPEECHTOTEXT	/* Windows speech-to-text thing */
-#undef SAVEDGAMES
+#define SAVEDGAMES
 #undef PACKAGEMANAGER		/* enable/disable/download packages and plugins */
 #undef HEADLESSQUAKE
 #undef WAYLANDQUAKE
@@ -188,8 +188,8 @@
 #undef IMAGEFMT_PSD
 #undef IMAGEFMT_XCF
 #undef IMAGEFMT_LMP
-#undef IMAGEFMT_PNG
-#undef IMAGEFMT_JPG
+#define IMAGEFMT_PNG
+#define IMAGEFMT_JPG
 #undef IMAGEFMT_GIF
 #undef IMAGEFMT_EXR
 #undef IPLOG
@@ -206,7 +206,7 @@
 /* things to configure qclib, which annoyingly doesn't include this
  * file itself */
 -DOMIT_QCC	/* disable the built-in qcc */
--DSIMPLE_QCVM	/* disable qc debugging and 32bit opcodes */
+//-DSIMPLE_QCVM	/* disable qc debugging and 32bit opcodes */
 #ifndef AVAIL_ZLIB
 -DNO_ZLIB	/* disable zlib */
 #endif

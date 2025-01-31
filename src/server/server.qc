@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Marco Cawthorne <marco@icculus.org>
+ * Copyright (c) 2016-2020 Marco Cawthorne <marco@icculus.org>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -15,26 +15,12 @@
  */
 
 void
-Game_InitRules(void)
-{	
-	if (cvar("sv_playerslots") == 1 || cvar("coop") == 1) {
-		g_grMode = spawn(HLSingleplayerRules);
-	} else {
-		g_grMode = spawn(HLMultiplayerRules);
-	}
-}
-
-void
 Game_Worldspawn(void)
 {
-	Sound_Precache("ammo.pickup");
-	Sound_Precache("ammo.respawn");
-	Sound_Precache("player.die");
-	Sound_Precache("player.fall");
-	Sound_Precache("player.lightfall");
+	Sound_Precache("Player.FlashLightOff");
+	Sound_Precache("Player.FlashLightOn");
+	Sound_Precache("item_weaponbox.Pickup");
 	precache_model("models/player.mdl");
 	precache_model("models/w_weaponbox.mdl");
-	Weapons_Init();
-	Player_Precache();
-	FX_Corpse_Init();
+	Animation_Init();
 }

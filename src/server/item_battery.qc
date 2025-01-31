@@ -29,7 +29,7 @@ The values can be tweaked in the skill.cfg file.
 -------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
 model="models/w_battery.mdl"
 */
-class item_battery:NSRenderableEntity
+class item_battery:ncRenderableEntity
 {
 	void(void) item_battery;
 
@@ -44,7 +44,7 @@ void item_battery::Touch(entity eToucher)
 		return;
 	}
 
-	NSClientPlayer pl = (NSClientPlayer)eToucher;
+	ncPlayer pl = (ncPlayer)eToucher;
 
 	/* don't pick up if we don't have a suit */
 	if (!(pl.g_items & ITEM_SUIT))

@@ -1,0 +1,53 @@
+entityDef npc_police
+{
+	"spawnclass"	"NSSquadMonster"
+	"model"			"models/police_cheaple.mdl"
+	"netname"		"Metro Police"
+	"health"		"50"
+	"mins"			"-16 -16 0"
+	"maxs"			"16 16 72"
+	"eye_height"	"64"
+	"team"			"1"
+	"propdata"		"actor_human"
+	"speed_walk"	"77"
+	"speed_run"		"364"
+	"ragdoll"		"1"
+	"surfdata"		"flesh"
+
+	"act_idle"		"0"
+	"act_walk"		"6"
+	"act_run"		"14"
+
+	"act_dieSimple"			"10,11,12,13,14,15,16,17"
+
+	// melee attack
+	"def_attack_melee"		"melee_police_kick"
+	"attack_melee_range"	"96"
+(* 	"snd_melee_attack"		"HGrunt.Kick" *)
+
+	// primary ranged attack
+	"def_attack_ranged"		"ranged_police_pistol"
+(* 	"snd_ranged_attack"		"HGrunt.9MM" *)
+	"attack_ranged_range"	"1024"
+	"reload_count"			"30"
+
+
+
+}
+
+entityDef melee_police_kick
+{
+	"spawnclass"	"NSProjectile"
+	"is_bullet"		"1"
+	"damage"		"15"
+	"delay"			"0.25"
+	"range"			"64"
+}
+
+entityDef ranged_police_pistol
+{
+	"inherit"		"projectile_bullet_base"
+	"damage"		"5"
+	"delay"			"0.75"
+}
+

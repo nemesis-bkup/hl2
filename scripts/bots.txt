@@ -1,0 +1,77 @@
+{
+	name Barney
+	model "models/police.mdl"
+}
+{
+	name Cubbage
+	model "models/combine_soldier_prisonguard.mdl"
+}
+{
+	name GMan
+	funname G-Man
+	model "models/humans/group03/female_01.mdl"
+}
+{
+	name Gordon
+	model "models/humans/group03/male_08.mdl"
+}
+{
+	name Breen
+	model "models/combine_super_soldier.mdl"
+}
+{
+	name Animal
+	model "models/combine_soldier.mdl"
+}
+{
+	name CptVance
+	model "models/humans/group03/male_09.mdl"
+}
+{
+	name Samuel
+	model "models/humans/group03/male_05.mdl"
+}
+{
+	name Kleiner
+	model "models/humans/group03/male_06.mdl"
+}
+{
+	name Conscript
+	model "models/humans/group03/female_07.mdl"
+}
+{
+	name Dhabih
+	model "models/humans/group03/male_07.mdl"
+}
+{
+	name Consul
+	model "models/humans/group03/female_06.mdl"
+}
+{
+	name Hydra
+	model "models/humans/group03/female_04.mdl"
+}
+{
+	name Priest
+	model "models/humans/group03/female_02.mdl"
+}
+{
+	name Megan
+	model "models/humans/group03/female_03.mdl"
+}
+{
+	name Frog
+	model "models/humans/group03/male_01.mdl"
+}
+{
+	name Val
+	model "models/humans/group03/male_02.mdl"
+}
+{
+	name Max
+	model "models/humans/group03/male_03.mdl"
+}
+{
+	name Cremator
+	model "models/humans/group03/male_04.mdl"
+}

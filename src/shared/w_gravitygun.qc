@@ -96,14 +96,17 @@ void w_gravitygun_primary(player pl)
 	srcOrg = pl.GetEyePos();
 	endOrg = srcOrg + v_forward * 1024;
 
+	int oldhitcontents = owner.hitcontentsmaski;
+	owner.hitcontentsmaski = CONTENTBITS_POINTSOLID | CONTENTBIT_CORPSE | CONTENTBIT_WATER | CONTENTBIT_SLIME | CONTENTBIT_LAVA | CONTENTBIT_PROJECTILE;
 	traceline(srcOrg, endOrg, MOVE_NORMAL, pl);
+	owner.hitcontentsmaski = oldhitcontents;
 
 	print(sprintf("%v %v: %f %s\n", srcOrg, endOrg, trace_fraction, trace_ent.classname));
 
 	if (trace_fraction < 1.0) {
 #ifdef SERVER
 		if (trace_ent.isPhysics) {
-			NSPhysicsEntity physEnt = (NSPhysicsEntity)trace_ent;
+			ncPhysicsEntity physEnt = (ncPhysicsEntity)trace_ent;
 
 			physEnt.ApplyForceCenter(v_forward * 15000);
 			physEnt.ApplyForceOffset(v_forward * 600, trace_endpos);
@@ -139,7 +142,7 @@ void w_gravitygun_secondary(player pl)
 #ifdef SERVER
 		if (trace_ent.isPhysics) {
 			vector pullDirection;
-			NSPhysicsEntity physEnt = (NSPhysicsEntity)trace_ent;
+			ncPhysicsEntity physEnt = (ncPhysicsEntity)trace_ent;
 
 			pullDirection = normalize(srcOrg - physEnt.WorldSpaceCenter());
 			//pullDirection *= (physEnt.mass + 0.5) * (1/50.0f);

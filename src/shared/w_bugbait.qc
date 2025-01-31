@@ -154,7 +154,7 @@ void w_bugbait_release(player pl)
 		vector throwDirection;
 		float throwingStrength;
 
-		NSProjectile nade = (NSProjectile )EntityDef_CreateClassname("projectile_frag");
+		ncProjectile nade = (ncProjectile )EntityDef_CreateClassname("projectile_frag");
 		nade.SetOwner(pl);
 
 		throwDirection = pl.v_angle;

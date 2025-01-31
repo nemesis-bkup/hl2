@@ -1,0 +1,50 @@
+#include "items/healthcharger.def"
+#include "items/suitcharger.def"
+
+entityDef item_battery
+{
+	"spawnclass"	"ncItem"
+	"model"			"models/items/battery.mdl"
+	"mins"			"-16 -16 0"
+	"maxs"			"16 16 16"
+	"snd_acquire"  "ItemBattery.Touch"
+	"snd_respawn"	"Item.Materialize"
+	"inv_armor"		"skill:battery"
+	"requires"		"item_suit"
+	"physics"	"1"
+}
+
+entityDef item_healthvial
+{
+	"spawnclass"	"ncItem"
+	"model"			"models/healthvial.mdl"
+	"mins"			"-16 -16 0"
+	"maxs"			"16 16 16"
+	"snd_acquire"	"HealthVial.Touch"
+	"snd_respawn"	"Item.Materialize"
+	"inv_health"	"skill:healthvial"
+	"physics"	"1"
+}
+
+entityDef item_healthkit
+{
+	"spawnclass"	"ncItem"
+	"model"			"models/items/healthkit.mdl"
+	"mins"			"-16 -16 0"
+	"maxs"			"16 16 16"
+	"snd_acquire"	"HealthKit.Touch"
+	"snd_respawn"	"Item.Materialize"
+	"inv_health"	"skill:healthkit"
+	"physics"	"1"
+}
+
+entityDef item_suit
+{
+	"spawnclass"	"HL2Suit"
+	"model"			"models/items/hevsuit.mdl"
+	"mins"			"-16 -16 0"
+	"maxs"			"16 16 16"
+	"snd_acquire"	"item.suit" // needs to be a sentence
+	"snd_respawn"	"Item.Materialize"
+	"inv_carry"		"1"
+}

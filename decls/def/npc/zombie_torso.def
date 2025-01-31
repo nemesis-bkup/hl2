@@ -1,0 +1,36 @@
+entityDef npc_zombie_torso
+{
+	"spawnclass"		"ncMonster"
+	"model"		"models/zombie/classic_torso.mdl"
+	"netname"		"Zombie"
+	"health"		"skill:zombie_health"
+	"mins"		"-16 -16 0"
+	"maxs"		"16 16 72"
+	"eye_height"		"64"
+	"team"		"2"
+	"surfdata"		"flesh"
+	"speed_walk"		"48"
+	"ragdoll"		"1"
+
+	"def_attack_melee"	"melee_zombie_stab"
+	"melee_range"		"96"
+
+	"act_idle"		"0,1"
+	"act_walk"		"2"
+
+	"act_smallFlinch"		"25,26,27"
+	"act_bigFlinch"			"25,26,27"
+
+	"act_meleeAttack1"		"3"
+	"act_meleeAttack2"		"3"
+	"act_dieSimple"			"4"
+
+	"snd_sight"		"monster_zombie.alert"
+	"snd_idle"		"monster_zombie.idle"
+	"snd_pain"		"monster_zombie.pain"
+	"snd_death"		""
+	"snd_melee_attack"	"monster_zombie.attack"
+	"snd_melee_attack_hit"	"monster_zombie.attackhit"
+	"snd_melee_attack_miss"	"monster_zombie.attackmiss"
+	"snd_thud"		"monster_generic.thud"
+}

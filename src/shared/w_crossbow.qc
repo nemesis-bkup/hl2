@@ -145,7 +145,7 @@ w_crossbow_primary(player pl)
 
 		/* fake bolt */
 		if (trace_ent == world) {
-			NSRenderableEntity bolt_used = spawn(NSRenderableEntity);
+			ncRenderableEntity bolt_used = spawn(ncRenderableEntity);
 			bolt_used.SetSolid(SOLID_NOT);
 			bolt_used.SetMovetype(MOVETYPE_NONE);
 			bolt_used.SetModel("models/crossbow_bolt.mdl");
@@ -158,9 +158,9 @@ w_crossbow_primary(player pl)
 	} else {
 		/* zoomed out = explosive */
 		if (rules.IsMultiplayer() == true) {
-			NSProjectile_SpawnDef("projectile_arrowExplosive", pl);
+			ncProjectile_SpawnDef("projectile_arrowExplosive", pl);
 		} else {
-			NSProjectile_SpawnDef("projectile_arrow", pl);
+			ncProjectile_SpawnDef("projectile_arrow", pl);
 		}
 	}
 
@@ -202,7 +202,7 @@ w_crossbow_secondary(player pl)
 void
 w_crossbow_reload(player pl)
 {
-	NSTimer reload = __NULL__;
+	ncTimer reload = __NULL__;
 
 	if (pl.w_attack_next > 0.0) {
 		return;

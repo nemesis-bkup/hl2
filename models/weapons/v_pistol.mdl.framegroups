@@ -1,0 +1,24 @@
+{
+  "framegroups": [
+    {
+      "poses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fps": 10,
+      "loop": false,
+      "name": "bob",
+      "action": 5,
+      "actionweight": 0.5,
+      "events": [
+        {
+          "value": "zomgwtfbbq",
+          "code": 5001,
+          "timestamp": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+entityDef projectile_bullet_base
+{
+	"spawnclass"			"ncProjectile"
+	"is_bullet"				"1"
+	"detonate_on_world" 	"1"
+}

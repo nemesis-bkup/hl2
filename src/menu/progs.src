@@ -2,7 +2,7 @@
 //#pragma flag enable assumeint
 #pragma progs_dat  "../../menu.dat"
 #define MENU
-#define GAME_DIR "base"
+#define GAME_DIR "hl2mp"
 
 #includelist
 ../../../src/menu-vgui/includes.src
