@@ -59,6 +59,16 @@ AllowFlashlight(void)
 }
 
 void
+CodeCallback_Precache(void)
+{
+	precache.Entity("player_mp");
+
+	for (int i = 0; i < g_stockHL2MPPlayerModels.length; i++) {
+		precache.Model(g_stockHL2MPPlayerModels[i]);
+	}
+}
+
+void
 CodeCallback_StartGameType(void)
 {
 	motd.LoadDefault();
@@ -71,9 +81,6 @@ CodeCallback_StartGameType(void)
 	}
 
 	game.SetSpawnPoint("info_player_deathmatch");
-	for (int i = 0; i < g_stockHL2MPPlayerModels.length; i++) {
-		precache.Model(g_stockHL2MPPlayerModels[i]);
-	}
 }
 
 void

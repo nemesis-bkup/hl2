@@ -25,9 +25,10 @@ Git clone [Nuclide](https://code.idtech.space/vera/nuclide) first, run `make upd
 ```
 git clone https://code.idtech.space/fn/hl2 hl2
 make game GAME=hl2
+make plugins GAME=hl2
 ```
 
-The last command will build the game-logic.
+The last command will build the plugins required for the engine to load the data files. The one before it will build the game-logic.
 Make sure that Nuclide-SDK has `fteqcc` and `fteqw` present for building and running, respectively.
 It will also respect versions installed by the package manager, just make sure it's up to date.
 

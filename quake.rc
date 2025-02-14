@@ -2,3 +2,6 @@ exec default_controls.cfg
 exec default_cvar.cfg
 exec default_video.cfg
 exec default_hl2.cfg
+
+plug_load ode
+plug_load hl2
