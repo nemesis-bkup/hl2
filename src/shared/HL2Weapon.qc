@@ -15,11 +15,9 @@
  */
 
 void
-HLWeapon::HLWeapon(void)
+hlWeapon::hlWeapon(void)
 {
 #ifdef CLIENT
-	m_iHudSlot = 0i;
-	m_iHudSlotPos = 0i;
 	m_ammoIcon = __NULL__;
 	m_ammo2Icon = __NULL__;
 	m_crossHair = __NULL__;
@@ -34,7 +32,7 @@ HLWeapon::HLWeapon(void)
 
 #ifdef SERVER
 void
-HLWeapon::SpawnKey(string keyName, string setValue)
+hlWeapon::SpawnKey(string keyName, string setValue)
 {
 	switch (keyName) {
 	default:
@@ -44,26 +42,26 @@ HLWeapon::SpawnKey(string keyName, string setValue)
 #endif
 
 void
-HLWeapon::UpdateFireInfoCache(void)
+hlWeapon::UpdateFireInfoCache(void)
 {
 	super::UpdateFireInfoCache();
 
-	m_physcannonAlt = GetSubDefBool(m_strLastFireInfo, "physcannonAlt");
-	m_physcannonCenterForce = GetSubDefFloat(m_strLastFireInfo, "physcannonCenterForce");
-	m_physcannonForceOffset = GetSubDefFloat(m_strLastFireInfo, "physcannonForceOffset");
-	m_physcannonPushRange = GetSubDefFloat(m_strLastFireInfo, "physcannonPushRange");
-	m_physcannonPullRange = GetSubDefFloat(m_strLastFireInfo, "physcannonPullRange");
-	m_physcannonPullForce = GetSubDefFloat(m_strLastFireInfo, "physcannonPullForce");
-	m_physcannonReflectMultiplier = GetSubDefFloat(m_strLastFireInfo, "physcannonReflectMultiplier");
-	m_fiPhysgun = GetSubDefBool(m_strLastFireInfo, "physgun");
-	m_fiPhysgunAlt = GetSubDefBool(m_strLastFireInfo, "physgunAlt");
-	m_fiToolgun = GetSubDefBool(m_strLastFireInfo, "toolgun");
-	m_fiToolgunAlt = GetSubDefBool(m_strLastFireInfo, "toolgunAlt");
+	m_physcannonAlt = GetSubDefBool(m_weaponLastFireInfo, "physcannonAlt");
+	m_physcannonCenterForce = GetSubDefFloat(m_weaponLastFireInfo, "physcannonCenterForce");
+	m_physcannonForceOffset = GetSubDefFloat(m_weaponLastFireInfo, "physcannonForceOffset");
+	m_physcannonPushRange = GetSubDefFloat(m_weaponLastFireInfo, "physcannonPushRange");
+	m_physcannonPullRange = GetSubDefFloat(m_weaponLastFireInfo, "physcannonPullRange");
+	m_physcannonPullForce = GetSubDefFloat(m_weaponLastFireInfo, "physcannonPullForce");
+	m_physcannonReflectMultiplier = GetSubDefFloat(m_weaponLastFireInfo, "physcannonReflectMultiplier");
+	m_fiPhysgun = GetSubDefBool(m_weaponLastFireInfo, "physgun");
+	m_fiPhysgunAlt = GetSubDefBool(m_weaponLastFireInfo, "physgunAlt");
+	m_fiToolgun = GetSubDefBool(m_weaponLastFireInfo, "toolgun");
+	m_fiToolgunAlt = GetSubDefBool(m_weaponLastFireInfo, "toolgunAlt");
 }
 
 #ifdef SERVER
 void
-HLWeapon::PhyscannonUngrab(void)
+hlWeapon::PhyscannonUngrab(void)
 {
 	if (!m_grabbedEntity) {
 		return;
@@ -77,7 +75,7 @@ HLWeapon::PhyscannonUngrab(void)
 #endif
 
 void
-HLWeapon::PhyscannonPush(void)
+hlWeapon::PhyscannonPush(void)
 {
 	ncPlayer ourOwner = (ncPlayer)GetOwner();
 	vector forwardDir = anglesToForward(ourOwner.v_angle);
@@ -137,7 +135,7 @@ UpdatePos(void)
 		return;
 	}
 
-	HLWeapon physCannon = (HLWeapon)ourOwner.m_activeWeapon;
+	hlWeapon physCannon = (hlWeapon)ourOwner.m_activeWeapon;
 	vector forwardDir = anglesToForward(ourOwner.v_angle);
 	vector targetOrg = ourOwner.GetEyePos() + forwardDir * physCannon.m_flPhysgunDistance;
 	self.velocity = (targetOrg - self.origin) * 10.0;
@@ -146,7 +144,7 @@ UpdatePos(void)
 }
 
 void
-HLWeapon::PhyscannonPull(void)
+hlWeapon::PhyscannonPull(void)
 {
 #ifdef SERVER
 	ncPlayer ourOwner = (ncPlayer)GetOwner();
@@ -198,7 +196,7 @@ HLWeapon::PhyscannonPull(void)
 }
 
 void
-HLWeapon::PhysgunFire(void)
+hlWeapon::PhysgunFire(void)
 {
 #ifdef SERVER
 	ncPlayer ourOwner = (ncPlayer)GetOwner();
@@ -239,7 +237,7 @@ HLWeapon::PhysgunFire(void)
 }
 
 void
-HLWeapon::PhysgunFreeze(void)
+hlWeapon::PhysgunFreeze(void)
 {
 #ifdef SERVER
 	if (!m_grabbedEntity) {
@@ -253,7 +251,7 @@ HLWeapon::PhysgunFreeze(void)
 }
 
 void
-HLWeapon::ReleasedWeaponAttack(string fireInfo)
+hlWeapon::ReleasedWeaponAttack(string fireInfo)
 {
 	if (m_fiPhysgun) {
 #ifdef SERVER
@@ -267,7 +265,7 @@ HLWeapon::ReleasedWeaponAttack(string fireInfo)
 }
 
 void
-HLWeapon::InputFrame(void)
+hlWeapon::InputFrame(void)
 {
 	if (!m_fiPhysgun) {
 		return;
@@ -303,9 +301,9 @@ HLWeapon::InputFrame(void)
 #endif
 		}
 		input_movevalues = g_vec_null;
-		ourOwner.vv_flags |= VFL_FROZEN;
+		ourOwner.m_nuclideFlags |= VFL_FROZEN;
 	} else {
-		ourOwner.vv_flags &= ~VFL_FROZEN;
+		ourOwner.m_nuclideFlags &= ~VFL_FROZEN;
 	}
 }
 
@@ -313,7 +311,7 @@ HLWeapon::InputFrame(void)
 .vector first_pos;
 
 void
-HLWeapon::ToolgunFire(bool altFire)
+hlWeapon::ToolgunFire(bool altFire)
 {
 #ifdef SERVER
 	ncPlayer ourOwner = (ncPlayer)GetOwner();
@@ -455,14 +453,14 @@ HLWeapon::ToolgunFire(bool altFire)
 	case GMTOOL_EMITTER:
 	case GMTOOL_SPRITES:
 	case GMTOOL_WHEELS:
-		NSError("Unimplemented");
+		ncError("Unimplemented");
 		break;
 	}
 #endif
 }
 
 void
-HLWeapon::FiredWeaponAttack(string fireInfo)
+hlWeapon::FiredWeaponAttack(string fireInfo)
 {
 	if (m_fiToolgun) {
 		ToolgunFire(m_fiToolgunAlt ? true : false);
@@ -483,7 +481,7 @@ HLWeapon::FiredWeaponAttack(string fireInfo)
 }
 
 void
-HLWeapon::AddedToInventory(void)
+hlWeapon::AddedToInventory(void)
 {
 	super::AddedToInventory();
 
@@ -508,16 +506,16 @@ HLWeapon::AddedToInventory(void)
 		m_crossHair = sprintf("%s.crosshair", strtolower(classname));
 	}
 
-	m_icon = GetDefString("hl2hud_icon");
+	m_weaponHUDIcon = GetDefString("hl2hud_icon");
 
-	if (m_icon == "") {
-		m_icon = "V";
+	if (m_weaponHUDIcon == "") {
+		m_weaponHUDIcon = "V";
 	}
 
-	m_iconSel = GetDefString("hl2hud_iconSelected");
+	m_weaponHUDIconSel = GetDefString("hl2hud_iconSelected");
 
-	if (m_iconSel == "") {
-		m_iconSel = m_icon;
+	if (m_weaponHUDIconSel == "") {
+		m_weaponHUDIconSel = m_weaponHUDIcon;
 	}
 
 	if (m_ammoIcon == "none") {
@@ -532,12 +530,12 @@ HLWeapon::AddedToInventory(void)
 		m_crossHair = __NULL__;
 	}
 
-	if (m_icon == "none") {
-		m_icon = __NULL__;
+	if (m_weaponHUDIcon == "none") {
+		m_weaponHUDIcon = __NULL__;
 	}
 
-	if (m_iconSel == "none") {
-		m_iconSel = __NULL__;
+	if (m_weaponHUDIconSel == "none") {
+		m_weaponHUDIconSel = __NULL__;
 	}
 
 #endif
@@ -547,7 +545,7 @@ HLWeapon::AddedToInventory(void)
 
 #ifdef CLIENT
 void
-HLWeapon::DrawToolgunText(void)
+hlWeapon::DrawToolgunText(void)
 {
 	int toolMode = cvar("gm_toolmode");
 
@@ -561,7 +559,7 @@ HLWeapon::DrawToolgunText(void)
 }
 
 void
-HLWeapon::UpdateGUI(void)
+hlWeapon::UpdateGUI(void)
 {
 	ncPlayer ourOwner = __NULL__;
 
@@ -569,6 +567,7 @@ HLWeapon::UpdateGUI(void)
 		DrawToolgunText();
 	}
 
+#if 0
 	/* draw crosshair */
 	//HLSprite_DrawCrosshair(m_crossHair);
 
@@ -622,10 +621,11 @@ HLWeapon::UpdateGUI(void)
 		ourOwner.a_ammo3 = ourOwner.GetReserveAmmo(m_secondaryAmmoType);
 		//HUD_DrawAmmo3();
 	}
+#endif
 }
 
 void
-HLWeapon::DrawLaser(void)
+hlWeapon::DrawLaser(void)
 {
 	ncPlayer ourOwner = (ncPlayer)GetOwner();
 	float lerpValue;

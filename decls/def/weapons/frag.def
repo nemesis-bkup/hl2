@@ -6,7 +6,7 @@ entityDef weapon_frag
 	"editor_usage"		"#HL2_Grenade"
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"HLWeapon"
+	"spawnclass"		"hlWeapon"
 	"model"				"models/items/grenadeAmmo.mdl"
 	"model_view"		"models/weapons/v_grenade.mdl"
 	"snd_acquire"		"HL2Player.PickupWeapon"
@@ -33,7 +33,7 @@ entityDef weapon_frag
 	"act_delay"				"1"
 	"act_release"			"3"
 
-	// HLWeapon specific
+	// hlWeapon specific
 	"hudSlot"		"4"
 	"hudSlotPos"	"0"
 	"weight"		"1"

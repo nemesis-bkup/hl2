@@ -112,7 +112,7 @@ HUD_Init(void)
 }
 
 void
-HUD_RendererRestarted(void)
+HUD_ReloadVideoResources(void)
 {
 	font.Load("fonts/hl2.font", FONT_HL2);
 	font.Load("fonts/weaponicon.font", FONT_WEAPONICON);

@@ -1,6 +1,6 @@
 entityDef npc_police
 {
-	"spawnclass"	"NSSquadMonster"
+	"spawnclass"	"ncTalkMonster"
 	"model"			"models/police_cheaple.mdl"
 	"netname"		"Metro Police"
 	"health"		"50"
@@ -37,7 +37,7 @@ entityDef npc_police
 
 entityDef melee_police_kick
 {
-	"spawnclass"	"NSProjectile"
+	"spawnclass"	"ncProjectile"
 	"is_bullet"		"1"
 	"damage"		"15"
 	"delay"			"0.25"

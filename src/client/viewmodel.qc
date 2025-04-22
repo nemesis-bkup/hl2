@@ -68,7 +68,7 @@ Viewmodel_CalcBob2(void)
 
 	/* increment the input value for our cycle */
 
-	if (pSeat->m_ePlayer.vv_flags & VFL_SPRINTING)
+	if (pSeat->m_ePlayer.m_nuclideFlags & VFL_SPRINTING)
 		pViewBob2->m_flBobTime += frametime * autocvar(v_bob_sprintscale, 2.0);
 	else
 		pViewBob2->m_flBobTime += frametime;
@@ -120,7 +120,7 @@ Viewmodel_CalcBob(void)
 	iCycle = (pViewBob->m_flBobTime / var_cycle);
 
 	/* increment the input value for our cycle */
-	if (pSeat->m_ePlayer.vv_flags & VFL_SPRINTING)
+	if (pSeat->m_ePlayer.m_nuclideFlags & VFL_SPRINTING)
 		pViewBob->m_flBobTime += frametime * autocvar(v_bob_sprintscale, 2.0);
 	else
 		pViewBob->m_flBobTime += frametime;

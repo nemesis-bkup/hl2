@@ -6,7 +6,7 @@ entityDef weapon_alyxgun
 	"editor_usage"		"#HL2_AlyxGun"
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"HLWeapon"
+	"spawnclass"		"hlWeapon"
 	"model"				"models/weapons/W_Alyx_Gun.mdl"
 	"model_view"		"models/weapons/v_pistol.mdl"
 	"snd_acquire"		"HL2Player.PickupWeapon"
@@ -31,7 +31,7 @@ entityDef weapon_alyxgun
 	"snd_fire"		"Weapon_Pistol.NPC_Single"
 	"snd_empty"		"Weapon_Pistol.Empty"
 
-	// HLWeapon specific
+	// hlWeapon specific
 	"hudSlot"		"1"
 	"hudSlotPos"	"4"
 	"weight"		"2"
@@ -51,5 +51,4 @@ entityDef fireInfo_alyxgun
 	"ammoPerShot"		"1"
 	"fireRate"			".25"
 	"punchAngle"		"-10 0 0"
-	"model_flash"		"sprites/muzzleflash2.spr"
 }

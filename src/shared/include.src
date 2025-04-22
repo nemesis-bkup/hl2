@@ -6,6 +6,5 @@
 ../../../hl2/src/shared/HL2Player.qc
 ../../../hl2/src/shared/animations.qc
 ../../../valve/src/shared/fx_gaussbeam.qc
-../../../valve/src/shared/HLGaussBeam.qc
 ../../../hl2/src/shared/HL2Weapon.qc
 #endlist

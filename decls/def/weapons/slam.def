@@ -6,7 +6,7 @@ entityDef weapon_slam
 	"editor_usage"		"#HL2_SLAM"
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"HLWeapon"
+	"spawnclass"		"hlWeapon"
 	"model"				"models/weapons/w_slam.mdl"
 	"model_view"		"models/weapons/v_slam.mdl"
 	"snd_acquire"		"HL2Player.PickupWeapon"
@@ -32,7 +32,7 @@ entityDef weapon_slam
 //
 //	"snd_detonate"		"Weapon_SLAM.SatchelDetonate TODO
 
-	// HLWeapon specific
+	// hlWeapon specific
 	"hudSlot"		"4"
 	"hudSlotPos"	"2"
 	"weight"		"1"
@@ -60,7 +60,7 @@ entityDef projectile_slam
 	"def_splash_damage"	"damage_satchelExplosion"
 	"model_detonate"		"fx_explosion.main"
 	"snd_explode"		"BaseGrenade.Explode"
-	
+
 }
 
 entityDef damage_satchelExplosion

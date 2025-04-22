@@ -6,7 +6,7 @@ entityDef weapon_physcannon
 	"editor_usage"		"#HL2_GravityGun"
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"HLWeapon"
+	"spawnclass"		"hlWeapon"
 	"model"			"models/weapons/w_physics.mdl"
 	"model_view"		"models/weapons/v_physcannon.mdl"
 	"snd_acquire"		"HL2Player.PickupWeapon"
@@ -24,7 +24,7 @@ entityDef weapon_physcannon
 
 	"snd_empty"		"Weapon_PhysCannon.DryFire"
 
-	// HLWeapon specific
+	// hlWeapon specific
 	"hudSlot"		"0"
 	"hudSlotPos"	"1"
 	"weight"		"0"
@@ -50,7 +50,6 @@ entityDef fireInfo_physcannon
 {
 	"fireRate"		"0.7"
 	"punchSpring"		"-1.5 0 0"
-	"model_flash"		"sprites/muzzleflash2.spr"
 	"act_fire"		"6"
 	"snd_fire"		"Weapon_PhysCannon.Launch"
 }
@@ -58,7 +57,6 @@ entityDef fireInfo_physcannon
 entityDef fireInfo_physcannonAlt
 {
 	"fireRate"		"0.001"
-	"model_flash"		"sprites/muzzleflash2.spr"
 	"act_fire"		"6"
 	"act_idle"		"3"
 	"snd_fireStop"		"Weapon_PhysCannon.Pickup"

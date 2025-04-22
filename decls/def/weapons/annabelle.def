@@ -6,7 +6,7 @@ entityDef weapon_annabelle
 	"editor_usage"		"#HL2_Annabelle"
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"HLWeapon"
+	"spawnclass"		"hlWeapon"
 	"model"				"models/weapons/w_annabelle.mdl"
 	"model_view"		"models/weapons/v_shotgun.mdl"
 	"snd_acquire"		"HL2Player.PickupWeapon"
@@ -30,7 +30,7 @@ entityDef weapon_annabelle
 
 //	"snd_reload"		"Weapon_Shotgun.Reload"
 
-	// HLWeapon specific
+	// hlWeapon specific
 	"hudSlot"		"3"
 	"hudSlotPos"	"1"
 	"weight"		"4"
@@ -51,6 +51,5 @@ entityDef fireInfo_annabelle
 	"fireRate"			"0.75"
 	"act_fire"			"1"
 	"punchAngle"		"-5 0 0"
-	"model_flash"		"sprites/muzzleflash2.spr"
 	"snd_fire"			"Weapon_Shotgun.Single"
 }

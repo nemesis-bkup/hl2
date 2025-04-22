@@ -1,6 +1,6 @@
 entityDef prop_combine_ball
 {
-	"spawnclass"			"NSProjectile"
+	"spawnclass"			"ncProjectile"
 	"model"					"models/effects/combineball.mdl"
 
 	"damage"				"skill:npc_dmg_combineball"

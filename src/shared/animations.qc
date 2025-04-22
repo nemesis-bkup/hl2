@@ -48,13 +48,13 @@ Animation_Init(void)
 }
 
 float
-Animation_GetTopTime(HLPlayer pl)
+Animation_GetTopTime(hlPlayer pl)
 {
 	return pl.anim_top_time;
 }
 
 void
-Animation_TimerUpdate(HLPlayer pl, float ftime)
+Animation_TimerUpdate(hlPlayer pl, float ftime)
 {
 	makevectors([0, pl.v_angle[1], 0]);
 
@@ -79,7 +79,7 @@ depending on what the player is doing
 =================
 */
 void
-Animation_PlayerUpdate(HLPlayer pl)
+Animation_PlayerUpdate(hlPlayer pl)
 {
 	if (!pl.skeletonindex) {
 		pl.skeletonindex = skel_create(g_flMalePlayerSkeleton);
@@ -170,7 +170,7 @@ Animation_PlayerUpdate(HLPlayer pl)
 }
 
 void
-Animation_PlayerTop(HLPlayer pl, float topanim, float timer)
+Animation_PlayerTop(hlPlayer pl, float topanim, float timer)
 {
 	if (timer == -1)
 		timer = frameduration(g_flMalePlayerSkeleton, topanim);
@@ -181,7 +181,7 @@ Animation_PlayerTop(HLPlayer pl, float topanim, float timer)
 }
 
 void
-Animation_PlayerBottom(HLPlayer pl, float botanim, float timer)
+Animation_PlayerBottom(hlPlayer pl, float botanim, float timer)
 {
 	pl.anim_bottom = botanim;
 }

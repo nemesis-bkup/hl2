@@ -19,7 +19,7 @@ ClientGame_EntityUpdate(float id, float new)
 {
 	switch (id) {
 	case ENT_WEAPON:
-		NSENTITY_READENTITY(HLWeapon, new)
+		NSENTITY_READENTITY(hlWeapon, new)
 		break;
 	case ENT_PLAYER:
 #ifdef GEARBOX
@@ -27,7 +27,7 @@ ClientGame_EntityUpdate(float id, float new)
 #elif SCIHUNT
 		NSENTITY_READENTITY(SHPlayer, new)
 #else
-		NSENTITY_READENTITY(HLPlayer, new)
+		NSENTITY_READENTITY(hlPlayer, new)
 #endif
 		break;
 	default:

@@ -133,7 +133,7 @@ CodeCallback_PlayerKilled(entity playerEntity, entity inflictor, entity attacker
 	playerEntity.deaths++;
 
 	/* update score-counter */
-	if (ents.isPlayer(attacker)) {
+	if (is.Player(attacker)) {
 		if (playerEntity == attacker) {
 			attacker.frags--;
 		} else {
