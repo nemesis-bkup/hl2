@@ -199,8 +199,6 @@ hlPlayer::UpdatePlayerAttachments(bool visible)
 	}
 }
 
-void HUD_AmmoNotify_Check(ncPlayer pl);
-void HUD_ItemNotify_Check(ncPlayer pl);
 /*
 =================
 hlPlayer::ReceiveEntity
@@ -229,13 +227,6 @@ hlPlayer::ReceiveEntity(float new, float flChanged)
 	/* do not notify us of updates when spawning initially */
 	if (flChanged == UPDATE_ALL)
 		PredictPreFrame();
-
-	if (flChanged & PLAYER_AMMOTYPES ) {
-		HUD_AmmoNotify_Check(this);
-	}
-
-	if (flChanged & PLAYER_ITEMS || flChanged & PLAYER_HEALTH)
-		HUD_ItemNotify_Check(this);
 }
 
 /*

@@ -18,7 +18,6 @@
 ../../../src/gs-entbase/shared.src
 ../shared/include.src
 ../../../valve/src/client/draw.qc
-../../../valve/src/client/damage.qc
 ../../../hl2/src/client/init.qc
 ../../../valve/src/client/flashlight.qc
 ../../../hl2/src/client/entities.qc
@@ -29,11 +28,7 @@
 ../../../hl2/src/client/viewmodel.qc
 ../../../valve/src/client/obituary.qc
 ../../../valve/src/client/hud_sprite.qc
-../../../valve/src/client/hud_itemnotify.qc
-../../../valve/src/client/hud_dmgnotify.qc
-../../../valve/src/client/hud_ammonotify.qc
 ../../../hl2/src/client/hud.qc
-../../../valve/src/client/hud_weaponselect.qc
 ../../../valve/src/client/scoreboard.qc
 ../../../src/client/include.src
 ../../../valve/src/client/vgui_changeclass.qc

@@ -155,7 +155,7 @@ HUD_Draw(void)
 		float fw, rt, rt_alpha;
 		vector screenSize = screen.Size();
 		finalColor[0] = g_damageAlpha;
-		draw.Pic(screen.Mins(), "fade_additive", screenSize, finalColor, 1.0);
+		draw.Pic(screen.Mins(), "fade_additive", screenSize, finalColor, 1.0, 0);
 		center = screen.Mins() + (screenSize / 2);
 
 		/* the pos relative to the player + view_dir determines which
@@ -171,19 +171,19 @@ HUD_Draw(void)
 
 		if (fw < -0.25f) {
 			draw.Pic(center + [70+128,-128], "textures/ui/m_lineleft",
-				[96,256], [1,0,0], g_damageAlpha);
+				[96,256], [1,0,0], g_damageAlpha, 0);
 			draw.Pic(center + [-102-128,-128], "textures/ui/m_lineright",
-				[96,256], [1,0,0], g_damageAlpha);
+				[96,256], [1,0,0], g_damageAlpha, 0);
 		} else {
 			rt = dotproduct(rel_pos, v_right);
 			rt_alpha = fabs(rt) * g_damageAlpha;
 
 			if (rt > 0.25f) {
 				draw.Pic(center + [70+128,-128], "textures/ui/m_lineleft",
-					[96,256], [1,0,0], rt_alpha);
+					[96,256], [1,0,0], rt_alpha, 0);
 			} else if (rt < -0.25f) {
 				draw.Pic(center + [-102-128,-128], "textures/ui/m_lineright",
-					[96,256], [1,0,0], rt_alpha);
+					[96,256], [1,0,0], rt_alpha, 0);
 			}
 		}
 	}

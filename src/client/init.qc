@@ -52,7 +52,6 @@ ClientGame_InitDone(void)
 void
 ClientGame_RendererRestart(string rstr)
 {
-	Damage_Precache();
 	Obituary_Precache();
 
 	HUD_Init();
