@@ -1,49 +1,3 @@
-#pragma PROGS_DAT  "../../hud.dat"
-
-#include "../../../src/client/api.h"
-
-font_s FONT_HL2;
-font_s FONT_WEAPONICON;
-font_s FONT_WEAPONNUM;
-font_s FONT_WEAPONNUMB;
-font_s FONT_VERDANA;
-font_s FONT_WEAPONTEXT;
-font_s FONT_WEAPONICON_SEL;
-
-var vector autocvar_hl2hud_fgColor  = [1.0, 0.86, 0.0];
-var float autocvar_hl2hud_fgAlpha  = 0.39f;
-var float autocvar_hl2hud_altBucket  = 0.0;
-var float autocvar_hl2hud_bucketNumAlpha  = 0.5f;
-var float autocvar_hl2hud_hideTime  = 3.0f;
-
-#define g_fg_color autocvar_hl2hud_fgColor
-#define g_fg_alpha autocvar_hl2hud_fgAlpha
-
-#include "HL2WeaponSelect.h"
-#include "HL2WeaponSelect.qc"
-
-//var string g_ammoPic;
-HL2WeaponSelect weaponSelectionHUD;
-
-
-var float g_oldHealth;
-var float g_oldArmor;
-var float g_oldClip;
-var float g_oldAmmo1;
-var float g_oldAmmo2;
-
-var float g_healthAlpha;
-var float g_armorAlpha;
-var float g_clipAlpha;
-var float g_ammo1Alpha;
-var float g_ammo2Alpha;
-var float g_ammoDisplayAlpha;
-var float g_damageAlpha;
-var vector g_damageLocation;
-
-var bool g_isGarry;
-
-#include "hud_old.qc"
 
 void
 HL2HUD_UpdateTimers(float health, float armor, float clip, float ammo1, float ammo2)
@@ -93,6 +47,48 @@ HL2HUD_BigNums(vector pos, string numString, float alpha)
 	} else
 		draw.Text_RGBA(pos, numString, g_fg_color, alpha, FONT_HL2);
 }
+
+void
+HL2HUD_DrawObituaries(vector drawAtPos, bool rightAlign)
+{
+	if (g_killMsgTime < time && g_killMsgCount > 0i) {
+		for (int i = 0i; i < (KILLMESSAGE_LIMIT-1i); i++) {
+			g_killMsgRecord[i].m_target = g_killMsgRecord[i+1].m_target;
+			g_killMsgRecord[i].m_attacker = g_killMsgRecord[i+1].m_attacker;
+			g_killMsgRecord[i].m_method = g_killMsgRecord[i+1].m_method;
+		}
+
+		g_killMsgRecord[KILLMESSAGE_LIMIT-1].m_target = "";
+		g_killMsgRecord[KILLMESSAGE_LIMIT-1].m_attacker = "";
+		g_killMsgRecord[KILLMESSAGE_LIMIT-1].m_method = "";
+
+		g_killMsgTime = time + KILLMESSAGE_TIME;
+		g_killMsgCount--;
+	}
+
+	if (g_killMsgCount <= 0i) {
+		return;
+	}
+
+	for (int i = 0i; i < g_killMsgCount; i++) {
+		float m_ofs1 = font.StringWidth(g_killMsgRecord[i].m_target, true, FONT_WEAPONTEXT);
+		float m_ofs2 = font.StringWidth(g_killMsgRecord[i].m_method, true, FONT_WEAPONICON_SEL);
+		float m_padding = 8.0f;
+		float m_icon = font.GetHeight(FONT_WEAPONICON_SEL) * 0.3f;
+
+		if (rightAlign == true) {
+			draw.RText(drawAtPos, g_killMsgRecord[i].m_target, FONT_WEAPONTEXT);
+			draw.RText([drawAtPos[0] - (m_ofs1 + m_padding), drawAtPos[1] - m_padding], g_killMsgRecord[i].m_method, FONT_WEAPONICON_SEL);
+			draw.RText([drawAtPos[0] - (m_ofs1 + m_padding + m_ofs2 + m_padding), drawAtPos[1]], g_killMsgRecord[i].m_attacker, FONT_WEAPONTEXT);
+		} else {
+			draw.Text(drawAtPos, g_killMsgRecord[i].m_target, FONT_WEAPONTEXT);
+			draw.RText([drawAtPos[0] + (m_ofs1 + m_padding), drawAtPos[1] - m_padding], g_killMsgRecord[i].m_method, FONT_WEAPONICON_SEL);
+			draw.Text([drawAtPos[0] + (m_ofs1 + m_padding + m_ofs2 + m_padding), drawAtPos[1]], g_killMsgRecord[i].m_attacker, FONT_WEAPONTEXT);
+		}
+		drawAtPos[1] += m_icon + m_padding;
+	}
+}
+
 
 
 void
@@ -148,6 +144,8 @@ HUD_Draw(void)
 	hud_size = screen.HUDSize();
 
 	HL2HUD_UpdateTimers(healthValue, armorValue, clipValue, ammoValue, ammoValue2);
+
+	HL2HUD_DrawObituaries([hud_size[0] - 16, 48], true);
 
 	if (g_damageAlpha > 0.0f) {
 		vector finalColor = [1,0,0];
@@ -366,4 +364,45 @@ HUD_DamageReceived(vector damageLocation, int damagePoints, int damageFlags)
 {
 	g_damageAlpha = 1.0;
 	g_damageLocation = damageLocation;
+}
+
+void
+HUD_Obituary(string targetName, string attackerName, string weaponDef, string meansOfDeath)
+{
+	static void HUD_Obituary_Add(int id, string targetName, string attackerName, string weaponDef, string meansOfDeath) {
+		string killIcon = entityDef.GetString(weaponDef, "hl2hud_icon");
+
+		g_killMsgRecord[id].m_target = targetName;
+
+		if (wordInString(meansOfDeath, "self") == false) {
+			g_killMsgRecord[id].m_attacker = attackerName;
+		} else {
+			g_killMsgRecord[id].m_attacker = "";
+		}
+
+		if (STRING_SET(killIcon)) {
+			g_killMsgRecord[id].m_method = killIcon;
+		} else {
+			if (wordInString(meansOfDeath, "vehicle") == true) {
+				g_killMsgRecord[id].m_method = "a";
+			} else {
+				g_killMsgRecord[id].m_method = "a";
+			}
+		}
+	}
+
+	if (g_killMsgCount < KILLMESSAGE_LIMIT) {
+		HUD_Obituary_Add(g_killMsgCount, targetName, attackerName, weaponDef, meansOfDeath);
+		g_killMsgCount++;
+	} else {
+		for (int i = 0i; i < (KILLMESSAGE_LIMIT-1); i++) {
+			g_killMsgRecord[i].m_target = g_killMsgRecord[i+1].m_target;
+			g_killMsgRecord[i].m_attacker = g_killMsgRecord[i+1].m_attacker;
+			g_killMsgRecord[i].m_method = g_killMsgRecord[i+1].m_method;
+		}
+
+		HUD_Obituary_Add(KILLMESSAGE_LIMIT-1, targetName, attackerName, weaponDef, meansOfDeath);
+	}
+
+	g_killMsgTime = time + KILLMESSAGE_TIME;
 }

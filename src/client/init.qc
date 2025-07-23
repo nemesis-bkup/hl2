@@ -24,7 +24,6 @@ Comparable to worldspawn in SSQC in that it's mostly used for precaches
 void
 ClientGame_Init(float apilevel, string enginename, float engineversion)
 {
-	Obituary_Init();
 	registercommand("chooseteam");
 	registercommand("printSpawnList");
 
@@ -52,8 +51,6 @@ ClientGame_InitDone(void)
 void
 ClientGame_RendererRestart(string rstr)
 {
-	Obituary_Precache();
-
 	HUD_Init();
 	Animation_Init();
 

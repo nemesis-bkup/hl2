@@ -9,7 +9,7 @@
 #define SOUNDSHADER_MAX 9000
 
 #includelist
-../../../src/shared/fteextensions.qc
+../../../src/common/include.src
 ../../../src/shared/defs.h
 ../../../src/client/defs.h
 ../../../hl2/src/client/defs.h
@@ -31,8 +31,5 @@
 ../../../hl2/src/client/hud.qc
 ../../../valve/src/client/scoreboard.qc
 ../../../src/client/include.src
-../../../valve/src/client/vgui_changeclass.qc
-../../../valve/src/client/vgui_chooseteam.qc
-../../../valve/src/client/vgui_motd.qc
 ../../../src/shared/include.src
 #endlist

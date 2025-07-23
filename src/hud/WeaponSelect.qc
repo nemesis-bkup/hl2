@@ -61,6 +61,10 @@ HL2WeaponSelect::Trigger(void)
 void
 HL2WeaponSelect::Deactivate(void)
 {
+	if (!m_selectedWeapon) {
+		return;
+	}
+
 	m_selectedWeapon = __NULL__;
 	m_flHUDWeaponSelectTime = 0.0f;
 	Event_Closed();

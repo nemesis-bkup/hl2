@@ -16,7 +16,7 @@ entityDef weapon_shotgun
 	"inv_ammo_buckshot"	"6"
 	"def_fireInfo"		"fireInfo_shotgun"
 	"def_altFireInfo"	"fireInfo_altShotgun"
-	"inv_name"			"SHOTGUN"
+	"inv_name"			"#HL2_Shotgun"
 	"clipSize"			"6"
 	"ammoType"			"ammo_buckshot"
 	"ammoRequired"		"1"

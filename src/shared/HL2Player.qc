@@ -27,15 +27,7 @@ class hlPlayer:ncPlayer
 {
 	void(void) hlPlayer;
 
-	/* animation */
-	PREDICTED_FLOAT(anim_top)
-	PREDICTED_FLOAT(anim_top_time)
-	PREDICTED_FLOAT(anim_top_delay)
-	PREDICTED_FLOAT(anim_bottom)
-	PREDICTED_FLOAT(anim_bottom_time)
-
 	virtual void Physics_Jump(void);
-	virtual void UpdatePlayerAnimation(float);
 
 #ifdef CLIENT
 	virtual void UpdatePlayerAttachments(bool);
@@ -53,30 +45,11 @@ class hlPlayer:ncPlayer
 #endif
 };
 
-void Animation_PlayerTop(hlPlayer, float, float);
-void Animation_PlayerBottom(hlPlayer, float, float);
-
 void
 hlPlayer::hlPlayer(void)
 {
-	anim_top = 0;
-	anim_top_time = 0;
-	anim_top_delay = 0;
-	anim_bottom = 0;
-	anim_bottom_time = 0;
 }
 
-void Animation_PlayerUpdate(hlPlayer); 
-void Animation_TimerUpdate(hlPlayer, float); 
-
-void
-hlPlayer::UpdatePlayerAnimation(float timelength)
-{
-	/* calculate our skeletal progression */
-	Animation_PlayerUpdate(this);
-	/* advance animation timers */
-	Animation_TimerUpdate(this, timelength);
-}
 
 #ifdef CLIENT
 void
@@ -107,8 +80,8 @@ hlPlayer::UpdateAliveCam(void)
 	} else if (health) {
 		if (autocvar_pm_thirdPerson == TRUE) {
 			makevectors(view_angles);
-			vector vStart = [pSeat->m_vecPredictedOrigin[0], pSeat->m_vecPredictedOrigin[1], pSeat->m_vecPredictedOrigin[2] + 16] + (v_right * 4);
-			vector vEnd = vStart + (v_forward * -48) + [0,0,16] + (v_right * 4);
+			vector vStart = [pSeat->m_vecPredictedOrigin[0], pSeat->m_vecPredictedOrigin[1], pSeat->m_vecPredictedOrigin[2] + maxs[2]] + (v_right * 4);
+			vector vEnd = vStart + (v_forward * -48) + (v_right * 4);
 			traceline(vStart, vEnd, FALSE, this);
 			g_view.SetCameraOrigin(trace_endpos + (v_forward * 5));
 		}
@@ -211,11 +184,6 @@ hlPlayer::ReceiveEntity(float new, float flChanged)
 	super::ReceiveEntity(new, flChanged);
 
 	/* animation */
-	READENTITY_BYTE(anim_top, PLAYER_TOPFRAME)
-	READENTITY_FLOAT(anim_top_time, PLAYER_TOPFRAME)
-	READENTITY_FLOAT(anim_top_delay, PLAYER_TOPFRAME)
-	READENTITY_BYTE(anim_bottom, PLAYER_BOTTOMFRAME)
-	READENTITY_FLOAT(anim_bottom_time, PLAYER_BOTTOMFRAME)
 
 	setorigin(this, origin);
 
@@ -242,12 +210,6 @@ hlPlayer::PredictPreFrame(void)
 {
 	/* the generic client attributes */
 	super::PredictPreFrame();
-
-	SAVE_STATE(anim_top)
-	SAVE_STATE(anim_top_delay)
-	SAVE_STATE(anim_top_time)
-	SAVE_STATE(anim_bottom)
-	SAVE_STATE(anim_bottom_time)
 }
 
 /*
@@ -262,12 +224,6 @@ hlPlayer::PredictPostFrame(void)
 {
 	/* the generic client attributes */
 	super::PredictPostFrame();
-
-	ROLL_BACK(anim_top)
-	ROLL_BACK(anim_top_delay)
-	ROLL_BACK(anim_top_time)
-	ROLL_BACK(anim_bottom)
-	ROLL_BACK(anim_bottom_time)
 }
 
 #else
@@ -313,12 +269,6 @@ hlPlayer::EvaluateEntity(void)
 	/* the generic client attributes */
 	ncPlayer::EvaluateEntity();
 
-	EVALUATE_FIELD(anim_top, PLAYER_TOPFRAME)
-	EVALUATE_FIELD(anim_top_time, PLAYER_TOPFRAME)
-	EVALUATE_FIELD(anim_top_delay, PLAYER_TOPFRAME)
-	EVALUATE_FIELD(anim_bottom, PLAYER_BOTTOMFRAME)
-	EVALUATE_FIELD(anim_bottom_time, PLAYER_BOTTOMFRAME)
-
 }
 
 void
@@ -358,12 +308,6 @@ hlPlayer::SendEntity(entity ePEnt, float flChanged)
 
 	/* the generic client attributes */
 	ncPlayer::SendEntity(ePEnt, flChanged);
-
-	SENDENTITY_BYTE(anim_top, PLAYER_TOPFRAME)
-	SENDENTITY_FLOAT(anim_top_time, PLAYER_TOPFRAME)
-	SENDENTITY_FLOAT(anim_top_delay, PLAYER_TOPFRAME)
-	SENDENTITY_BYTE(anim_bottom, PLAYER_BOTTOMFRAME)
-	SENDENTITY_FLOAT(anim_bottom_time, PLAYER_BOTTOMFRAME)
 
 	return (1);
 }

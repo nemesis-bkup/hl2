@@ -14,24 +14,12 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-void VGUI_ChooseClass(int);
-void VGUI_ChooseTeam(void);
-
 int
 ClientGame_ConsoleCommand(void)
 {
 	switch(argv(0)) {
-	case "changeclass":
-		VGUI_ChooseClass(userinfo.GetInteger(pSeat->m_ePlayer, "*team"));
-		break;
-	case "changeteam":
-		VGUI_ChooseTeam();
-		break;
 	case "printSpawnList":
 		Spawnlist_ToConbuffer(argv(2));
-		break;
-	case "chooseteam":
-		localcmd(sprintf("cmd %s %s\n", argv(0), argv(1)));
 		break;
 	default:
 		return (0);

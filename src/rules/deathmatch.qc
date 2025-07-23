@@ -14,10 +14,6 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#pragma PROGS_DAT  "../../progs/deathmatch.dat"
-
-#include "../../../src/server/api.h"
-
 #if 0
 string g_stockHL2MPPlayerModels[] = {
 	"models/humans/group03/female_01.mdl",

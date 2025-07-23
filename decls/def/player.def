@@ -8,6 +8,19 @@ entityDef player
 	"armorProtection"	"0.2"
 	"armorBonus"		"0.5"
 	"def_precache1"		"weapon_ar2"
+	"spine"				"ValveBiped.Bip01_Spine"
+	"torsoStart"		"ValveBiped.Bip01_Spine"
+	"torsoEnd"			"ValveBiped.Bip01_Head1"
+
+	"act_idle"				"1"
+	"act_walk"				"14"
+	"act_run"				"22"
+	"act_jump"				"3"
+	"act_idle_crouch"		"5"
+	"act_walk_crouch"		"30"
+
+	"act_attack"		"31"
+	"act_reload"		"35"
 }
 
 entityDef player_mp
