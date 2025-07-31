@@ -13,7 +13,7 @@ entityDef weapon_stunstick
 	"snd_respawn"		"Item.Materialize"
 
 	// weapon specific
-	"inv_name"			"STUNSTICK"
+	"inv_name"		"#HL2_SunBaton"
 	"ammoRequired"		"0"
 	"silent_fire"		"1"
 	"hl2hud_icon"		"c"

@@ -15,7 +15,7 @@ entityDef weapon_pistol
 
 	// weapon specific
 	"def_fireInfo"	"fireInfo_pistol"
-	"inv_name"		"9MM PISTOL"
+	"inv_name"		"#HL2_Pistol"
 	"clipSize"		"18"
 	"hl2hud_icon"		"d"
 

@@ -12,7 +12,7 @@ entityDef weapon_slam
 	"snd_acquire"		"HL2Player.PickupWeapon"
 	"snd_respawn"		"Item.Materialize"
 
-	"inv_name"			"S.L.A.M\n(Selectable Lightweight Attack Munition)"
+	"inv_name"			"#HL2_SLAM"
 	"ammoType"			"ammo_slam"
 	"inv_ammo_slam"		"3"
 	"ammoRequired"		"1"

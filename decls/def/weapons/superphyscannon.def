@@ -16,7 +16,7 @@ entityDef weapon_superphyscannon
 	// weapon specific
 	"def_fireInfo"		"fireInfo_physcannon"
 	"def_altFireInfo"	"fireInfo_physcannonAlt"
-	"inv_name"		"ZERO-POINT ENERGY GUN\n(GRAVITY GUN)"
+	"inv_name"		"#HL2_GravityGun"
 	"hl2hud_icon"		"m"
 
 	"act_draw"		"4"

@@ -14,7 +14,7 @@ entityDef weapon_crossbow
 
 	// weapon specific
 	"def_fireInfo"		"fireInfo_crossbow"
-	"inv_name"			"CROSSBOW"
+	"inv_name"			"#HL2_Crossbow"
 	"inv_ammo_crossbow"	"4"
 	"clipSize"			"1"
 	"ammoType"			"ammo_crossbow"

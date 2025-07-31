@@ -1,0 +1,21 @@
+"lang"
+{
+	"Language"	"English"
+	
+	"Tokens"
+	{
+		"HL2_357Handgun"	".357 MAGNUM"
+		"HL2_Bugbait"		"PHEROPOD\n(BUGBAIT)"
+		"HL2_Crossbow"		"CROSSBOW"
+		"HL2_Crowbar"		"CROWBAR"
+		"HL2_GravityGun"	"ZERO-POINT ENERGY GUN\n(GRAVITY GUN)"
+		"HL2_Grenade"		"GRENADE"
+		"HL2_Pistol"		"9MM PISTOL"
+		"HL2_Pulse_Rifle"	"OVERWATCH STANDARD ISSUE\n(PULSE-RIFLE)"
+		"HL2_RPG"		"RPG\n(ROCKET PROPELLED GRENADE)"
+		"HL2_SLAM"		"S.L.A.M\n(Selectable Lightweight Attack Munition)"
+		"HL2_SMG1"		"SMG\n(SUBMACHINE GUN)"
+		"HL2_Shotgun"		"SHOTGUN"
+		"HL2_StunBaton"		"STUNSTICK"
+	}
+}

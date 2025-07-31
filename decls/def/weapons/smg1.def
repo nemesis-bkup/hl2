@@ -15,7 +15,7 @@ entityDef weapon_smg1
 	// weapon specific
 	"def_fireInfo"		"fireInfo_smg1"
 	"def_altFireInfo"	"fireInfo_smg1Alt"
-	"inv_name"			"SMG\n(SUBMACHINE GUN)"
+	"inv_name"			"#HL2_SMG1"
 	"clipSize"			"45"
 	"hl2hud_icon"		"a"
 

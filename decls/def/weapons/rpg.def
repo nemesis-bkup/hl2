@@ -12,7 +12,7 @@ entityDef weapon_rpg
 	"snd_acquire"		"HL2Player.PickupWeapon"
 	"snd_respawn"		"Item.Materialize"
 
-	"inv_name"			"RPG\n(ROCKET PROPELLED GRENADE)"
+	"inv_name"			"#HL2_RPG"
 	"def_fireInfo"		"fireInfo_rpg"
 	"ammoType"			"ammo_rpg"
 	"ammoRequired" 		"1"

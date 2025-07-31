@@ -15,7 +15,7 @@ entityDef weapon_ar2
 	// weapon specific
 	"def_fireInfo"		"fireInfo_ar2"
 	"def_altFireInfo"	"fireInfo_ar2Alt"
-	"inv_name"			"OVERWATCH STANDARD ISSUE\n(PULSE-RIFLE)"
+	"inv_name"			"#HL2_Pulse_Rifle"
 	"clipSize"			"30"
 	"hl2hud_icon"		"l"
 	"inv_ammo_ar2"		"30"

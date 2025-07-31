@@ -17,7 +17,7 @@ entityDef weapon_bugbait
 	// weapon specific
 	"def_fireInfo"		"fireInfo_bugbait"
 	"def_altFireInfo"	"fireInfo_bugbaitAlt"
-	"inv_name"			"PHEROPOD\n(BUGBAIT)"
+	"inv_name"			"#HL2_Bugbait"
 	"ammoRequired"		"0"
 	"hl2hud_icon"		"j"
 
