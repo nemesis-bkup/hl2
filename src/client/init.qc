@@ -39,7 +39,6 @@ ClientGame_InitDone(void)
 {
 	VGUI_ShowMOTD();
 
-	Font_Load("fonts/tool.font", FONT_TOOL);
 
 	bool gameTitle = serverkeyfloat("gametitle");
 
@@ -55,4 +54,7 @@ ClientGame_RendererRestart(string rstr)
 	Animation_Init();
 
 	BEAM_TRIPMINE = particleeffectnum("weapon_slam.beam");
+
+	font.Load("fonts/scoreboard.font", FONT_SCOREBOARD);
+	font.Load("fonts/tool.font", FONT_TOOL);
 }

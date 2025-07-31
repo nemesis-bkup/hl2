@@ -53,3 +53,4 @@ struct
 } g_seatslocal[4], *pSeatLocal;
 
 font_s FONT_TOOL;
+font_s FONT_SCOREBOARD;
