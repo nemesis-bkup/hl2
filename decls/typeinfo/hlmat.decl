@@ -1,0 +1,23 @@
+// maps hl1 sound/materials.txt to the hl2 equivalent surfaceproperties
+typeInfo material
+{
+	"A" "alienflesh"
+	"B" "flesh"
+	"C" "concrete"
+	"D" "dirt"
+	"F" "flesh"
+	"G" "metalgrate"
+	"H" "alienflesh"
+	"K" "snow"
+	"L" "Plastic_Box"
+	"M" "metal"
+	"N" "sand"
+	"O" "foliage"
+	"P" "computer"
+	"S" "water"
+	"T" "tile"
+	"V" "metalvent"
+	"W" "Wood"
+	"Y" "glass"
+	"X" "default_silent"
+}

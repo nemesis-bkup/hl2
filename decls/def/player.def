@@ -47,3 +47,11 @@ entityDef player_combine
 	"weapon"	"weapon_stunstick,weapon_pistol,weapon_physcannon,weapon_frag,weapon_smg1"
 	"team"		"1"
 }
+
+entityDef player_sandbox
+{
+	"inherit"	"player"
+	"weapon"	"weapon_stunstick,weapon_pistol,weapon_physcannon,weapon_frag,weapon_smg1,weapon_physgun,weapon_tool"
+	"team"		"1"
+}
+
