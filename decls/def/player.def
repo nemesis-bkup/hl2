@@ -52,6 +52,133 @@ entityDef player_combine
 entityDef player_sandbox
 {
 	"inherit"	"player"
+	"ammo_pistol"		"150"
+	"ammo_smg1"			"45"
+	"ammo_frag"			"2"
+	"item"	"item_suit"
+	"weapon"	"weapon_stunstick,weapon_pistol,weapon_physcannon,weapon_frag,weapon_smg1,weapon_physgun,weapon_tool"
+	"team"		"1"
+}
+
+
+entityDef player_sandbox_gs
+{
+	"spawnclass"			"hlPlayer"
+	"health"			"100"
+	"maxarmor"			"100"
+	"bleeds"			"1"
+	"propdata"			"actor_human"
+	"armorProtection"		"0.2"
+	"armorBonus"			"0.5"
+	"model"				"models/player.mdl"
+
+	"spine"				"Bip01 Spine"
+	"torsoStart"			"Bip01 Spine"
+	"torsoEnd"			"Bip01 R Finger12"
+
+	"act_idle"			"0"
+	"act_jump"			"8"
+	"act_walk_crouch"		"6"
+	"act_idle_crouch"		"7"
+	"act_run"			"12"
+	"act_walk"			"13"
+
+	"act_draw"			"16,14"
+	"act_aim"			"16,14"
+	"act_attack"			"17,15"
+
+	"act_draw_crowbar"				"25"
+	"act_aim_crowbar"				"25"
+	"act_attack_crowbar"			"26"
+	"act_aim_crouch_crowbar"		"27"
+	"act_attack_crouch_crowbar"		"28"
+
+	"act_draw_grenade"				"25"
+	"act_aim_grenade"				"25"
+	"act_attack_grenade"			"26"
+	"act_aim_crouch_grenade"		"27"
+	"act_attack_crouch_grenade"		"28"
+
+	"act_draw_stunbaton"				"25"
+	"act_aim_stunbaton"				"25"
+	"act_attack_stunbaton"			"26"
+	"act_aim_crouch_stunbaton"		"27"
+	"act_attack_crouch_stunbaton"		"28"
+
+	"act_draw_pistol"				"33"
+	"act_aim_pistol"				"33"
+	"act_attack_pistol"			"34"
+	"act_aim_crouch_pistol"		"35"
+	"act_attack_crouch_pistol"		"36"
+
+	"act_draw_python"				"37"
+	"act_aim_python"				"37"
+	"act_attack_python"			"38"
+	"act_aim_crouch_python"		"39"
+	"act_attack_crouch_python"		"40"
+
+	"act_draw_shotgun"				"41"
+	"act_aim_shotgun"				"41"
+	"act_attack_shotgun"			"42"
+	"act_aim_crouch_shotgun"		"43"
+	"act_attack_crouch_shotgun"		"44"
+
+	"act_draw_gauss"				"45"
+	"act_aim_gauss"				"45"
+	"act_attack_gauss"			"46"
+	"act_aim_crouch_gauss"		"47"
+	"act_attack_crouch_gauss"		"48"
+
+	"act_draw_smg2"				"49"
+	"act_aim_smg2"				"49"
+	"act_attack_smg2"			"50"
+	"act_aim_crouch_smg2"		"51"
+	"act_attack_crouch_smg2"		"52"
+
+	"act_draw_ar2"				"49"
+	"act_aim_ar2"				"49"
+	"act_attack_ar2"			"50"
+	"act_aim_crouch_ar2"		"51"
+	"act_attack_crouch_ar2"		"52"
+
+	"act_draw_missile"				"53"
+	"act_aim_missile"				"53"
+	"act_attack_missile"			"54"
+	"act_aim_crouch_missile"		"55"
+	"act_attack_crouch_missile"		"56"
+
+	"act_draw_physgun"				"57"
+	"act_aim_physgun"				"57"
+	"act_attack_physgun"			"58"
+	"act_aim_crouch_physgun"		"59"
+	"act_attack_crouch_physgun"		"60"
+
+	"act_draw_bow"				"69"
+	"act_aim_bow"				"69"
+	"act_attack_bow"			"70"
+	"act_aim_crouch_bow"			"71"
+	"act_attack_crouch_bow"			"71"
+
+	"snd_stepladderLeft"	"Ladder.StepLeft"
+	"snd_stepladderRight"	"Ladder.StepRight"
+	"snd_fall"				"Player.FallDamage"
+	"snd_landHard"			"Player.LightFall"
+	"snd_death"				"Player.Death"
+	"snd_airGaspLight"		"Player.GaspLight"
+	"snd_pain"				"Player.Pain"
+	"snd_airGaspHeavy"		"Player.GaspHeavy"
+	"snd_waterExit"			"Player.WaterExit"
+	"snd_waterEnter"		"Player.WaterEnter"
+	"snd_useDeny"			"Player.DenyWeaponSelection"
+	"snd_useSuccess"		"Player.WeaponSelected"
+	"snd_waterWade"			"Player.Wade"
+	"snd_waterSwim"			"Player.Swim"
+
+	"pm_boxcenter"		"1"
+	"ammo_pistol"		"150"
+	"ammo_smg1"			"45"
+	"ammo_frag"			"2"
+	"item"	"item_suit"
 	"weapon"	"weapon_stunstick,weapon_pistol,weapon_physcannon,weapon_frag,weapon_smg1,weapon_physgun,weapon_tool"
 	"team"		"1"
 }

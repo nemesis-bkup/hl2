@@ -75,9 +75,18 @@ void
 CodeCallback_PlayerSpawn(entity playerEntity)
 {
 	string playerModel;
-	ents.ChangeToClass(playerEntity, "player_sandbox");
-	playerModel = g_stockHL2MPPlayerModels[floor(random(0,g_stockHL2MPPlayerModels.length))];
-	playerEntity.modelindex = getmodelindex(playerModel); /* keep OG size */
+	string hlModel = userinfo.GetString(playerEntity, "hlmodel");
+
+	if (STRING_SET(hlModel)) {
+		ents.ChangeToClass(playerEntity, "player_sandbox_gs");
+		playerModel = sprintf("models/player/%s/%s.mdl", hlModel, hlModel);
+		playerEntity.modelindex = getmodelindex(playerModel); /* keep OG size */
+	} else {
+		ents.ChangeToClass(playerEntity, "player_sandbox");
+		playerModel = g_stockHL2MPPlayerModels[floor(random(0,g_stockHL2MPPlayerModels.length))];
+		playerEntity.modelindex = getmodelindex(playerModel); /* keep OG size */
+	}
+
 	game.TeleportToSpawn(playerEntity);
 }
 
