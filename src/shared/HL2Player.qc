@@ -270,12 +270,7 @@ void
 hlPlayer::Death(entity inflictor, entity attacker, int damagePoints, vector dir, vector absImpactPos, int hitBody)
 {
 	float randomAnim = floor(random(18, 26));
-	ncRenderableEntity newCorpse = (ncRenderableEntity)BodyQue_Spawn(this, randomAnim);
-
-	/* if we were crouching, adjust the bbox (thx 2 lack of crouch death animation) */
-	if (IsCrouching()) {
-		newCorpse.SetSize(VEC_HULL_MIN, [16, 16, -16]);
-	}
+	ncEntity newCorpse = MakeCorpse(randomAnim);
 
 	super::Death(inflictor, attacker, damagePoints, dir, absImpactPos, hitBody);
 	SpectatorDeathcam(newCorpse, (ncEntity)attacker, 3.0f);
