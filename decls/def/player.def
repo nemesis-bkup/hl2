@@ -11,6 +11,7 @@ entityDef player
 	"spine"				"ValveBiped.Bip01_Spine"
 	"torsoStart"		"ValveBiped.Bip01_Spine"
 	"torsoEnd"			"ValveBiped.Bip01_Head1"
+	"ragdoll"		"1"
 
 	"act_idle"				"1"
 	"act_walk"				"14"
