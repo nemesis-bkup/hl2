@@ -3,7 +3,7 @@ entityDef weapon_tool
 	"editor_color"		".3 .3 1"
 	"editor_mins"		"-16 -16 -16"
 	"editor_maxs"		"16 16 16"
-	"editor_usage"		"#GM_ToolWeapon"
+	"editor_usage"		"Tool Gun"
 	"editor_rotatable"	"1"
 
 	"spawnclass"		"hlWeapon"

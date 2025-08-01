@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Marco Cawthorne <marco@icculus.org>
+ * Copyright (c) 2025 Marco Cawthorne <marco@icculus.org>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -18,6 +18,7 @@ void
 hlWeapon::hlWeapon(void)
 {
 #ifdef CLIENT
+	m_toolLastSetting = -1;
 	m_ammoIcon = __NULL__;
 	m_ammo2Icon = __NULL__;
 	m_crossHair = __NULL__;
@@ -553,9 +554,15 @@ hlWeapon::DrawToolgunText(void)
 		return;
 	}
 
+	if (toolMode != m_toolLastSetting) {
+		m_toolLastSetting = toolMode;
+		m_toolModeLocalizedString = localize(sprintf("#TOOL_NAME_%i", toolMode));
+		m_toolDescLocalizedString = localize(sprintf("#TOOL_DESC_%i", toolMode));
+	}
+	
 	drawfill(g_hudmins + [0, g_hudres[1]-32], [g_hudres[0], 32], [0,0,0], 0.75f, DRAWFLAG_NORMAL);
-	Font_DrawField(g_hudmins + [0, g_hudres[1]-26], [g_hudres[0], 16], g_toolmodeStr[toolMode], FONT_TOOL, 0);
-	Font_DrawField(g_hudmins + [0, g_hudres[1]-16], [g_hudres[0], 16], g_toolmodeDesc[toolMode], FONT_TOOL, 0);
+	Font_DrawField(g_hudmins + [0, g_hudres[1]-26], [g_hudres[0], 16], m_toolModeLocalizedString, FONT_TOOL, 0);
+	Font_DrawField(g_hudmins + [0, g_hudres[1]-16], [g_hudres[0], 16], m_toolDescLocalizedString, FONT_TOOL, 0);
 }
 
 void

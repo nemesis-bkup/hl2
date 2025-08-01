@@ -47,4 +47,7 @@ entityDef item_suit
 	"snd_acquire"	"item.suit" // needs to be a sentence
 	"snd_respawn"	"Item.Materialize"
 	"inv_carry"		"1"
+
+	"snd_flashOn"	"HL2Player.FlashLightOn"
+	"snd_flashOff"	"HL2Player.FlashLightOff"
 }

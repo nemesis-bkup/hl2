@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Marco Cawthorne <marco@icculus.org>
+ * Copyright (c) 2025 Marco Cawthorne <marco@icculus.org>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -86,6 +86,10 @@ private:
 	bool m_fiPhysgunAlt;
 	bool m_fiToolgun;
 	bool m_fiToolgunAlt;
+
+	string m_toolModeLocalizedString;
+	string m_toolDescLocalizedString;
+	int m_toolLastSetting;
 };
 
 typedef enum
@@ -120,69 +124,3 @@ typedef enum
 	GMTOOL_SPRITES = 28,
 	GMTOOL_WHEELS = 29,
 } gm_toolmode_t;
-
-const string g_toolmodeStr[] =
-{
-	_("TOOL_NAME_0"),
-	_("TOOL_NAME_1"),
-	_("TOOL_NAME_2"),
-	_("TOOL_NAME_3"),
-	_("TOOL_NAME_4"),
-	_("TOOL_NAME_5"),
-	_("TOOL_NAME_6"),
-	_("TOOL_NAME_7"),
-	_("TOOL_NAME_8"),
-	_("TOOL_NAME_9"),
-	_("TOOL_NAME_10"),
-	_("TOOL_NAME_11"),
-	_("TOOL_NAME_12"),
-	_("TOOL_NAME_13"),
-	_("TOOL_NAME_14"),
-	_("TOOL_NAME_15"),
-	_("TOOL_NAME_16"),
-	_("TOOL_NAME_17"),
-	_("TOOL_NAME_18"),
-	_("TOOL_NAME_19"),
-	_("TOOL_NAME_20"),
-	_("TOOL_NAME_21"),
-	_("TOOL_NAME_22"),
-	_("TOOL_NAME_23"),
-	_("TOOL_NAME_24"),
-	_("TOOL_NAME_25"),
-	_("TOOL_NAME_26"),
-	_("TOOL_NAME_27"),
-	_("TOOL_NAME_28")
-};
-
-const string g_toolmodeDesc[] =
-{
-	_("TOOL_DESC_0"),
-	_("TOOL_DESC_1"),
-	_("TOOL_DESC_2"),
-	_("TOOL_DESC_3"),
-	_("TOOL_DESC_4"),
-	_("TOOL_DESC_5"),
-	_("TOOL_DESC_6"),
-	_("TOOL_DESC_7"),
-	_("TOOL_DESC_8"),
-	_("TOOL_DESC_9"),
-	_("TOOL_DESC_10"),
-	_("TOOL_DESC_11"),
-	_("TOOL_DESC_12"),
-	_("TOOL_DESC_13"),
-	_("TOOL_DESC_14"),
-	_("TOOL_DESC_15"),
-	_("TOOL_DESC_16"),
-	_("TOOL_DESC_17"),
-	_("TOOL_DESC_18"),
-	_("TOOL_DESC_19"),
-	_("TOOL_DESC_20"),
-	_("TOOL_DESC_21"),
-	_("TOOL_DESC_22"),
-	_("TOOL_DESC_23"),
-	_("TOOL_DESC_24"),
-	_("TOOL_DESC_25"),
-	_("TOOL_DESC_26"),
-	_("TOOL_DESC_27"),
-	_("TOOL_DESC_28")
-};

@@ -112,14 +112,9 @@ hlPlayer::UpdatePlayerAttachments(bool visible)
 
 		makevectors(ang);
 		traceline(src, src + (v_forward * 8096), MOVE_NORMAL, this);
-
-		if (serverkeyfloat("*bspversion") == BSPVER_HL) {
-			dynamiclight_add(trace_endpos + (trace_plane_normal * 4), 128, [1,1,1]);
-		} else {
-			float p = dynamiclight_add(src + (v_forward * 16), 512, [1,1,1], 0, "lights/flashlight");
-			dynamiclight_set(p, LFIELD_ANGLES, ang);
-			dynamiclight_set(p, LFIELD_FLAGS, 3);
-		}
+		float p = dynamiclight_add(src + (v_forward * 16), 512, [1,1,1], 0, "lights/flashlight");
+		dynamiclight_set(p, LFIELD_ANGLES, ang);
+		dynamiclight_set(p, LFIELD_FLAGS, 3);
 	}
 
 	/* FIXME: this needs to be incorporated and simplified, now that we can handle it all in-class */
