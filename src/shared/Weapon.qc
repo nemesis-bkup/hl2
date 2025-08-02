@@ -15,7 +15,7 @@
  */
 
 void
-hlWeapon::hlWeapon(void)
+hl2Weapon::hl2Weapon(void)
 {
 #ifdef CLIENT
 	m_toolLastSetting = -1;
@@ -33,7 +33,7 @@ hlWeapon::hlWeapon(void)
 
 #ifdef SERVER
 void
-hlWeapon::SpawnKey(string keyName, string setValue)
+hl2Weapon::SpawnKey(string keyName, string setValue)
 {
 	switch (keyName) {
 	default:
@@ -43,7 +43,7 @@ hlWeapon::SpawnKey(string keyName, string setValue)
 #endif
 
 void
-hlWeapon::UpdateFireInfoCache(void)
+hl2Weapon::UpdateFireInfoCache(void)
 {
 	super::UpdateFireInfoCache();
 
@@ -62,7 +62,7 @@ hlWeapon::UpdateFireInfoCache(void)
 
 #ifdef SERVER
 void
-hlWeapon::PhyscannonUngrab(void)
+hl2Weapon::PhyscannonUngrab(void)
 {
 	if (!m_grabbedEntity) {
 		return;
@@ -76,7 +76,7 @@ hlWeapon::PhyscannonUngrab(void)
 #endif
 
 void
-hlWeapon::PhyscannonPush(void)
+hl2Weapon::PhyscannonPush(void)
 {
 	ncPlayer ourOwner = (ncPlayer)GetOwner();
 	vector forwardDir = anglesToForward(ourOwner.v_angle);
@@ -136,7 +136,7 @@ UpdatePos(void)
 		return;
 	}
 
-	hlWeapon physCannon = (hlWeapon)ourOwner.m_activeWeapon;
+	hl2Weapon physCannon = (hl2Weapon)ourOwner.m_activeWeapon;
 	vector forwardDir = anglesToForward(ourOwner.v_angle);
 	vector targetOrg = ourOwner.GetEyePos() + forwardDir * physCannon.m_flPhysgunDistance;
 	self.velocity = (targetOrg - self.origin) * 10.0;
@@ -145,7 +145,7 @@ UpdatePos(void)
 }
 
 void
-hlWeapon::PhyscannonPull(void)
+hl2Weapon::PhyscannonPull(void)
 {
 #ifdef SERVER
 	ncPlayer ourOwner = (ncPlayer)GetOwner();
@@ -197,7 +197,7 @@ hlWeapon::PhyscannonPull(void)
 }
 
 void
-hlWeapon::PhysgunFire(void)
+hl2Weapon::PhysgunFire(void)
 {
 #ifdef SERVER
 	ncPlayer ourOwner = (ncPlayer)GetOwner();
@@ -238,7 +238,7 @@ hlWeapon::PhysgunFire(void)
 }
 
 void
-hlWeapon::PhysgunFreeze(void)
+hl2Weapon::PhysgunFreeze(void)
 {
 #ifdef SERVER
 	if (!m_grabbedEntity) {
@@ -252,7 +252,7 @@ hlWeapon::PhysgunFreeze(void)
 }
 
 void
-hlWeapon::ReleasedWeaponAttack(string fireInfo)
+hl2Weapon::ReleasedWeaponAttack(string fireInfo)
 {
 	if (m_fiPhysgun) {
 #ifdef SERVER
@@ -266,7 +266,7 @@ hlWeapon::ReleasedWeaponAttack(string fireInfo)
 }
 
 void
-hlWeapon::InputFrame(void)
+hl2Weapon::InputFrame(void)
 {
 	if (!m_fiPhysgun) {
 		return;
@@ -312,7 +312,7 @@ hlWeapon::InputFrame(void)
 .vector first_pos;
 
 void
-hlWeapon::ToolgunFire(bool altFire)
+hl2Weapon::ToolgunFire(bool altFire)
 {
 #ifdef SERVER
 	ncPlayer ourOwner = (ncPlayer)GetOwner();
@@ -461,7 +461,7 @@ hlWeapon::ToolgunFire(bool altFire)
 }
 
 void
-hlWeapon::FiredWeaponAttack(string fireInfo)
+hl2Weapon::FiredWeaponAttack(string fireInfo)
 {
 	if (m_fiToolgun) {
 		ToolgunFire(m_fiToolgunAlt ? true : false);
@@ -482,7 +482,7 @@ hlWeapon::FiredWeaponAttack(string fireInfo)
 }
 
 void
-hlWeapon::AddedToInventory(void)
+hl2Weapon::AddedToInventory(void)
 {
 	super::AddedToInventory();
 
@@ -546,7 +546,7 @@ hlWeapon::AddedToInventory(void)
 
 #ifdef CLIENT
 void
-hlWeapon::DrawToolgunText(void)
+hl2Weapon::DrawToolgunText(void)
 {
 	int toolMode = cvar("gm_toolmode");
 
@@ -566,7 +566,7 @@ hlWeapon::DrawToolgunText(void)
 }
 
 void
-hlWeapon::UpdateGUI(void)
+hl2Weapon::UpdateGUI(void)
 {
 	ncPlayer ourOwner = __NULL__;
 
@@ -632,7 +632,7 @@ hlWeapon::UpdateGUI(void)
 }
 
 void
-hlWeapon::DrawLaser(void)
+hl2Weapon::DrawLaser(void)
 {
 	ncPlayer ourOwner = (ncPlayer)GetOwner();
 	float lerpValue;

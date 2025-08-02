@@ -6,7 +6,7 @@ entityDef weapon_tool
 	"editor_usage"		"Tool Gun"
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"hlWeapon"
+	"spawnclass"		"hl2Weapon"
 	"model"				"models/weapons/w_crossbow.mdl"
 	"model_view"		"models/weapons/v_crossbow_dx7.mdl"
 	"snd_acquire"		"HL2Player.PickupWeapon"
@@ -29,7 +29,7 @@ entityDef weapon_tool
 
 	"snd_fire"		"Weapon_357.Single"
 
-	// hlWeapon specific
+	// hl2Weapon specific
 	"hudSlot"		"0"
 	"hudSlotPos"	"10"
 	"weight"		"6"

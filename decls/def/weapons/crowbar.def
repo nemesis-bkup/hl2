@@ -6,7 +6,7 @@ entityDef weapon_crowbar
 	"editor_usage"		"#HL2_Crowbar"
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"hlWeapon"
+	"spawnclass"		"hl2Weapon"
 	"model"				"models/weapons/w_crowbar.mdl"
 	"model_view"		"models/weapons/v_crowbar.mdl"
 	"snd_acquire"		"HL2Player.PickupWeapon"
@@ -30,7 +30,7 @@ entityDef weapon_crowbar
 	"act_fire"			"4,5,6,7"
 	"punchSpring"		"1.5 -1.5 0"
 
-	// hlWeapon specific
+	// hl2Weapon specific
 	"hudSlot"		"0"
 	"hudSlotPos"	"0"
 	"weight"		"0"

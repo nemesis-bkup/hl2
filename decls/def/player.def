@@ -1,6 +1,6 @@
 entityDef player
 {
-	"spawnclass"		"hlPlayer"
+	"spawnclass"		"hl2Player"
 	"health"			"100"
 	"maxarmor"			"100"
 	"bleeds"			"1"
@@ -63,7 +63,7 @@ entityDef player_sandbox
 
 entityDef player_sandbox_gs
 {
-	"spawnclass"			"hlPlayer"
+	"spawnclass"			"hl2Player"
 	"health"			"100"
 	"maxarmor"			"100"
 	"bleeds"			"1"

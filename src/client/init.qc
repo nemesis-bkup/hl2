@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 Marco Cawthorne <marco@icculus.org>
+ * Copyright (c) 2016-2025 Marco Cawthorne <marco@icculus.org>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -14,17 +14,9 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-/*
-=================
-ClientGame_Init
-
-Comparable to worldspawn in SSQC in that it's mostly used for precaches
-=================
-*/
 void
 ClientGame_Init(float apilevel, string enginename, float engineversion)
 {
-	registercommand("chooseteam");
 	registercommand("printSpawnList");
 
 	registercommand("lastinv");
@@ -32,14 +24,9 @@ ClientGame_Init(float apilevel, string enginename, float engineversion)
 	registercommand("invprev");
 }
 
-void VGUI_ShowMOTD();
-
 void
 ClientGame_InitDone(void)
 {
-	VGUI_ShowMOTD();
-
-
 	bool gameTitle = serverkeyfloat("gametitle");
 
 	if (gameTitle == true) {
@@ -50,8 +37,6 @@ ClientGame_InitDone(void)
 void
 ClientGame_RendererRestart(string rstr)
 {
-	HUD_Init();
-
 	BEAM_TRIPMINE = particleeffectnum("weapon_slam.beam");
 
 	font.Load("fonts/scoreboard.font", FONT_SCOREBOARD);

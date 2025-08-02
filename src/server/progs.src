@@ -18,7 +18,7 @@
 ../../../src/gs-entbase/shared.src
 ../../../hl2/src/server/defs.h
 ../shared/include.src
-../../../hl2/src/server/HL2Suit.qc
+../../../hl2/src/server/Suit.qc
 ../../../src/botlib/include.src
 ../../../hl2/src/server/server.qc
 ../../../src/server/include.src

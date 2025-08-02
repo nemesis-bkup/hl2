@@ -6,7 +6,7 @@ entityDef weapon_smg1
 	"editor_usage"		"SMG1 from Half-Life 2. Uses item_ammo_smg1 and item_ammo_smg1_large."
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"hlWeapon"
+	"spawnclass"		"hl2Weapon"
 	"model"				"models/weapons/w_smg1.mdl"
 	"model_view"		"models/weapons/v_smg1.mdl"
 	"snd_acquire"		"HL2Player.PickupWeapon"
@@ -27,7 +27,7 @@ entityDef weapon_smg1
 	"snd_reload"		"Weapon_SMG1.Reload"
 	"snd_empty"		"Weapon_SMG1.Empty"
 
-	// hlWeapon specific
+	// hl2Weapon specific
 	"hudSlot"		"2"
 	"hudSlotPos"	"0"
 	"weight"		"3"

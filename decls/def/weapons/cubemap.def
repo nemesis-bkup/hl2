@@ -6,7 +6,7 @@ entityDef weapon_cubemap
 	"editor_usage"		"#HL2_Cubemap"
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"hlWeapon"
+	"spawnclass"		"hl2Weapon"
 	"model"				"models/shadertest/envballs.mdl"
 	"model_view"		"models/shadertest/envballs.mdl"
 	"inv_item"			"#HL2_Cubemap"

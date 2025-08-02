@@ -14,9 +14,9 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-class hlPlayer:ncPlayer
+class hl2Player:ncPlayer
 {
-	void(void) hlPlayer;
+	void(void) hl2Player;
 
 	virtual void Physics_Jump(void);
 
@@ -37,14 +37,14 @@ class hlPlayer:ncPlayer
 };
 
 void
-hlPlayer::hlPlayer(void)
+hl2Player::hl2Player(void)
 {
 }
 
 
 #ifdef CLIENT
 void
-hlPlayer::ClientInputFrame(void)
+hl2Player::ClientInputFrame(void)
 {
 	super::ClientInputFrame();
 }
@@ -54,7 +54,7 @@ void Camera_StrafeRoll(__inout vector camera_angle);
 void Shake_Update(ncPlayer);
 
 void
-hlPlayer::UpdateAliveCam(void)
+hl2Player::UpdateAliveCam(void)
 {
 	vector cam_pos = GetEyePos();
 	Camera_RunPosBob(view_angles, cam_pos);
@@ -86,7 +86,7 @@ hlPlayer::UpdateAliveCam(void)
 //string Weapons_GetPlayermodel(ncPlayer, int);
 
 void
-hlPlayer::UpdatePlayerAttachments(bool visible)
+hl2Player::UpdatePlayerAttachments(bool visible)
 {
 	/* draw the flashlight */
 	if (gflags & GF_FLASHLIGHT) {
@@ -160,11 +160,11 @@ hlPlayer::UpdatePlayerAttachments(bool visible)
 
 /*
 =================
-hlPlayer::ReceiveEntity
+hl2Player::ReceiveEntity
 =================
 */
 void
-hlPlayer::ReceiveEntity(float new, float flChanged)
+hl2Player::ReceiveEntity(float new, float flChanged)
 {
 	/* the generic client attributes */
 	super::ReceiveEntity(new, flChanged);
@@ -172,14 +172,14 @@ hlPlayer::ReceiveEntity(float new, float flChanged)
 
 /*
 =================
-hlPlayer::PredictPostFrame
+hl2Player::PredictPostFrame
 
 Save the last valid server values away in the _net variants of each field
 so we can roll them back later.
 =================
 */
 void
-hlPlayer::PredictPreFrame(void)
+hl2Player::PredictPreFrame(void)
 {
 	/* the generic client attributes */
 	super::PredictPreFrame();
@@ -187,13 +187,13 @@ hlPlayer::PredictPreFrame(void)
 
 /*
 =================
-hlPlayer::PredictPostFrame
+hl2Player::PredictPostFrame
 
 Where we roll back our values to the ones last sent/verified by the server.
 =================
 */
 void
-hlPlayer::PredictPostFrame(void)
+hl2Player::PredictPostFrame(void)
 {
 	/* the generic client attributes */
 	super::PredictPostFrame();
@@ -201,13 +201,13 @@ hlPlayer::PredictPostFrame(void)
 
 #else
 void
-hlPlayer::Save(float handle)
+hl2Player::Save(float handle)
 {
 	super::Save(handle);
 }
 
 void
-hlPlayer::Restore(string strKey, string strValue)
+hl2Player::Restore(string strKey, string strValue)
 {
 	switch (strKey) {
 	default:
@@ -216,7 +216,7 @@ hlPlayer::Restore(string strKey, string strValue)
 }
 
 void
-hlPlayer::EvaluateEntity(void)
+hl2Player::EvaluateEntity(void)
 {
 	/* the generic client attributes */
 	ncPlayer::EvaluateEntity();
@@ -224,7 +224,7 @@ hlPlayer::EvaluateEntity(void)
 }
 
 void
-hlPlayer::Death(entity inflictor, entity attacker, int damagePoints, vector dir, vector absImpactPos, int hitBody)
+hl2Player::Death(entity inflictor, entity attacker, int damagePoints, vector dir, vector absImpactPos, int hitBody)
 {
 	float randomAnim = floor(random(18, 26));
 	ncEntity newCorpse = MakeCorpse(randomAnim);
@@ -235,17 +235,17 @@ hlPlayer::Death(entity inflictor, entity attacker, int damagePoints, vector dir,
 
 /*
 =================
-hlPlayer::SendEntity
+hl2Player::SendEntity
 =================
 */
 float
-hlPlayer::SendEntity(entity ePEnt, float flChanged)
+hl2Player::SendEntity(entity ePEnt, float flChanged)
 {
 	/* just-in-case. */
 	if (IsPlayer() == false)
 		return (0);
 
-	/* don't broadcast invisible hlPlayers */
+	/* don't broadcast invisible hl2Players */
 	if (IsFakeSpectator() && ePEnt != this)
 		return (0);
 	if (!GetModelindex() && ePEnt != this)
@@ -261,7 +261,7 @@ hlPlayer::SendEntity(entity ePEnt, float flChanged)
 #endif
 
 void
-hlPlayer::Physics_Jump(void)
+hl2Player::Physics_Jump(void)
 {
 	if (waterlevel >= 2) {
 		if (watertype == CONTENT_WATER) {

@@ -6,7 +6,7 @@ entityDef weapon_physcannon
 	"editor_usage"		"#HL2_GravityGun"
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"hlWeapon"
+	"spawnclass"		"hl2Weapon"
 	"model"			"models/weapons/w_physics.mdl"
 	"model_view"		"models/weapons/v_physcannon.mdl"
 	"snd_acquire"		"HL2Player.PickupWeapon"
@@ -24,7 +24,7 @@ entityDef weapon_physcannon
 
 	"snd_empty"		"Weapon_PhysCannon.DryFire"
 
-	// hlWeapon specific
+	// hl2Weapon specific
 	"hudSlot"		"0"
 	"hudSlotPos"	"1"
 	"weight"		"0"

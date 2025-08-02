@@ -6,7 +6,7 @@ entityDef weapon_bugbait
 	"editor_usage"		"#HL2_Bugbait"
 	"editor_rotatable"	"1"
 
-	"spawnclass"		"hlWeapon"
+	"spawnclass"		"hl2Weapon"
 	//"model"			"models/weapons/w_bugbait.mdl"
 	//"model_view"		"models/weapons/v_bugbait.mdl"
 	"model"				"models/items/grenadeAmmo.mdl"
@@ -25,7 +25,7 @@ entityDef weapon_bugbait
 	"act_draw"			"3"
 	"act_holster"		"4"
 
-	// hlWeapon specific
+	// hl2Weapon specific
 	"hudSlot"			"5"
 	"hudSlotPos"		"0"
 	"weight"			"25"
