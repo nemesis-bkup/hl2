@@ -285,20 +285,20 @@ hl2Weapon::InputFrame(void)
 #endif
 		if (input_movevalues[1] > 0) {
 #ifdef SERVER
-			m_grabbedEntity.angles[1] += frametime * 360.0;
+			m_grabbedEntity.angles[1] += frametime * 90.0;
 #endif
 		} else if (input_movevalues[1] < 0) {
 #ifdef SERVER
-			m_grabbedEntity.angles[1] -= frametime * 360.0;
+			m_grabbedEntity.angles[1] -= frametime * 90.0;
 #endif
 		}
 		if (input_movevalues[0] > 0) {
 #ifdef SERVER
-			m_grabbedEntity.angles[0] += frametime * 360.0;
+			m_grabbedEntity.angles[0] += frametime * 90.0;
 #endif
 		} else if (input_movevalues[0] < 0) {
 #ifdef SERVER
-			m_grabbedEntity.angles[0] -= frametime * 360.0;
+			m_grabbedEntity.angles[0] -= frametime * 90.0;
 #endif
 		}
 		input_movevalues = g_vec_null;
@@ -549,6 +549,10 @@ void
 hl2Weapon::DrawToolgunText(void)
 {
 	int toolMode = cvar("gm_toolmode");
+	vector screenSize = screen.Size();
+	vector screenMins = screen.Mins();
+	vector hud_mins = screen.HUDMins();
+	vector hud_size = screen.HUDSize();
 
 	if (toolMode > 28) {
 		return;
@@ -560,9 +564,9 @@ hl2Weapon::DrawToolgunText(void)
 		m_toolDescLocalizedString = localize(sprintf("#TOOL_DESC_%i", toolMode));
 	}
 	
-	drawfill(g_hudmins + [0, g_hudres[1]-32], [g_hudres[0], 32], [0,0,0], 0.75f, DRAWFLAG_NORMAL);
-	Font_DrawField(g_hudmins + [0, g_hudres[1]-26], [g_hudres[0], 16], m_toolModeLocalizedString, FONT_TOOL, 0);
-	Font_DrawField(g_hudmins + [0, g_hudres[1]-16], [g_hudres[0], 16], m_toolDescLocalizedString, FONT_TOOL, 0);
+	drawfill(screenMins + [0, screenSize[1]-32], [screenSize[0], 32], [0,0,0], 0.75f, DRAWFLAG_NORMAL);
+	Font_DrawField(hud_mins + [0, hud_size[1]-26], [hud_size[0], 16], m_toolModeLocalizedString, FONT_TOOL, 0);
+	Font_DrawField(hud_mins + [0, hud_size[1]-16], [hud_size[0], 16], m_toolDescLocalizedString, FONT_TOOL, 0);
 }
 
 void

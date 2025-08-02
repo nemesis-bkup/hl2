@@ -8,6 +8,7 @@
 #define SERVER
 #define HL2
 #define SOUNDSHADER_MAX 9000
+#define PROPDATA_MAX 2048
 
 #includelist
 ../../../src/common/include.src

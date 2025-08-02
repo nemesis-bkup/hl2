@@ -62,6 +62,14 @@ CodeCallback_Precache(void)
 	for (int i = 0; i < g_stockHL2MPPlayerModels.length; i++) {
 		precache.Model(g_stockHL2MPPlayerModels[i]);
 	}
+
+	searchhandle shModels = search_begin( "models/props_*/*.mdl", SEARCH_NAMESORT | SEARCH_MULTISEARCH, TRUE );
+
+	for ( int i = 0; i < search_getsize( shModels ); i++ ) {
+		string strAdd = search_getfilename( shModels, i );
+		precache.Model(strAdd);
+	}
+	search_end( shModels );
 }
 
 void
