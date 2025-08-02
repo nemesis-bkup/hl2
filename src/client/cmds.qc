@@ -14,12 +14,17 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+void VGUI_SpawnMenu(void);
+
 int
 ClientGame_ConsoleCommand(void)
 {
 	switch(argv(0)) {
 	case "printSpawnList":
 		Spawnlist_ToConbuffer(argv(2));
+		break;
+	case "showSpawnMenu":
+		VGUI_SpawnMenu();
 		break;
 	default:
 		return (0);

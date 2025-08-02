@@ -26,5 +26,6 @@
 ../../../hl2/src/client/viewmodel.qc
 ../../../valve/src/client/scoreboard.qc
 ../../../src/client/include.src
+../../../hl2/src/client/vgui_spawnmenu.qc
 ../../../src/shared/include.src
 #endlist

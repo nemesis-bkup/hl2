@@ -22,6 +22,7 @@ ClientGame_Init(float apilevel, string enginename, float engineversion)
 	registercommand("lastinv");
 	registercommand("invnext");
 	registercommand("invprev");
+	registercommand("showSpawnMenu");
 }
 
 void

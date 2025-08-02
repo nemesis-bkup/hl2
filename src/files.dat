@@ -1507,7 +1507,7 @@
 1 progs/sandbox.dat
 1 progs/singleplayer.dat
 1 quake.rc
-1 resource/hl2mp_english.txt
+1 resource/client_english.txt
 1 scripts/alphatest.shader
 1 scripts/bots.txt
 1 scripts/client_style.txt
