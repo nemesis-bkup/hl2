@@ -3,8 +3,7 @@
 ../../../valve/src/shared/events.h
 ../../../valve/src/shared/flags.h
 ../../../valve/src/shared/skeleton.h
-../../../hl2/src/shared/HL2Player.qc
-../../../hl2/src/shared/animations.qc
+../../../hl2/src/shared/Player.qc
 ../../../valve/src/shared/fx_gaussbeam.qc
-../../../hl2/src/shared/HL2Weapon.qc
+../../../hl2/src/shared/Weapon.qc
 #endlist

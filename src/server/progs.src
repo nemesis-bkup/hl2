@@ -19,7 +19,6 @@
 ../../../hl2/src/server/defs.h
 ../shared/include.src
 ../../../hl2/src/server/HL2Suit.qc
-../../../valve/src/server/HLScientist.qc
 ../../../src/botlib/include.src
 ../../../hl2/src/server/server.qc
 ../../../src/server/include.src

@@ -14,15 +14,6 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "animations.h"
-
-/* all custom SendFlags bits we can possibly send */
-enumflags
-{
-	PLAYER_TOPFRAME = PLAYER_CUSTOMFIELDSTART,
-	PLAYER_BOTTOMFRAME
-};
-
 class hlPlayer:ncPlayer
 {
 	void(void) hlPlayer;
@@ -177,19 +168,6 @@ hlPlayer::ReceiveEntity(float new, float flChanged)
 {
 	/* the generic client attributes */
 	super::ReceiveEntity(new, flChanged);
-
-	/* animation */
-
-	setorigin(this, origin);
-
-	/* these only concern the current hlPlayer */
-	CSQC_UpdateSeat();
-	if (this != pSeat->m_ePlayer)
-		return;
-
-	/* do not notify us of updates when spawning initially */
-	if (flChanged == UPDATE_ALL)
-		PredictPreFrame();
 }
 
 /*
@@ -226,33 +204,12 @@ void
 hlPlayer::Save(float handle)
 {
 	super::Save(handle);
-
-	SaveFloat(handle, "anim_top", anim_top);
-	SaveFloat(handle, "anim_top_time", anim_top_time);
-	SaveFloat(handle, "anim_top_delay", anim_top_delay);
-	SaveInt(handle, "anim_bottom", anim_bottom);
-	SaveFloat(handle, "anim_bottom_time", anim_bottom_time);
 }
 
 void
 hlPlayer::Restore(string strKey, string strValue)
 {
 	switch (strKey) {
-	case "anim_top":
-		anim_top = ReadFloat(strValue);
-		break;
-	case "anim_top_time":
-		anim_top_time = ReadFloat(strValue);
-		break;
-	case "anim_top_delay":
-		anim_top_delay = ReadFloat(strValue);
-		break;
-	case "anim_bottom":
-		anim_bottom = ReadInt(strValue);
-		break;
-	case "anim_bottom_time":
-		anim_bottom_time = ReadFloat(strValue);
-		break;
 	default:
 		super::Restore(strKey, strValue);
 	}

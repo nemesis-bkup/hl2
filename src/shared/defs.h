@@ -1,1 +1,1 @@
-#include "HL2Weapon.h"
+#include "Weapon.h"

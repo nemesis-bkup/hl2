@@ -51,7 +51,6 @@ void
 ClientGame_RendererRestart(string rstr)
 {
 	HUD_Init();
-	Animation_Init();
 
 	BEAM_TRIPMINE = particleeffectnum("weapon_slam.beam");
 
