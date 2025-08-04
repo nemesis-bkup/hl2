@@ -86,6 +86,22 @@ hl2Player::UpdateAliveCam(void)
 //string Weapons_GetPlayermodel(ncPlayer, int);
 
 void
+Flashlight_CastBeam(vector atPosition, vector atAngle, entity owningEntity)
+{
+	entity oldSelf = self;
+	vector forwardDir = anglesToForward(atAngle);
+	traceline(atPosition, atPosition + (forwardDir * 8096), MOVE_NORMAL, owningEntity);
+
+	self = owningEntity;
+	float p = dynamiclight_add(atPosition + (forwardDir * 16), 512, [1,1,1], 0, "lights/flashlight");
+	self = oldSelf;
+
+	dynamiclight_set(p, LFIELD_ANGLES, atAngle);
+	dynamiclight_set(p, LFIELD_FLAGS, 3);
+	dynamiclight_set(p, LFIELD_OWNER, owningEntity);
+}
+
+void
 hl2Player::UpdatePlayerAttachments(bool visible)
 {
 	/* draw the flashlight */
@@ -101,11 +117,7 @@ hl2Player::UpdatePlayerAttachments(bool visible)
 			ang = view_angles;
 		}
 
-		makevectors(ang);
-		traceline(src, src + (v_forward * 8096), MOVE_NORMAL, this);
-		float p = dynamiclight_add(src + (v_forward * 16), 512, [1,1,1], 0, "lights/flashlight");
-		dynamiclight_set(p, LFIELD_ANGLES, ang);
-		dynamiclight_set(p, LFIELD_FLAGS, 3);
+		Flashlight_CastBeam(src, ang, this);
 	}
 
 	/* FIXME: this needs to be incorporated and simplified, now that we can handle it all in-class */
