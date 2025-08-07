@@ -54,3 +54,6 @@ struct
 
 font_s FONT_TOOL;
 font_s FONT_SCOREBOARD;
+font_s FONT_SCORES_NORMAL;
+font_s FONT_SCORES_BOLD;
+

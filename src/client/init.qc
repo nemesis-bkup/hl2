@@ -42,4 +42,6 @@ ClientGame_RendererRestart(string rstr)
 
 	font.Load("fonts/scoreboard.font", FONT_SCOREBOARD);
 	font.Load("fonts/tool.font", FONT_TOOL);
+	font.Load("fonts/scores_norm.font", FONT_SCORES_NORMAL);
+	font.Load("fonts/scores_bold.font", FONT_SCORES_BOLD);
 }
