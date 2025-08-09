@@ -42,6 +42,13 @@ string g_stockHL2MPPlayerModels[] = {
 };
 #endif
 
+typedef struct
+{
+
+	void SV_PropSpawn(string newModel, entity spawningEntity);
+} privateAPI_t;
+var privateAPI_t nuclidePrivate; /**< Access private functions using this variable. */
+
 bool
 IsTeamplay(void)
 {
@@ -75,6 +82,8 @@ CodeCallback_Precache(void)
 void
 CodeCallback_StartGameType(void)
 {
+	nuclidePrivate.SV_PropSpawn = linkToServerProgs("SV_PropSpawn");
+
 	motd.LoadDefault();
 	game.SetSpawnPoint("info_player_deathmatch");
 }
@@ -141,7 +150,9 @@ CodeCallback_ClientCommand(entity playerEntity, string command)
 	float commandArgs = tokenize(command);
 
 	switch (argv(0)) {
-
+	case "propSpawn":
+		nuclidePrivate.SV_PropSpawn(argv(1), playerEntity);
+		break;
 	default:
 		return (false);
 	}

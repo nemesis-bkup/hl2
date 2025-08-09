@@ -3,7 +3,7 @@ rt2_muzzle_flash1
 	{
 		map "materials/effects/muzzleflash1.vtf"
 		blendFunc add
-		alphaGen vertex
+		rgbGen vertex
 	}
 }
 
@@ -12,7 +12,7 @@ rt2_muzzle_flash2
 	{
 		map "materials/effects/muzzleflash2.vtf"
 		blendFunc add
-		alphaGen vertex
+		rgbGen vertex
 	}
 }
 
@@ -20,8 +20,8 @@ rt2_muzzle_flash3
 {
 	{
 		map "materials/effects/muzzleflash3.vtf"
-		blendFunc add
-		alphaGen vertex
+		blendFunc GL_ONE GL_ONE
+		rgbGen vertex
 	}
 }
 
@@ -30,7 +30,7 @@ rt2_muzzle_flash4
 	{
 		map "materials/effects/muzzleflash4.vtf"
 		blendFunc add
-		alphaGen vertex
+		rgbGen vertex
 	}
 }
 
@@ -39,7 +39,7 @@ rt2_combinemuzzle_flash1
 	{
 		map "materials/effects/combinemuzzle1.vtf"
 		blendFunc add
-		alphaGen vertex
+		rgbGen vertex
 	}
 }
 
@@ -48,7 +48,7 @@ rt2_combinemuzzle_flash2
 	{
 		map "materials/effects/combinemuzzle2.vtf"
 		blendFunc add
-		alphaGen vertex
+		rgbGen vertex
 	}
 }
 
