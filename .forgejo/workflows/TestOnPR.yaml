@@ -20,6 +20,7 @@ jobs:
         fetch-depth: 1
         repository: fn/valve
         ref: current
+        path: "./valve"
 
     - uses: actions/checkout@v3
       with:
