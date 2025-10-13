@@ -74,11 +74,7 @@ void VGUI_SpawnMenu ( void )
 	}
 	static void VGUI_SpawnMenu_SpawnProp( void ) {
 		/* in sandbox this may be allowed. */
-		if (serverinfo.GetString("gametype") == "sandbox") {
-			localcmd(sprintf("cmd propSpawn %S\n", eModel.model));
-		} else {
-			localcmd(sprintf("sv propSpawn %S\n", eModel.model));
-		}
+		localcmd(sprintf("cmd propSpawn %S\n", eModel.model));
 	}
 	static void VGUI_SpawnMenu_SetFrame( int iFrame ) {
 		float maxFrame = modelframecount(eModel.modelindex) - 1;
@@ -291,7 +287,7 @@ void VGUI_SpawnMenu ( void )
 				btnToolMode[toolBtn].SetPos(newPos);
 				btnToolMode[toolBtn].SetTag(toolBtn);
 				btnToolMode[toolBtn].SetTitle( localize(sprintf("#TOOL_BUTTON_%i", toolBtn)));
-				btnToolMode[toolBtn].SetExec( sprintf("set gm_toolmode %i\n", toolBtn) );
+				btnToolMode[toolBtn].SetExec( sprintf("setinfo gm_toolmode %i\n", toolBtn) );
 				winViewer.Add( btnToolMode[toolBtn] );
 				toolBtn++;
 				

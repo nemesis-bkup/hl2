@@ -335,7 +335,7 @@ hl2Weapon::ToolgunFire(bool altFire)
 
 	targetEntity = (ncEntity)trace_ent;
 
-	switch (cvar("gm_toolmode")) {
+	switch (userinfo.GetInteger(ourOwner, "gm_toolmode")) {
 	case GMTOOL_ROPE:
 		if (!targetEntity) {
 			return;
@@ -548,7 +548,7 @@ hl2Weapon::AddedToInventory(void)
 void
 hl2Weapon::DrawToolgunText(void)
 {
-	int toolMode = cvar("gm_toolmode");
+	int toolMode = userinfo.GetInteger(owner, "gm_toolmode");
 	vector screenSize = screen.Size();
 	vector screenMins = screen.Mins();
 	vector hud_mins = screen.HUDMins();

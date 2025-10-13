@@ -1,4 +1,6 @@
 
+var vector hud_mins, hud_size;
+
 void
 HL2HUD_UpdateTimers(float health, float armor, float clip, float ammo1, float ammo2)
 {
@@ -70,6 +72,8 @@ HL2HUD_DrawObituaries(vector drawAtPos, bool rightAlign)
 		return;
 	}
 
+	drawAtPos += hud_mins;
+
 	for (int i = 0i; i < g_killMsgCount; i++) {
 		float m_ofs1 = font.StringWidth(g_killMsgRecord[i].m_target, true, FONT_WEAPONTEXT);
 		float m_ofs2 = font.StringWidth(g_killMsgRecord[i].m_method, true, FONT_WEAPONICON_SEL);
@@ -125,7 +129,6 @@ void
 HUD_Draw(void)
 {
 	vector pos;
-	vector hud_mins, hud_size;
 	float armorValue  = player.GetArmor();
 	float healthValue = player.GetHealth();
 	int teamID = player.GetTeam();

@@ -8,8 +8,10 @@
 !!permu REFLECTCUBEMASK
 !!cvarf r_glsl_offsetmapping_scale
 !!cvardf r_glsl_pcf
+!!cvardf r_glsl_rtenvsphere
 !!cvardf r_tessellation_level=5
 !!samps diffuse normalmap specular upper lower reflectcube reflectmask
+!!samps rtenvsphere:2D=1
 !!samps =PCF shadowmap
 !!samps =CUBE projectionmap
 
@@ -336,10 +338,16 @@ void main ()
 #endif
 
 #ifdef REFLECTCUBEMASK
-	vec3 rtc = reflect(-eyevector, bumps);
-	rtc = rtc.x*invsurface[0] + rtc.y*invsurface[1] + rtc.z*invsurface[2];
-	rtc = (m_model * vec4(rtc.xyz,0.0)).xyz;
-	diff += texture2D(s_reflectmask, tcbase).rgb * textureCube(s_reflectcube, rtc).rgb;
+	#if r_glsl_rtenvsphere == 1
+		vec3 r = reflect(normalize(-eyevector), bumps);
+		vec2 sphereCoord = 0.5 + r.xy * 0.5;
+		diff += texture2D(s_reflectmask, tcbase).rgb * textureCube(s_rtenvsphere, sphereCoord).rgb;
+	#else
+		vec3 rtc = reflect(-eyevector, bumps);
+		rtc = rtc.x*invsurface[0] + rtc.y*invsurface[1] + rtc.z*invsurface[2];
+		rtc = (m_model * vec4(rtc.xyz,0.0)).xyz;
+		diff += texture2D(s_reflectmask, tcbase).rgb * textureCube(s_reflectcube, rtc).rgb;
+	#endif
 #endif
 
 #ifdef CUBE
