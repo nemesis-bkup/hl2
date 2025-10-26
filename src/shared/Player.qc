@@ -49,18 +49,16 @@ hl2Player::ClientInputFrame(void)
 	super::ClientInputFrame();
 }
 
-void Camera_RunPosBob(vector angles, __inout vector camera_pos);
-void Camera_StrafeRoll(__inout vector camera_angle);
+vector HLCamera_RunPosBob(vector angles);
+void HLCamera_StrafeRoll(__inout vector camera_angle);
 void Shake_Update(ncPlayer);
 
 void
 hl2Player::UpdateAliveCam(void)
 {
 	vector cam_pos = GetEyePos();
-	Camera_RunPosBob(view_angles, cam_pos);
-
-	g_view.SetCameraOrigin(cam_pos);
-	Camera_StrafeRoll(view_angles);
+	g_view.SetCameraOrigin(cam_pos + HLCamera_RunPosBob(view_angles));
+	HLCamera_StrafeRoll(view_angles);
 	g_view.SetCameraAngle(view_angles);
 
 	if (vehicle) {
@@ -238,11 +236,7 @@ hl2Player::EvaluateEntity(void)
 void
 hl2Player::Death(entity inflictor, entity attacker, int damagePoints, vector dir, vector absImpactPos, int hitBody)
 {
-	float randomAnim = floor(random(18, 26));
-	ncEntity newCorpse = MakeCorpse(randomAnim);
-
 	super::Death(inflictor, attacker, damagePoints, dir, absImpactPos, hitBody);
-	SpectatorDeathcam(newCorpse, (ncEntity)attacker, 3.0f);
 }
 
 /*
