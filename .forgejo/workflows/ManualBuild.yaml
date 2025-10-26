@@ -15,6 +15,14 @@ jobs:
         repository: vera/nuclide
         ref: current
 
+    - name: clone rad-therapy
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+        repository: fn/valve
+        ref: current
+        path: "./valve"
+
     - name: clone game
       uses: actions/checkout@v3
       with:
