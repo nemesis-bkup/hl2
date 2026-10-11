@@ -1,4 +1,4 @@
-# ![](img/rt2.png) Rad-Therapy II
+# <img width="64" alt="Rad-Therapy II logo" src="img/Rad-Therapy-II.png" /> Rad-Therapy II
 
 The original port of **Half-Life 2** (2004) to Quake(World).
 
